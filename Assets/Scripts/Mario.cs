@@ -15,6 +15,7 @@ public class Mario : MonoBehaviour
     //Composants associés au joueur
     private Rigidbody2D _rb;
     private Collider2D _col;
+    private Animator _an;
     private Transform m_GroundCheck1, m_GroundCheck2;
 
     //Variable pour son déplacement
@@ -34,6 +35,7 @@ public class Mario : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _col = GetComponent<Collider2D>();
+        _an = GetComponent<Animator>();
         m_GroundCheck1 = transform.Find("groundCheck1");
         m_GroundCheck2 = transform.Find("groundCheck2");
     }
@@ -42,11 +44,16 @@ public class Mario : MonoBehaviour
     void FixedUpdate()
     {
         _speedY = _rb.velocity.y;
+        _absSpeedX = Mathf.Abs(_rb.velocity.x);
         _grounded = Physics2D.OverlapPoint(m_GroundCheck1.position, LayerMask.GetMask("Default")) || Physics2D.OverlapPoint(m_GroundCheck2.position, LayerMask.GetMask("Default"));
 
         MoveMario();
 
-        _rb.velocity = _rb.velocity + new Vector2(10f * _direction * Time.deltaTime, 0); //TODO Fix the accelration value
+        _rb.velocity = new Vector2(10f * _direction, _rb.velocity.y); //TODO Fix the accelration value
+
+        _an.SetFloat("Speed", Mathf.Abs(_absSpeedX));
+        _an.SetBool("Crouch", _crouch);
+        _an.SetBool("Jumping", _jump);
     }
 
     private void MoveMario()
@@ -79,5 +86,7 @@ public class Mario : MonoBehaviour
 
         if (Input.GetKey(KeyCode.DownArrow)) //Crouch
             _crouch = true;
+        else
+            _crouch = false;
     }
 }
