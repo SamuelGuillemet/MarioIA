@@ -1,46 +1,55 @@
 fileFormatVersion: 2
-guid: f534e6da4f564384b863d97cebf1659a
+guid: cf5acfbefd389f2459e0c9c349d967f7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1175791571739834499
-    second: BabyMario_0
+      213: 7567667463969753817
+    second: deco_0
   - first:
-      213: 180109212361792213
-    second: BabyMario_1
+      213: -5485482186839263946
+    second: deco_1
   - first:
-      213: -1587840832844028888
-    second: BabyMario_2
+      213: -226474587388606735
+    second: deco_2
   - first:
-      213: 7696391673716885026
-    second: BabyMario_3
+      213: 2699819199210460450
+    second: deco_3
   - first:
-      213: 6947661170657003560
-    second: BabyMario_4
+      213: -6956232412470105342
+    second: deco_4
   - first:
-      213: -4502596394961181224
-    second: BabyMario_5
+      213: -8915229910982457068
+    second: deco_5
   - first:
-      213: -8025245709326501802
-    second: BabyMario_6
+      213: -610831215484108246
+    second: deco_6
   - first:
-      213: 1227761110973715057
-    second: BabyMario_7
+      213: -3707337709383864825
+    second: deco_7
   - first:
-      213: 788994961124631938
-    second: BabyMario_8
+      213: -2867926194491759627
+    second: deco_8
   - first:
-      213: -2752239252691525502
-    second: BabyMario_9
+      213: 6310075732596040423
+    second: deco_9
   - first:
-      213: 1002030413317548018
-    second: BabyMario_10
+      213: 1287334107775463294
+    second: deco_10
   - first:
-      213: 2825411636396130586
-    second: BabyMario_11
+      213: 5034870625993195818
+    second: deco_11
   - first:
-      213: -3806729458235778147
-    second: BabyMario_12
+      213: -4208441367614402886
+    second: deco_12
+  - first:
+      213: -94377074752069212
+    second: deco_13
+  - first:
+      213: 8507551577113847453
+    second: deco_14
+  - first:
+      213: -314994709069516546
+    second: deco_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -130,253 +139,337 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BabyMario_0
+      name: deco_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 112
+        width: 48
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38873737430415010800000000000000
-      internalID: 1175791571739834499
+      spriteID: 9dac2389671c50960800000000000000
+      internalID: 7567667463969753817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BabyMario_1
+      name: deco_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 64
-        width: 16
+        x: 53
+        y: 112
+        width: 80
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63576bfa307afd3b0800000000000000
+      internalID: -5485482186839263946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_2
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 112
+        width: 32
         height: 16
-      alignment: 0
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f68c0c00966bdcf0800000000000000
+      internalID: -226474587388606735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 32
+        height: 32
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5da9997df50ef7200800000000000000
-      internalID: 180109212361792213
+      spriteID: 22518b6e14fa77520800000000000000
+      internalID: 2699819199210460450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BabyMario_2
+      name: deco_4
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 80
+        width: 48
+        height: 32
+      alignment: 9
+      pivot: {x: 0.333333, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20b29aff97f767f90800000000000000
+      internalID: -6956232412470105342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_5
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 80
+        width: 64
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41904f081adb64480800000000000000
+      internalID: -8915229910982457068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_6
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 84
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a22895fee34e587f0800000000000000
+      internalID: -610831215484108246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_7
       rect:
         serializedVersion: 2
         x: 0
         y: 48
-        width: 16
+        width: 32
         height: 16
-      alignment: 0
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 824a87edc2bd6f9e0800000000000000
-      internalID: -1587840832844028888
+      spriteID: 70ea3c1eef3ec8cc0800000000000000
+      internalID: -3707337709383864825
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BabyMario_3
+      name: deco_8
       rect:
         serializedVersion: 2
-        x: 16
+        x: 36
         y: 48
-        width: 16
+        width: 48
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2264b2433731fca60800000000000000
-      internalID: 7696391673716885026
+      spriteID: 5f3e74f22541338d0800000000000000
+      internalID: -2867926194491759627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BabyMario_4
+      name: deco_9
       rect:
         serializedVersion: 2
-        x: 32
+        x: 89
         y: 48
-        width: 16
+        width: 64
         height: 16
-      alignment: 0
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82809c0460d0b6060800000000000000
-      internalID: 6947661170657003560
+      spriteID: 7e223335274e19750800000000000000
+      internalID: 6310075732596040423
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BabyMario_5
+      name: deco_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 155
+        y: 48
+        width: 14
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d5626f3f609381c0800000000000000
-      internalID: -4502596394961181224
+      spriteID: e7f6339ec878dd110800000000000000
+      internalID: 1287334107775463294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BabyMario_6
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 658bd540c8990a090800000000000000
-      internalID: -8025245709326501802
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BabyMario_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17290a8b932e90110800000000000000
-      internalID: 1227761110973715057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BabyMario_8
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2852863acb213fa00800000000000000
-      internalID: 788994961124631938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BabyMario_9
+      name: deco_11
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 16
-      alignment: 0
+        height: 48
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2806f6e4bf41ec9d0800000000000000
-      internalID: -2752239252691525502
+      spriteID: a218f5098247fd540800000000000000
+      internalID: 5034870625993195818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BabyMario_10
+      name: deco_12
       rect:
         serializedVersion: 2
-        x: 16
+        x: 25
         y: 0
         width: 16
         height: 16
-      alignment: 0
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f72ee71a5de7ed00800000000000000
-      internalID: 1002030413317548018
+      spriteID: abec8499fdc9895c0800000000000000
+      internalID: -4208441367614402886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BabyMario_11
+      name: deco_13
       rect:
         serializedVersion: 2
-        x: 32
+        x: 51
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a16670fc84b0bef0800000000000000
+      internalID: -94377074752069212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_14
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 0
+        width: 32
+        height: 8
+      alignment: 9
+      pivot: {x: 0.25, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d966f2e9515e01670800000000000000
+      internalID: 8507551577113847453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_15
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 0
+        width: 8
+        height: 8
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1185a3e9e0e53720800000000000000
-      internalID: 2825411636396130586
+      spriteID: ef0b8c32bf9e0abf0800000000000000
+      internalID: -314994709069516546
       vertices: []
       indices: 
       edges: []
