@@ -64,10 +64,9 @@ public class Mario : MonoBehaviour
         _speedY = _rb.velocity.y;
         _absSpeedX = Mathf.Abs(_rb.velocity.x);
         _grounded = Physics2D.OverlapPoint(m_GroundCheck1.position, LayerMask.GetMask("Default")) || Physics2D.OverlapPoint(m_GroundCheck2.position, LayerMask.GetMask("Default"));
-
         MoveMario();
 
-        _rb.velocity = new Vector2(10f * _direction, _rb.velocity.y); //TODO Fix the accelration value
+        _rb.velocity = new Vector2(5f * _direction, _rb.velocity.y); //TODO Fix the accelration value
 
         _an.SetFloat("Speed", Mathf.Abs(_absSpeedX));
         _an.SetBool("Crouch", _crouch);
