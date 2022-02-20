@@ -25,28 +25,28 @@ Chaqun de ces 2 Colliders possèdent le ``Material2D`` slippy pour glisser le lo
 
 ## Les fonctions
   
-#### [MoveMario](https://github.com/SamuelGuillemet/MarioIA/blob/adb33a5da7afa5aaaf09f2c905eab0944c6a321a/Assets/Scripts/Mario.cs#L120-L152)
+#### [MoveMario](/Assets/Scripts/Mario.cs#L120-L152)
 ```csharp
 /// <summary>
 /// The function that handle the deplacement of Mario
 /// </summary>
 ```
 ***
-#### [SetConstant](https://github.com/SamuelGuillemet/MarioIA/blob/adb33a5da7afa5aaaf09f2c905eab0944c6a321a/Assets/Scripts/Mario.cs#L157-L175)
+#### [SetConstant](/Assets/Scripts/Mario.cs#L157-L175)
 ```csharp
 /// <summary>
 /// The function that handle the different constant
 /// </summary>
 ```
 ***
-#### [LimitSpeed](https://github.com/SamuelGuillemet/MarioIA/blob/adb33a5da7afa5aaaf09f2c905eab0944c6a321a/Assets/Scripts/Mario.cs#L180-L188)
+#### [LimitSpeed](/Assets/Scripts/Mario.cs#L180-L188)
 ```csharp
 /// <summary>
 /// Function that handle the maximum of speed based on <data> _currentInput </data>
 /// </summary>
 ```
 ***
-#### [AdjustGravity](https://github.com/SamuelGuillemet/MarioIA/blob/adb33a5da7afa5aaaf09f2c905eab0944c6a321a/Assets/Scripts/Mario.cs#L194-L208)
+#### [AdjustGravity](/Assets/Scripts/Mario.cs#L194-L208)
 ```csharp
 /// <summary>
 /// The function that handle the custom gravity
@@ -54,7 +54,7 @@ Chaqun de ces 2 Colliders possèdent le ``Material2D`` slippy pour glisser le lo
 /// <returns> Returns the value of gravity which has to be divided by 9.81f </returns>
 ```
 ***
-#### [AdjustAcceleration](https://github.com/SamuelGuillemet/MarioIA/blob/adb33a5da7afa5aaaf09f2c905eab0944c6a321a/Assets/Scripts/Mario.cs#L214-L264)
+#### [AdjustAcceleration](/Assets/Scripts/Mario.cs#L214-L264)
 ```csharp
 /// <summary>
 /// The function taht handle the custom acceleration
