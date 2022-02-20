@@ -43,23 +43,23 @@ public class Mario : MonoBehaviour
     private bool _crouch;
     private bool _grounded;
 
-    private int _inputDirection;         //Direction selon l'input du joueur
-    private float gravity;          //Current Gravity
-    private float acceleration;     //Current acceleration
+    private int _inputDirection;        //Direction selon l'input du joueur
+    private float _gravity;             //Current Gravity
+    private float _acceleration;        //Current acceleration
 
     //Données pour la physqiue custom
-    float maxFallSpeed = -16.2f;
-    float arretSpeed = 0.4f; //Vitesse sous laquelle le personnage s'arrête
-    float marcheSpeed = 5.85f; //Vitesse max de marche
-    float courseSpeed = 9.61f; //Vitesse max de course
-    float lowSpeed = 3.5f; //Vitesse max de petite vitesse 
+    float maxFallSpeed = -16.2f;    //Vitesse de chute max
+    float arretSpeed = 0.4f;        //Vitesse sous laquelle le personnage s'arrête
+    float marcheSpeed = 5.85f;      //Vitesse max de marche
+    float courseSpeed = 9.61f;      //Vitesse max de course
+    float lowSpeed = 3.5f;          //Vitesse max de petite vitesse 
 
-    float[] AccelerationX = { 0, 8.34f, 12.52f, 10f }; // Marche, course, back
-    float[] SlidingDecceleration = { -11.42f, 22.85f }; // Release button, backward
+    float[] AccelerationX = { 0, 8.34f, 12.52f, 10f };      // Marche, course, back
+    float[] SlidingDecceleration = { -11.42f, 22.85f };     // Release button, backward
 
-    float[] InitialJumpVelocity = { 17f, 17f, 20f, 15f, 26.25f }; //Arret, marche, course, bounce 
-    float[] HoldingJumpGravity = { 28.125f, 26.36f, 35.1f }; // Arret, marche, course
-    float[] FallingGravity = { 88f, 74f, 100f }; // Arret, marche, course
+    float[] InitialJumpVelocity = { 17f, 17f, 20f, 15f, 26.25f };   //Arret, marche, course, bounce, trampoline 
+    float[] HoldingJumpGravity = { 28.125f, 26.36f, 35.1f };        // Arret, marche, course
+    float[] FallingGravity = { 88f, 74f, 100f };                    // Arret, marche, course
 
     public float SpeedJumpOnEnemy { get => InitialJumpVelocity[3]; }
 
@@ -72,6 +72,12 @@ public class Mario : MonoBehaviour
         _an = GetComponent<Animator>();
         m_GroundCheck1 = transform.Find("groundCheck1");
         m_GroundCheck2 = transform.Find("groundCheck2");
+
+        //Initialisation des variables
+        _currentInput = input.arret;
+        _currentBodyDirection = BodyDirection.arret;
+        _currentVelocityX = VelocityX.lowSpeed;
+        _jumpVelocityX = VelocityX.lowSpeed;
     }
 
     // Update is called once per frame
@@ -82,9 +88,11 @@ public class Mario : MonoBehaviour
         SetConstant();
         MoveMario();
 
-        _rb.gravityScale = AdjustGravity() / 9.81f;
+        _gravity = AdjustGravity() / 9.81f;
+        _rb.gravityScale = _gravity;
+        _acceleration = AdjustAcceleration();
 
-        _rb.velocity = new Vector2(5f * _inputDirection, _rb.velocity.y); //TODO Fix the accelration value
+        _rb.velocity = _rb.velocity + new Vector2(_acceleration * Time.deltaTime, 0);
         LimitSpeed();
 
         _an.SetFloat("Speed", Mathf.Abs(_absSpeedX));
@@ -120,7 +128,7 @@ public class Mario : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow) && _grounded) //Jump
         {
             _jumpVelocityX = _currentVelocityX;
-            _rb.velocity = new Vector2(_rb.velocity.x, 15); //TODO Fix the speed of jumping
+            _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[((int)_currentVelocityX)]);
         }
 
         if (Input.GetKey(KeyCode.DownArrow)) //Crouch
@@ -183,6 +191,62 @@ public class Mario : MonoBehaviour
 
         }
         return FallingGravity[((int)_jumpVelocityX)];           //En l'air avec le jump non tenu (dépend de la vitesse initiale du saut)
+    }
+
+    /// <summary>
+    /// The function taht handle the custom acceleration
+    /// </summary>
+    /// <returns>Return the value of the acceleration</returns>
+    private float AdjustAcceleration()
+    {
+        if (_grounded)
+        {
+            if (_currentInput == input.arret)
+            {
+                if (_absSpeedX > arretSpeed)
+                {
+                    return SlidingDecceleration[0] * ((int)_currentBodyDirection);
+                }
+                else
+                {
+                    _rb.velocity = new Vector2(0, _rb.velocity.y);
+                    return 0;
+                }
+            }
+            else
+            {
+                if (_inputDirection != ((int)_currentBodyDirection) && _currentBodyDirection != BodyDirection.arret)
+                {
+                    return SlidingDecceleration[1] * _inputDirection;
+                }
+                else
+                {
+                    return AccelerationX[((int)_currentInput)] * _inputDirection;
+                }
+            }
+        }
+        else
+        {
+            if (_currentInput == input.arret)
+            {
+                return 0;
+            }
+            else if (_currentVelocityX == VelocityX.course)
+            {
+                return AccelerationX[2] * _inputDirection;
+            }
+            else
+            {
+                if (_inputDirection != ((int)_currentBodyDirection))
+                {
+                    return AccelerationX[3] * _inputDirection;
+                }
+                else
+                {
+                    return AccelerationX[1] * _inputDirection;
+                }
+            }
+        }
     }
 }
 
