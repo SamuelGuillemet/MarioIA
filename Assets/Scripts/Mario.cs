@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mario : MonoBehaviour
 {
@@ -63,6 +64,9 @@ public class Mario : MonoBehaviour
 
     public float SpeedJumpOnEnemy { get => InitialJumpVelocity[3]; }
 
+    //Debug mode
+    public bool Debug = false;
+    private Text _infoDebug;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +82,10 @@ public class Mario : MonoBehaviour
         _currentBodyDirection = BodyDirection.arret;
         _currentVelocityX = VelocityX.lowSpeed;
         _jumpVelocityX = VelocityX.lowSpeed;
+
+        //Debug mode
+        if (Debug)
+            _infoDebug = GameObject.Find("Debug").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -98,6 +106,10 @@ public class Mario : MonoBehaviour
         _an.SetFloat("Speed", Mathf.Abs(_absSpeedX));
         _an.SetBool("Crouch", _crouch);
         _an.SetBool("Jumping", _jump);
+
+        if (Debug)
+            _infoDebug.text = "acceleration = " + _acceleration + "\nspeedX = " + _rb.velocity.x + "\nspeedY = " + _speedY + "\ngravity = " + _gravity + "\njump = " + _jump + "\ngrounded = " + _grounded + "\naddVitesse = " + _acceleration * Time.deltaTime;
+
     }
 
     /// <summary>
@@ -153,7 +165,7 @@ public class Mario : MonoBehaviour
             _currentVelocityX = VelocityX.lowSpeed;
         if (_absSpeedX > lowSpeed && _absSpeedX < marcheSpeed)
             _currentVelocityX = VelocityX.marche;
-        if (_absSpeedX > marcheSpeed)
+        if (_absSpeedX > marcheSpeed + 0.3f)
             _currentVelocityX = VelocityX.course;
 
         _speedY = _rb.velocity.y;
