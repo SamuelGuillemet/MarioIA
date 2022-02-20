@@ -82,8 +82,10 @@ public class Mario : MonoBehaviour
         SetConstant();
         MoveMario();
 
+        _rb.gravityScale = AdjustGravity() / 9.81f;
+
         _rb.velocity = new Vector2(5f * _inputDirection, _rb.velocity.y); //TODO Fix the accelration value
-        LimitSpeed()
+        LimitSpeed();
 
         _an.SetFloat("Speed", Mathf.Abs(_absSpeedX));
         _an.SetBool("Crouch", _crouch);
@@ -161,6 +163,26 @@ public class Mario : MonoBehaviour
             _rb.velocity = new Vector2(marcheSpeed * ((int)_currentBodyDirection), _rb.velocity.y);   //Vitesse de marche max
         if (_speedY < maxFallSpeed)
             _rb.velocity = new Vector2(_rb.velocity.x, maxFallSpeed + 0.4f);                          //Vitesse de chute max
+    }
+
+    /// <summary>
+    /// The function that handle the custom gravity
+    /// </summary>
+    /// <returns> Returns the value of gravity which has to be divided by 9.81f </returns>
+    private float AdjustGravity()
+    {
+        if (_grounded)
+        {
+            return 9.81f;                   //Au sol
+        }
+        _an.SetBool("Jumping", false);
+        if (_jump)
+        {
+            _an.SetBool("Jumping", true);
+            return HoldingJumpGravity[((int)_jumpVelocityX)];   //En l'air avec le jump de tenu (dépend de la vitesse initiale du saut)
+
+        }
+        return FallingGravity[((int)_jumpVelocityX)];           //En l'air avec le jump non tenu (dépend de la vitesse initiale du saut)
     }
 }
 
