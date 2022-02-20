@@ -83,6 +83,7 @@ public class Mario : MonoBehaviour
         MoveMario();
 
         _rb.velocity = new Vector2(5f * _inputDirection, _rb.velocity.y); //TODO Fix the accelration value
+        LimitSpeed()
 
         _an.SetFloat("Speed", Mathf.Abs(_absSpeedX));
         _an.SetBool("Crouch", _crouch);
@@ -147,6 +148,19 @@ public class Mario : MonoBehaviour
 
         _speedY = _rb.velocity.y;
         _absSpeedX = Mathf.Abs(_rb.velocity.x);
+    }
+
+    /// <summary>
+    /// Function that handle the maximum of speed based on <data> _currentInput </data>
+    /// </summary>
+    private void LimitSpeed()
+    {
+        if (_absSpeedX > courseSpeed)
+            _rb.velocity = new Vector2(courseSpeed * ((int)_currentBodyDirection), _rb.velocity.y);   //Vitesse de course max
+        if (_currentInput == input.marche && _absSpeedX > marcheSpeed)
+            _rb.velocity = new Vector2(marcheSpeed * ((int)_currentBodyDirection), _rb.velocity.y);   //Vitesse de marche max
+        if (_speedY < maxFallSpeed)
+            _rb.velocity = new Vector2(_rb.velocity.x, maxFallSpeed + 0.4f);                          //Vitesse de chute max
     }
 }
 
