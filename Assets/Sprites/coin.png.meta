@@ -4,28 +4,28 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 7675826601332790545
-    second: coin_0
+    second: floating_coin_0
   - first:
       213: -675104096977794455
-    second: coin_1
+    second: rotating_coin_1
   - first:
       213: -4412926668834298731
-    second: coin_2
+    second: rotating_coin_2
   - first:
       213: -4862007459847594908
-    second: coin_3
+    second: rotating_coin_3
   - first:
       213: -7914957615168794202
-    second: coin_4
+    second: floating_coin_1
   - first:
       213: 2278881825021241808
-    second: coin_5
+    second: floating_coin_2
   - first:
       213: 1763547749914876530
-    second: coin_6
+    second: icon_coin
   - first:
       213: 5999283557275819326
-    second: coin_7
+    second: rotating_coin_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: coin_0
+      name: floating_coin_0
       rect:
         serializedVersion: 2
         x: 0
@@ -123,7 +123,7 @@ TextureImporter:
         width: 10
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -136,7 +136,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: coin_1
+      name: rotating_coin_1
       rect:
         serializedVersion: 2
         x: 13
@@ -144,7 +144,7 @@ TextureImporter:
         width: 4
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,7 +157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: coin_2
+      name: rotating_coin_2
       rect:
         serializedVersion: 2
         x: 21
@@ -165,7 +165,7 @@ TextureImporter:
         width: 8
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,7 +178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: coin_3
+      name: rotating_coin_3
       rect:
         serializedVersion: 2
         x: 34
@@ -186,7 +186,7 @@ TextureImporter:
         width: 4
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,7 +199,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: coin_4
+      name: floating_coin_1
       rect:
         serializedVersion: 2
         x: 12
@@ -207,7 +207,7 @@ TextureImporter:
         width: 10
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -220,7 +220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: coin_5
+      name: floating_coin_2
       rect:
         serializedVersion: 2
         x: 24
@@ -228,7 +228,7 @@ TextureImporter:
         width: 10
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -241,7 +241,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: coin_6
+      name: icon_coin
       rect:
         serializedVersion: 2
         x: 36
@@ -249,7 +249,7 @@ TextureImporter:
         width: 5
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,7 +262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: coin_7
+      name: rotating_coin_0
       rect:
         serializedVersion: 2
         x: 7
@@ -270,7 +270,7 @@ TextureImporter:
         width: 1
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
