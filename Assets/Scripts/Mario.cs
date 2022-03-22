@@ -115,6 +115,13 @@ public class Mario : MonoBehaviour
         {
             _onTrampoline = true;
             other.gameObject.GetComponent<Animator>().SetTrigger("activate");
+            Invoke("bounceTrampoline", 0.200f);         //Time to end the animation/2
         }
+    }
+
+    private void bounceTrampoline()
+    {
+        _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[4]);
+        _onTrampoline = false;
     }
 }
