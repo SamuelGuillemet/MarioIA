@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4481609156236562189}
   - component: {fileID: 4481609156236562226}
-  - component: {fileID: 8710796027621876395}
+  - component: {fileID: 5697287605275389940}
   m_Layer: 0
   m_Name: Pipe_0
   m_TagString: Destination
@@ -83,8 +83,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &8710796027621876395
-PolygonCollider2D:
+--- !u!61 &5697287605275389940
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,7 +96,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.5, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.25, y: 0.25}
@@ -106,13 +106,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.5, y: 1.5}
-      - {x: -0.5, y: 0.5625}
-      - {x: -0.375, y: 0.25}
-      - {x: -0.375, y: -0.5}
-      - {x: 1.375, y: -0.5}
-      - {x: 1.375, y: 0.25}
-      - {x: 1.5, y: 0.5625}
-      - {x: 1.5, y: 1.5}
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2}
+  m_EdgeRadius: 0
