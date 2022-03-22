@@ -47,6 +47,7 @@ public class Mario : MonoBehaviour
 
     public float SpeedJumpOnEnemy { get => InitialJumpVelocity[3]; }
 
+    private bool _onTrampoline = false;
 
     // Start is called before the first frame update
     void Start()
@@ -106,5 +107,14 @@ public class Mario : MonoBehaviour
             _crouch = true;
         else
             _crouch = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name.Contains("Trampoline") && !_onTrampoline)
+        {
+            _onTrampoline = true;
+            other.gameObject.GetComponent<Animator>().SetTrigger("activate");
+        }
     }
 }

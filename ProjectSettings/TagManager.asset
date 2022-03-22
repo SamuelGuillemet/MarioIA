@@ -7,6 +7,7 @@ TagManager:
   - Destination
   - Enemy
   - Coin
+  - Platform
   layers:
   - Default
   - TransparentFX
