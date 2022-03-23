@@ -146,6 +146,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  Destination: {fileID: 0}
   PlanteCurve:
     serializedVersion: 2
     m_Curve:
@@ -188,5 +189,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
-  destination: {fileID: 0}
-  plante: {fileID: 5154585624534396356, guid: ffffec92806432449b3d1c5d88901ed0, type: 3}
+  Plante: {fileID: 5154585624534396356, guid: ffffec92806432449b3d1c5d88901ed0, type: 3}
