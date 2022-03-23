@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1018411069009139627}
   - component: {fileID: 4075134858424554623}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bricks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4683829671030309123}
   - component: {fileID: 5188882620213255539}
   - component: {fileID: -7404501765948279253}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,3 +154,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextPrefab: {fileID: 0}
+  ToSpawn: {fileID: 0}
