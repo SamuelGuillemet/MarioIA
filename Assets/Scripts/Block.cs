@@ -6,6 +6,7 @@ public class Block : MonoBehaviour
 {
     private Vector2 _posInit;
     public GameObject NextPrefab;
+    public GameObject ToSpawn;
     private List<GameObject> _enemiesOnTop = new List<GameObject>();
     private bool _isAnimated;
 
@@ -39,32 +40,22 @@ public class Block : MonoBehaviour
     private IEnumerator BrickHit()
     {
         _isAnimated = true;
+        if (ToSpawn)
+        {
+            Instantiate(ToSpawn, _posInit, Quaternion.identity, transform);
+        }
 
         for (int i = 0; i < 16; i++)
         {
-            this.transform.position = new Vector2(_posInit.x, _posInit.y + 0.03125F * i);
+            this.transform.position = new Vector2(_posInit.x, _posInit.y + 0.03125f * i);
             yield return null;
         }
 
         for (int i = 16; i > 0; i--)
         {
-            this.transform.position = new Vector2(_posInit.x, _posInit.y + 0.03125F * i);
+            this.transform.position = new Vector2(_posInit.x, _posInit.y + 0.03125f * i);
             yield return null;
         }
-
-        if (NextPrefab)
-        {
-            if (NextPrefab.name == "Fixed")
-            {
-                //animate coin
-            }
-            Instantiate(NextPrefab, _posInit, Quaternion.identity);
-        }
-        else
-        {
-            //animate destruction
-        }
-
         Destroy(gameObject);
     }
 
