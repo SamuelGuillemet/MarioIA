@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4158538387917551412}
   - component: {fileID: 4158538387917551411}
+  - component: {fileID: 4158538387917551408}
   - component: {fileID: 4158538387917551410}
   - component: {fileID: 4158538387917551409}
-  - component: {fileID: 4158538387917551408}
-  - component: {fileID: 4158538387917551439}
   - component: {fileID: 4158538387917551413}
+  - component: {fileID: 4158538387917551439}
   m_Layer: 7
   m_Name: BabyMario
   m_TagString: Player
@@ -89,6 +89,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4158538387917551408
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4158538387917551438}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d2c419ee7de62e8458e2bb2ef3a8c7ca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &4158538387917551410
 Rigidbody2D:
   serializedVersion: 4
@@ -136,37 +155,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.61, y: 0.75}
   m_EdgeRadius: 0.1
---- !u!95 &4158538387917551408
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4158538387917551438}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d2c419ee7de62e8458e2bb2ef3a8c7ca, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4158538387917551439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4158538387917551438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5478af26233bcc4a965ee663221f5e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &4158538387917551413
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -183,6 +171,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.4}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &4158538387917551439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4158538387917551438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5478af26233bcc4a965ee663221f5e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Debug: 1
 --- !u!1 &4158538389133362953
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4158538389468909323}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: -0.55, z: 0}
+  m_LocalPosition: {x: -0.34, y: -0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4158538387917551412}
