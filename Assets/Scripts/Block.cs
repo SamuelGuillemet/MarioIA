@@ -21,9 +21,7 @@ public class Block : MonoBehaviour
     {
         if (col.gameObject.name == "BabyMario")
         {
-            //if mario hits from under and animation not already started
-            if (col.GetContact(0).normal.y >= 0.5 && !_isAnimated)
-
+            if (col.GetContact(0).normal.y >= 0.5 && !_isAnimated) //if mario hits from under and animation not already started
             {
                 foreach (GameObject enemy in _enemiesOnTop.ToArray())
                 {
@@ -42,7 +40,7 @@ public class Block : MonoBehaviour
         _isAnimated = true;
         if (ToSpawn)
         {
-            Instantiate(ToSpawn, _posInit, Quaternion.identity, transform);
+            Instantiate(ToSpawn, _posInit, Quaternion.identity);
         }
 
         for (int i = 0; i < 16; i++)
@@ -56,7 +54,12 @@ public class Block : MonoBehaviour
             this.transform.position = new Vector2(_posInit.x, _posInit.y + 0.03125f * i);
             yield return null;
         }
+
         Destroy(gameObject);
+        if (NextPrefab)
+        {
+            Instantiate(NextPrefab, _posInit, Quaternion.identity);
+        }
     }
 
     //modify block behaviour for hammerbros
