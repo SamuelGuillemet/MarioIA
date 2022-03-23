@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 299484423411088670}
   - component: {fileID: 299484423411088665}
   - component: {fileID: 299484423411088664}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rotating_coin_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 299484424784638102}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CoinRotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}

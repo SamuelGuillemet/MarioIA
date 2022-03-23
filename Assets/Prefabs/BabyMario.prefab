@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4158538387917551408}
   - component: {fileID: 4158538387917551439}
   - component: {fileID: 4158538387917551413}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BabyMario
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4158538389133362954}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: groundCheck2
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4158538389468909324}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: groundCheck1
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}

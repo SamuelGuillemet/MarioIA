@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1655904258339694852}
   - component: {fileID: 7040982626754221174}
   - component: {fileID: 3493480188396480122}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FloatingCoin
   m_TagString: Coin
   m_Icon: {fileID: 0}
