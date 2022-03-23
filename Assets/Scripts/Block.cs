@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class brick : MonoBehaviour
+public class Block : MonoBehaviour
 {
     private Vector2 _posInit;
     public GameObject NextPrefab;
@@ -21,8 +21,7 @@ public class brick : MonoBehaviour
         if (col.gameObject.name == "BabyMario")
         {
             //if mario hits from under and animation not already started
-            if (_posInit.x - 0.5 <= col.GetContact(0).point.x && col.GetContact(0).point.x <= _posInit.x + 0.5 && col.GetContact(0).point.y <= _posInit.y && !_isAnimated)
-            //col.GetContact(0).normal.y
+            if (col.GetContact(0).normal.y >= 0.5 && !_isAnimated)
 
             {
                 foreach (GameObject enemy in _enemiesOnTop.ToArray())
@@ -40,7 +39,6 @@ public class brick : MonoBehaviour
     private IEnumerator BrickHit()
     {
         _isAnimated = true;
-        //utiliser Time.fixedDeltaTime ?
 
         for (int i = 0; i < 16; i++)
         {
@@ -88,7 +86,4 @@ public class brick : MonoBehaviour
             _enemiesOnTop.Remove(other.gameObject);
         }
     }
-
-
-
 }
