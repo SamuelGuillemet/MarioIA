@@ -63,10 +63,14 @@ public class Mario : MonoBehaviour
     float[] FallingGravity = { 88f, 74f, 100f };                    // Arret, marche, course
 
     public float SpeedJumpOnEnemy { get => InitialJumpVelocity[3]; }
+    public bool Crouch { get => _crouch; }
+
+    private bool _onTrampoline = false;
 
     //Debug mode
     public bool Debug = false;
     private Text _infoDebug;
+
 
     // Start is called before the first frame update
     void Start()
@@ -261,6 +265,22 @@ public class Mario : MonoBehaviour
                 }
             }
         }
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name.Contains("Trampoline") && !_onTrampoline)
+        {
+            _onTrampoline = true;
+            other.gameObject.GetComponent<Animator>().SetTrigger("activate");
+            Invoke("bounceTrampoline", 0.200f);         //Time to end the animation/2
+        }
+    }
+
+    private void bounceTrampoline()
+    {
+        _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[4]);
+        _onTrampoline = false;
     }
 }
 
