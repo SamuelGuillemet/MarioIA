@@ -46,6 +46,7 @@ public class Mario : MonoBehaviour
     float[] FallingGravity = { 88f, 74f, 100f }; // Arret, marche, course
 
     public float SpeedJumpOnEnemy { get => InitialJumpVelocity[3]; }
+    public bool Crouch { get => _crouch; }
 
     private bool _onTrampoline = false;
 
