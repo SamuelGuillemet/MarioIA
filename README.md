@@ -9,3 +9,5 @@ Ici vous trouverez les informations relatives au projet informatique visant au *
 * [La physique](/Docs/Markdowns/Physique.md)
 * [Les éléments du jeu](/Docs/Markdowns/Elements.md)
 * [Unity Stuff](/Docs/Markdowns/Unity.md)
+* [Mario](/Docs/Markdowns/Mario.md)
+* [Les 10 niveaux](/Docs/Markdowns/Levels.md)
