@@ -273,7 +273,7 @@ public class Mario : MonoBehaviour
         {
             _onTrampoline = true;
             other.gameObject.GetComponent<Animator>().SetTrigger("activate");
-            Invoke("bounceTrampoline", 0.200f);         //Time to end the animation/2
+            Invoke("bounceTrampoline", 0.150f);         //Time to end the animation/2
         }
     }
 

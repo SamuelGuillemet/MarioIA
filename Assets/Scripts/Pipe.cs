@@ -54,7 +54,7 @@ public class Pipe : MonoBehaviour
         {
             double time = Time.realtimeSinceStartupAsDouble + _randomAddTime;
             float posPlante = PlanteCurve.Evaluate((float)time) * 2 + _addy;
-            if (Mathf.Abs(_marioTransform.transform.localPosition.x - 0.5f - gameObject.transform.parent.localPosition.x) > 4f)
+            if (Mathf.Abs(_marioTransform.transform.localPosition.x - 0.5f - gameObject.transform.parent.localPosition.x) > 3f || _newPlante.transform.localPosition.y != 0)
                 _newPlante.transform.localPosition = new Vector3(_newPlante.transform.localPosition.x, posPlante, 0);
         }
 
