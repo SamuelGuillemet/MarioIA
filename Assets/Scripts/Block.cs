@@ -62,8 +62,6 @@ public class Block : MonoBehaviour
         }
     }
 
-    //modify block behaviour for hammerbros
-
     //add or remove enemy from _enemiesOnTop
     void OnCollisionStay2D(Collision2D other)
     {
@@ -80,4 +78,15 @@ public class Block : MonoBehaviour
             _enemiesOnTop.Remove(other.gameObject);
         }
     }
+
+    //modify block behaviour for hammerbros
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.name == "BabyMario")
+        {
+            Physics2D.IgnoreCollision(other, gameObject.transform.GetComponent<Collider2D>());
+        }
+    }
+
+
 }
