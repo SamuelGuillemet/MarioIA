@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc777dede399ab458351d177593c74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextPrefab: {fileID: 0}
-  ToSpawn: {fileID: 0}
+  NextPrefab: {fileID: 4307434567374380594, guid: 88831d2e440007046840512937f2351f, type: 3}
+  ToSpawn: {fileID: 7025541717181935541, guid: 5a7e11f6923d16848825b3d0df1a14a6, type: 3}
