@@ -7,8 +7,6 @@
 UserSettings/
 Assets/AssetStoreTools*
 UIElementsSchema/
-Packages/
-ProjectSettings/
 
 # Visual Studio cache directory
 .vs/
