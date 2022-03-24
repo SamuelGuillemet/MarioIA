@@ -4,22 +4,28 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 1515622694917723629
-    second: Bricks
+    second: Brick
   - first:
       213: 1503016370545623098
     second: Fixed
   - first:
       213: 1489830567317918739
-    second: Questionmark_0
+    second: Bricks Destroy
   - first:
       213: 38433539612607256
-    second: Questionmark_1
+    second: Questionmark_0
   - first:
       213: 5937300090042828850
-    second: Stone
+    second: Questionmark_1
   - first:
       213: -2230640015494873224
-    second: Solid
+    second: Questionmark_2
+  - first:
+      213: -8506558392696655332
+    second: Questionmark_1
+  - first:
+      213: 6608634889621467271
+    second: Questionmark_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bricks
+      name: Brick
       rect:
         serializedVersion: 2
         x: 0
@@ -117,7 +123,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,7 +144,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,6 +152,27 @@ TextureImporter:
       bones: []
       spriteID: a3008f9fc69cbd410800000000000000
       internalID: 1503016370545623098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bricks Destroy
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 314d08ce101fca410800000000000000
+      internalID: 1489830567317918739
       vertices: []
       indices: 
       edges: []
@@ -159,14 +186,14 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 314d08ce101fca410800000000000000
-      internalID: 1489830567317918739
+      spriteID: 8130214c91b888000800000000000000
+      internalID: 38433539612607256
       vertices: []
       indices: 
       edges: []
@@ -180,14 +207,35 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8130214c91b888000800000000000000
-      internalID: 38433539612607256
+      spriteID: 238c5e789f6856250800000000000000
+      internalID: 5937300090042828850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Questionmark_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87ff7ae69bc2b01e0800000000000000
+      internalID: -2230640015494873224
       vertices: []
       indices: 
       edges: []
@@ -201,14 +249,14 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 238c5e789f6856250800000000000000
-      internalID: 5937300090042828850
+      spriteID: c12b2362632a2f980800000000000000
+      internalID: -8506558392696655332
       vertices: []
       indices: 
       edges: []
@@ -222,14 +270,14 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87ff7ae69bc2b01e0800000000000000
-      internalID: -2230640015494873224
+      spriteID: 780f3260b6696bb50800000000000000
+      internalID: 6608634889621467271
       vertices: []
       indices: 
       edges: []
