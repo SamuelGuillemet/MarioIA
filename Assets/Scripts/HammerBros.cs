@@ -8,6 +8,7 @@ public class HammerBros : MonoBehaviour
     public bool ShouldJump = false;
 
     public bool ThrowHammer = false;
+    private bool _launch;
 
     public GameObject hammer;
     private GameObject[] _hammersInTheScene;
@@ -30,19 +31,23 @@ public class HammerBros : MonoBehaviour
             if (item != null)
                 item.transform.eulerAngles = Vector3.forward * ((item.transform.eulerAngles.z + 15) % 360);
         }
-        if (ThrowHammer)
+        if (ThrowHammer && !_launch)
+        {
+            _launch = true;
             StartCoroutine("Throw");
+        }
 
     }
 
     IEnumerator Throw()
     {
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.25f);
         if (_hammersInTheScene[_indexOfNextSpawn] != null)
             Destroy(_hammersInTheScene[_indexOfNextSpawn]);
         _hammersInTheScene[_indexOfNextSpawn] = Instantiate(hammer, transform.position + Vector3.up, Quaternion.identity, transform.parent);
         _hammersInTheScene[_indexOfNextSpawn].GetComponent<Rigidbody2D>().velocity = new Vector2(3.5f * _dir, 8);
         _indexOfNextSpawn = (_indexOfNextSpawn + 1) % 4;
+        _launch = false;
     }
 
     /* 
