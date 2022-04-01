@@ -45,7 +45,6 @@ public class Mario : MonoBehaviour
     float[] HoldingJumpGravity = { 28.125f, 26.36f, 35.1f }; // Arret, marche, course
     float[] FallingGravity = { 88f, 74f, 100f }; // Arret, marche, course
 
-    public float SpeedJumpOnEnemy { get => InitialJumpVelocity[3]; }
     public bool Crouch { get => _crouch; }
 
     private bool _onTrampoline = false;
@@ -124,5 +123,15 @@ public class Mario : MonoBehaviour
     {
         _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[4]);
         _onTrampoline = false;
+    }
+
+    public void bounceEnemy()
+    {
+        _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[3]);
+    }
+
+    public void marioDied()
+    {
+        Debug.Log("Mario Died");
     }
 }

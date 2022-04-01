@@ -12,7 +12,7 @@ public class Plante : MonoBehaviour
     {
         if (other.gameObject.name == "BabyMario")
         {
-            Debug.Log("Mario Died");
+            other.gameObject.GetComponent<Mario>().marioDied();
         }
     }
 }
