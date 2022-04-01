@@ -92,7 +92,7 @@ public class Mario : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        _grounded = Physics2D.OverlapPoint(m_GroundCheck1.position, LayerMask.GetMask("Default")) || Physics2D.OverlapPoint(m_GroundCheck2.position, LayerMask.GetMask("Default"));
+        _grounded = Physics2D.OverlapPoint(m_GroundCheck1.position, LayerMask.GetMask("Blocks")) || Physics2D.OverlapPoint(m_GroundCheck2.position, LayerMask.GetMask("Blocks"));
 
         SetConstant();
         MoveMario();

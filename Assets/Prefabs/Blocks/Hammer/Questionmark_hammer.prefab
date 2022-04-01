@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6869825174214750898}
   - component: {fileID: 5457524010986126963}
   - component: {fileID: 1769984140728349526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Questionmark_hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
