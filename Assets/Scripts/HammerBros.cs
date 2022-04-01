@@ -87,7 +87,6 @@ public class HammerBros : MonoBehaviour
         if (CountJump >= 2)
             jumpforce = 3.5f;
         transform.parent.GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpforce);
-        Debug.Log("Jump");
         CountJump = (CountJump + 1) % 4;
         _isJumping = false;
     }
