@@ -35,7 +35,13 @@ public class HammerBros : MonoBehaviour
         foreach (GameObject item in _hammersInTheScene)
         {
             if (item != null)
+            {
                 item.transform.eulerAngles = Vector3.forward * ((item.transform.eulerAngles.z + 15) % 360);
+                if (item.GetComponent<Collider2D>().IsTouching(MarioTransform.gameObject.GetComponent<BoxCollider2D>()))
+                {
+                    MarioTransform.gameObject.GetComponent<Mario>().marioDied();
+                }
+            }
         }
 
         if (MarioTransform.position.x > transform.position.x + 2f)
@@ -57,6 +63,9 @@ public class HammerBros : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The function that will be called when HammerBros has to throw a hammer
+    /// </summary>
     IEnumerator Throw()
     {
         yield return new WaitForSeconds(0.25f);
@@ -68,6 +77,9 @@ public class HammerBros : MonoBehaviour
         _launch = false;
     }
 
+    /// <summary>
+    /// The function that will be called when HammerBros has to jump
+    /// </summary>
     IEnumerator Jump()
     {
         yield return new WaitForSeconds(0.25f);
@@ -78,6 +90,25 @@ public class HammerBros : MonoBehaviour
         Debug.Log("Jump");
         CountJump = (CountJump + 1) % 4;
         _isJumping = false;
+    }
+
+    /// <summary>
+    /// The function that will be called when mario collides with the HammerBros
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name == "BabyMario")
+        {
+            if (other.GetContact(0).point.y > transform.position.y)
+            {
+                other.gameObject.GetComponent<Mario>().bounceEnemy();
+            }
+            else
+            {
+                other.gameObject.GetComponent<Mario>().marioDied();
+            }
+        }
     }
 
     /* 
