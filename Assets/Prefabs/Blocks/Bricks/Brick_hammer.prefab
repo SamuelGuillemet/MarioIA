@@ -24,7 +24,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
 --- !u!1001 &2017044982402801388
 PrefabInstance:
@@ -33,9 +33,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4567932820757454872, guid: c79cdbe04830c174e894562bf85f8ade, type: 3}
+      propertyPath: NextPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5575684029802657823, guid: c79cdbe04830c174e894562bf85f8ade, type: 3}
       propertyPath: m_Name
-      value: Brick hammer
+      value: Brick_hammer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5575684029802657823, guid: c79cdbe04830c174e894562bf85f8ade, type: 3}
+      propertyPath: m_TagString
+      value: HammerBro
       objectReference: {fileID: 0}
     - target: {fileID: 8108128557188564224, guid: c79cdbe04830c174e894562bf85f8ade, type: 3}
       propertyPath: m_RootOrder
