@@ -261,6 +261,11 @@ public class Mario : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// The function that handle the jump on the trampoline
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.name.Contains("Trampoline") && !_onTrampoline)
@@ -277,11 +282,17 @@ public class Mario : MonoBehaviour
         _onTrampoline = false;
     }
 
+    /// <summary>
+    /// The function that is called when mario hit an Enemy
+    /// </summary>
     public void bounceEnemy()
     {
         _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[3]);
     }
 
+    /// <summary>
+    /// The function that is called when mario should die
+    /// </summary>
     public void marioDied()
     {
         Debug.Log("Mario Died");
