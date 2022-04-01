@@ -62,11 +62,12 @@ public class Mario : MonoBehaviour
     float[] HoldingJumpGravity = { 28.125f, 26.36f, 35.1f };        // Arret, marche, course
     float[] FallingGravity = { 88f, 74f, 100f };                    // Arret, marche, course
 
-    public float SpeedJumpOnEnemy { get => InitialJumpVelocity[3]; }
+    public bool Crouch { get => _crouch; }
 
     //Debug mode
-    public bool Debug = false;
+    public bool debug = false;
     private Text _infoDebug;
+    private bool _onTrampoline = false;
 
     // Start is called before the first frame update
     void Start()
@@ -84,7 +85,7 @@ public class Mario : MonoBehaviour
         _jumpVelocityX = VelocityX.lowSpeed;
 
         //Debug mode
-        if (Debug)
+        if (debug)
             _infoDebug = GameObject.Find("Debug").GetComponent<Text>();
     }
 
@@ -107,7 +108,7 @@ public class Mario : MonoBehaviour
         _an.SetBool("Crouch", _crouch);
         _an.SetBool("Jumping", _jump);
 
-        if (Debug)
+        if (debug)
             _infoDebug.text = "acceleration = " + _acceleration + "\nspeedX = " + _rb.velocity.x + "\nspeedY = " + _speedY + "\ngravity = " + _gravity + "\njump = " + _jump + "\ngrounded = " + _grounded + "\naddVitesse = " + _acceleration * Time.deltaTime;
 
     }
@@ -260,5 +261,31 @@ public class Mario : MonoBehaviour
             }
         }
     }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name.Contains("Trampoline") && !_onTrampoline)
+        {
+            _onTrampoline = true;
+            other.gameObject.GetComponent<Animator>().SetTrigger("activate");
+            Invoke("bounceTrampoline", 0.200f);         //Time to end the animation/2
+        }
+    }
+
+    private void bounceTrampoline()
+    {
+        _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[4]);
+        _onTrampoline = false;
+    }
+
+    public void bounceEnemy()
+    {
+        _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[3]);
+    }
+
+    public void marioDied()
+    {
+        Debug.Log("Mario Died");
+    }
 }
+
 
