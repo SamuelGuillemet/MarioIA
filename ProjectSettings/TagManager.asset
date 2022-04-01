@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Coin
   - Platform
+  - PlatformDown
+  - PlatformUp
   layers:
   - Default
   - TransparentFX
