@@ -14,7 +14,10 @@ public class HammerBros : MonoBehaviour
     private GameObject[] _hammersInTheScene;
     private int _indexOfNextSpawn;
 
+    public Transform MarioTransform;
+
     private int _dir;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +34,22 @@ public class HammerBros : MonoBehaviour
             if (item != null)
                 item.transform.eulerAngles = Vector3.forward * ((item.transform.eulerAngles.z + 15) % 360);
         }
+
+        if (MarioTransform.position.x > transform.position.x + 2f)
+            transform.localScale = new Vector2(-1, 1);
+        else if (MarioTransform.position.x < transform.position.x - 2f)
+            transform.localScale = new Vector2(1, 1);
+
         if (ThrowHammer && !_launch)
         {
             _launch = true;
             StartCoroutine("Throw");
+        }
+
+        if (ShouldJump)
+        {
+            float jumpforce = 6.5f;
+            transform.parent.GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpforce);
         }
 
     }
