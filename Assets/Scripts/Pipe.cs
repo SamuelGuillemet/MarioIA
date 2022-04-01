@@ -10,7 +10,6 @@ public class Pipe : MonoBehaviour
     [Tooltip("The pipe of destinantion ; could be Null")]
     public GameObject Destination;          //The destinantion pipe
     private Vector2 _dest;                  //Field linked to the destination of the pipe when mario goes in
-    private Transform _marioTransform;      //The position of mario
 
     //Plante stuff
     [Header("Plante stuff")]
@@ -32,7 +31,6 @@ public class Pipe : MonoBehaviour
             _dest = Destination.transform.parent.localPosition + Destination.transform.localPosition + new Vector3(0.5f, 1.015f, 0);
         else if (Plante)
             createPlante();
-        _marioTransform = transform.parent.parent.Find("BabyMario"); //TODO Get the position of mario by the main camera
     }
 
     /// <summary>
@@ -54,8 +52,7 @@ public class Pipe : MonoBehaviour
         {
             double time = Time.realtimeSinceStartupAsDouble + _randomAddTime;
             float posPlante = PlanteCurve.Evaluate((float)time) * 2 + _addy;
-            if (Mathf.Abs(_marioTransform.transform.localPosition.x - 0.5f - gameObject.transform.parent.localPosition.x) > 4f)
-                _newPlante.transform.localPosition = new Vector3(_newPlante.transform.localPosition.x, posPlante, 0);
+            _newPlante.transform.localPosition = new Vector3(_newPlante.transform.localPosition.x, posPlante, 0);
         }
 
     }
