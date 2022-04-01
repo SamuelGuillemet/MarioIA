@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class HammerBros : MonoBehaviour
 {
-    public int _countJump = 0;
+    [HideInInspector]
     public bool ShouldJump = false;
+    private bool _isJumping = false;
+    public int CountJump = 0;
 
-    public bool ThrowHammer = false;
-    private bool _launch;
 
     public GameObject hammer;
     private GameObject[] _hammersInTheScene;
     private int _indexOfNextSpawn;
+    [HideInInspector]
+    public bool ThrowHammer = false;
+    private bool _launch;
 
     public Transform MarioTransform;
 
@@ -39,6 +42,7 @@ public class HammerBros : MonoBehaviour
             transform.localScale = new Vector2(-1, 1);
         else if (MarioTransform.position.x < transform.position.x - 2f)
             transform.localScale = new Vector2(1, 1);
+        _dir = ((int)transform.localScale.x) * -1;
 
         if (ThrowHammer && !_launch)
         {
@@ -46,12 +50,11 @@ public class HammerBros : MonoBehaviour
             StartCoroutine("Throw");
         }
 
-        if (ShouldJump)
+        if (ShouldJump && !_isJumping)
         {
-            float jumpforce = 6.5f;
-            transform.parent.GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpforce);
+            _isJumping = true;
+            StartCoroutine("Jump");
         }
-
     }
 
     IEnumerator Throw()
@@ -63,6 +66,18 @@ public class HammerBros : MonoBehaviour
         _hammersInTheScene[_indexOfNextSpawn].GetComponent<Rigidbody2D>().velocity = new Vector2(3.5f * _dir, 8);
         _indexOfNextSpawn = (_indexOfNextSpawn + 1) % 4;
         _launch = false;
+    }
+
+    IEnumerator Jump()
+    {
+        yield return new WaitForSeconds(0.25f);
+        float jumpforce = 8.5f;
+        if (CountJump >= 2)
+            jumpforce = 3.5f;
+        transform.parent.GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpforce);
+        Debug.Log("Jump");
+        CountJump = (CountJump + 1) % 4;
+        _isJumping = false;
     }
 
     /* 
