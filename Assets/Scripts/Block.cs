@@ -16,12 +16,15 @@ public class Block : MonoBehaviour
         _posInit = transform.position;
         _isAnimated = false;
     }
-
+    /// <summary>
+    /// Checks if Mario hits a block, launches animation, and kills enemies on top of said block.
+    /// </summary>
+    /// <param name="col"></param>
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.name == "BabyMario")
         {
-            if (col.GetContact(0).normal.y >= 0.5 && !_isAnimated) //if mario hits from under and animation not already started
+            if (col.GetContact(0).normal.y >= 0.5 && !_isAnimated) //if Mario hits from under and animation not already started
             {
                 foreach (GameObject enemy in _enemiesOnTop.ToArray())
                 {
@@ -34,7 +37,10 @@ public class Block : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Animates the block and replaces it with the block it should spawn next
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator BrickHit()
     {
         _isAnimated = true;
@@ -55,14 +61,20 @@ public class Block : MonoBehaviour
             yield return null;
         }
 
-        Destroy(gameObject);
+
         if (NextPrefab)
         {
-            Instantiate(NextPrefab, _posInit, Quaternion.identity);
+            GameObject nextPrefab = Instantiate(NextPrefab, _posInit, Quaternion.identity);
+            nextPrefab.name = NextPrefab.name;
         }
-    }
 
-    //add or remove enemy from _enemiesOnTop
+        Destroy(gameObject);
+
+    }
+    /// <summary>
+    /// Checks if enemies are on top of a block to add them to a list
+    /// </summary>
+    /// <param name="other"></param>
     void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -70,6 +82,10 @@ public class Block : MonoBehaviour
             _enemiesOnTop.Add(other.gameObject);
         }
     }
+    /// <summary>
+    /// Checks if enemies exit the block to remove them from the list
+    /// </summary>
+    /// <param name="other"></param>
 
     void OnCollisionExit2D(Collision2D other)
     {
@@ -78,15 +94,4 @@ public class Block : MonoBehaviour
             _enemiesOnTop.Remove(other.gameObject);
         }
     }
-
-    //modify block behaviour for hammerbros
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.name == "BabyMario")
-        {
-            Physics2D.IgnoreCollision(other, gameObject.transform.GetComponent<Collider2D>());
-        }
-    }
-
-
 }
