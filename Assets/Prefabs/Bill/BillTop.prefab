@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 353536893885248754}
   - component: {fileID: 4597175865082755635}
   - component: {fileID: 7814356298902758206}
+  - component: {fileID: -181219580560786283}
   m_Layer: 8
   m_Name: BillTop
   m_TagString: Destination
@@ -109,3 +110,49 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-181219580560786283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8744060186047192073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396d17aae5de2e74ba8b293d1355c578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletBill: {fileID: 2265915140690314589, guid: 2cd8f37361deda747b2d95f4e42efd39, type: 3}
+  behaviour:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.75
+      value: 0.85
+      inSlope: 0.94956994
+      outSlope: 7.089991
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.40928593
+    - serializedVersion: 3
+      time: 0.8
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 0
+    m_RotationOrder: 4
