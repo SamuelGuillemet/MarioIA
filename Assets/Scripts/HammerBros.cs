@@ -9,6 +9,8 @@ public class HammerBros : MonoBehaviour
     private bool _isJumping = false;
     public int CountJump = 0;
 
+    public bool Jumping;
+
 
     public GameObject hammer;
     private GameObject[] _hammersInTheScene;
@@ -61,6 +63,7 @@ public class HammerBros : MonoBehaviour
             _isJumping = true;
             StartCoroutine("Jump");
         }
+        Jumping = _isJumping;
     }
 
     /// <summary>
@@ -82,12 +85,12 @@ public class HammerBros : MonoBehaviour
     /// </summary>
     IEnumerator Jump()
     {
-        yield return new WaitForSeconds(0.25f);
-        float jumpforce = 8.5f;
+        float jumpforce = 10f;
         if (CountJump >= 2)
             jumpforce = 3.5f;
         transform.parent.GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpforce);
         CountJump = (CountJump + 1) % 4;
+        yield return new WaitForSeconds(1f);
         _isJumping = false;
     }
 
@@ -110,28 +113,34 @@ public class HammerBros : MonoBehaviour
         }
     }
 
-    /* 
-        private void OnTriggerEnter2D(Collider2D other)
+    /// <summary>
+    /// The two functions handle the collision with the plateforms
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "PlatformDown" && (CountJump == 1 || CountJump == 2))
         {
-            if (other.tag == "PlateformDown" && (CountJump == 1 || CountJump == 2))
-            {
-                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.transform.parent.GetComponent<Collider2D>(), true);
-            }
-            if (other.tag == "PlateformUp" && (CountJump == 3 || CountJump == 0) && jump)
-            {
-                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.transform.parent.GetComponent<Collider2D>(), true);
-            }
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.transform.parent.GetComponent<Collider2D>(), true);
+            Debug.Log("Ignore1");
         }
-
-        private void OnTriggerExit2D(Collider2D other)
+        if (other.tag == "PlatformUp" && (CountJump == 3 || CountJump == 0) && _isJumping)
         {
-            if (other.tag == "PlateformDown" && (CountJump == 1 || CountJump == 2))
-            {
-                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.transform.parent.GetComponent<Collider2D>(), false);
-            }
-            if (other.tag == "PlateformUp" && (CountJump == 3 || CountJump == 0))
-            {
-                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.transform.parent.GetComponent<Collider2D>(), false);
-            }
-        } */
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.transform.parent.GetComponent<Collider2D>(), true);
+            Debug.Log("Ignore2");
+        }
+        Debug.Log("passed");
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "PlatformDown" && (CountJump == 1 || CountJump == 2))
+        {
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.transform.parent.GetComponent<Collider2D>(), false);
+        }
+        if (other.tag == "PlatformUp" && (CountJump == 3 || CountJump == 0))
+        {
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.transform.parent.GetComponent<Collider2D>(), false);
+        }
+    }
 }
