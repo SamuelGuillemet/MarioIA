@@ -104,10 +104,12 @@ public class Mario : MonoBehaviour
         _rb.velocity = _rb.velocity + new Vector2(_acceleration * Time.deltaTime, 0);
         LimitSpeed();
 
+        //Animations
         _an.SetFloat("Speed", Mathf.Abs(_absSpeedX));
         _an.SetBool("Crouch", _crouch);
         _an.SetBool("Jumping", _jump);
 
+        //Debug mode
         if (debug)
             _infoDebug.text = "acceleration = " + _acceleration + "\nspeedX = " + _rb.velocity.x + "\nspeedY = " + _speedY + "\ngravity = " + _gravity + "\njump = " + _jump + "\ngrounded = " + _grounded + "\naddVitesse = " + _acceleration * Time.deltaTime;
 
@@ -209,7 +211,7 @@ public class Mario : MonoBehaviour
     /// <summary>
     /// The function taht handle the custom acceleration
     /// </summary>
-    /// <returns>Return the value of the acceleration</returns>
+    /// <returns> Return the value of the acceleration</returns>
     private float AdjustAcceleration()
     {
         if (_grounded)
