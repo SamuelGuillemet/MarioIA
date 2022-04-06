@@ -21,15 +21,16 @@ public class Goomba : Enemy
             stomp = true;
             //animation de mort de goomba
             _animator.SetBool("Died", stomp);
-            Dir = Vector2.zero;
+            Speed = 0;
             //delai avant disparition du Goomba aplati
             Invoke("Mort", 1);
 
         }
     }
-
-    private void Mort()
+      private void Mort()
     {
         Destroy(gameObject);
     }
+
+    
 }
