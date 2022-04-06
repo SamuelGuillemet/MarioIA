@@ -4,36 +4,32 @@ using UnityEngine;
 
 public class Goomba : Enemy
 {
-public bool ecrase = false;
-public Animator animator;
-GameObject player;
-private void OnTriggerEnter2D2(Collider2D collision){
+    bool stomp = false;
 
-  
-    
-     if(collision.gameObject.tag == "player")
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "BabyMario")
         {
-            float yOffset = 0.9f;
-            if(transform.position.y + yOffset < collision.transform.position.y)
-            {
-              //rebondissement de mario
-                player.GetComponent<Rigidbody2D>().velocity = Vector2.up * 7;
-                ecrase = true;
-                //animation de mort de goomba
-                animator.SetBool("ecrase", ecrase);
-                
-                speed = 0;
-                //delai avant disparition du Goomba aplati
-                Invoke("Mort", 1);
-            }
-            else
-            {
-               //mort de mario a coder au rassemblage 
-            }
+            GameObject player = collision.gameObject;
+            //rebondissement de mario
+            player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, player.GetComponent<Mario>().SpeedJumpOnEnemy);
+            stomp = true;
+            //animation de mort de goomba
+            _animator.SetBool("Died", stomp);
+            Dir = Vector2.zero;
+            //delai avant disparition du Goomba aplati
+            Invoke("Mort", 1);
+
         }
-}
-private void Mort()
+    }
+
+    private void Mort()
     {
         Destroy(gameObject);
     }
-} 
+}

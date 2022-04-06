@@ -4,39 +4,34 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int speed;
-    public bool isright = false;
-    void Start()
-    {
-        Player = GameObject.FindGameObjectWithTag("player");
-    }
-  
+    public int Speed = 2;
+    public Vector2 Dir = Vector2.left;
+
+    [HideInInspector]
+    public Animator _animator;
+
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(isright)
-        {
-        transform.Translate(2 * Time.deltaTime * speed, 0, 0); 
-        }
-        else
-        {
-        transform.Translate(-2 * Time.deltaTime * speed, 0, 0); 
-        }
-        
+        GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
+        transform.localScale = new Vector2(Dir.x, transform.localScale.y);
     }
+
     // changement de direction apres collision
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Enemies"))
+        if (other.gameObject.CompareTag("Destination") || other.gameObject.CompareTag("Enemy"))
         {
-            if (isright)
-            {
-                isright = false;
-            }
+            if (Dir == Vector2.left)
+                Dir = Vector2.right;
             else
-            {
-                isright = true;
-            }
+                Dir = Vector2.left;
         }
+        if (other.gameObject.name == "BabyMario")
+        {
+            //mort de mario a coder au rassemblage 
+            Debug.Log("Die");
         }
+    }
 }
