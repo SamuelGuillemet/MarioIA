@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 791119461100921551}
   - component: {fileID: 791119461100921584}
   - component: {fileID: 791119461100921585}
+  - component: {fileID: 8327504871447297930}
   m_Layer: 0
   m_Name: CarapaceKoopaTroopaVert
   m_TagString: Untagged
@@ -130,4 +131,20 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &8327504871447297930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791119461100921548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f707ea5e55761a4408ebaeb0a6b08033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 4
+  Dir: {x: -1, y: 0}
+  _animator: {fileID: 0}
+  CarapaceKoopaTroopaVert: {fileID: 791119461100921548}
