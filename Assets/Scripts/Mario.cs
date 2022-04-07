@@ -55,7 +55,7 @@ public class Mario : MonoBehaviour
     float courseSpeed = 9.61f;      //Vitesse max de course
     float lowSpeed = 3.5f;          //Vitesse max de petite vitesse 
 
-    float[] AccelerationX = { 0, 8.34f, 12.52f, 10f };      // Marche, course, back
+    float[] AccelerationX = { 0, 8.34f, 12.52f, 20f };      // Marche, course, back
     float[] SlidingDecceleration = { -11.42f, 22.85f };     // Release button, backward
 
     float[] InitialJumpVelocity = { 17f, 17f, 20f, 15f, 26.25f };   //Arret, marche, course, bounce, trampoline 
