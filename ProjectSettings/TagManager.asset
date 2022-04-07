@@ -10,6 +10,7 @@ TagManager:
   - Platform
   - PlatformDown
   - PlatformUp
+  - Flag
   layers:
   - Default
   - TransparentFX

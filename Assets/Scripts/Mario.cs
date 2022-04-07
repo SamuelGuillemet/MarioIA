@@ -176,7 +176,7 @@ public class Mario : MonoBehaviour
     }
 
     /// <summary>
-    /// Function that handle the maximum of speed based on <data> _currentInput </data>
+    /// Function that handle the maximum of speed based on <paramref name="_currentInput"/> 
     /// </summary>
     private void LimitSpeed()
     {
@@ -275,6 +275,11 @@ public class Mario : MonoBehaviour
             _onTrampoline = true;
             other.gameObject.GetComponent<Animator>().SetTrigger("activate");
             Invoke("bounceTrampoline", 0.200f);         //Time to end the animation/2
+        }
+
+        if (other.gameObject.tag == "Flag")
+        {
+            Debug.Log("Flag touch");
         }
     }
 

@@ -105,6 +105,7 @@ public class HammerBros : MonoBehaviour
             if (other.GetContact(0).point.y > transform.position.y)
             {
                 other.gameObject.GetComponent<Mario>().bounceEnemy();
+                Debug.Log("Flip and die");
             }
             else
             {
@@ -122,14 +123,11 @@ public class HammerBros : MonoBehaviour
         if (other.tag == "PlatformDown" && (CountJump == 1 || CountJump == 2))
         {
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.transform.parent.GetComponent<Collider2D>(), true);
-            Debug.Log("Ignore1");
         }
         if (other.tag == "PlatformUp" && (CountJump == 3 || CountJump == 0) && _isJumping)
         {
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.transform.parent.GetComponent<Collider2D>(), true);
-            Debug.Log("Ignore2");
         }
-        Debug.Log("passed");
     }
 
     private void OnTriggerExit2D(Collider2D other)

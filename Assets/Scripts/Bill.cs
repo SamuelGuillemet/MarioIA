@@ -35,7 +35,7 @@ public class Bill : MonoBehaviour
     }
 
     /// <summary>
-    /// The function taht delete BillBullet in the scene aand in the array <data>_bulletBillsInTheScene</data> 
+    /// The function taht delete BillBullet in the scene aand in the array <paramref name="_bulletBillsInTheScene"/> 
     /// </summary>
     /// <param name="billBulletIndex"></param>
     public void DeleteBillBullet(int billBulletIndex)
