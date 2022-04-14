@@ -4,8 +4,8 @@
 `Left Arrow` : Aller à gauche  
 `Right Arrow` : Aller à droite  
 `Up Arrow` : Sauter, un appui long fait sauter plus haut  
-`Down Arrow` : Permet à mario de s'accroupir pour passer dans les tuyaux. **/!\ N'est pas disponible comme action de l'Agent /!\\**  
-`Space` : Permet à mario de sprinter
+`Down Arrow` : Permet à Mario de s'accroupir pour passer dans les tuyaux. **/!\ N'est pas disponible comme action de l'Agent /!\\**  
+`Space` : Permet à Mario de sprinter
 ***
 # Le fonctionnement des déplacements
 Le travail de recherche sur la physique se base en grande partie sur ce [site](https://drive.google.com/file/d/1IAZIW48kDXfpbrIQjIvmYxfSTMVZgTui/view?usp=sharing).  
@@ -29,7 +29,7 @@ Appuyer sur la touche de **Sprint** n'a pas d'effet sur les accélérations en l
 | `Opposite Direction` - Vitesse actuelle > **Marche**| -12.52 m/s² (Décélération) |
   
 ## La gravité et le saut:
-Lorsque l'on tient le bouton saut enfoncé, on modifie la gravité qui s'applique à mario, c'est cela qui donne l'effet à mario de "flotter".
+Lorsque l'on tient le bouton saut enfoncé, on modifie la gravité qui s'applique à Mario, c'est cela qui donne l'effet à Mario de "flotter".
 ### Les vitesses de départ du saut:
 Les vitesses initiales du saut dépendent de la vitesse horizontale du joueur au début de son saut.
 | Type | Vitesse initiale |
