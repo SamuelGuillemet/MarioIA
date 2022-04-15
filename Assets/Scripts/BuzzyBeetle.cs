@@ -21,15 +21,13 @@ public class BuzzyBeetle : Enemy
             if (other.GetContact(0).normal.y <= -0.75f)
             {
                 if (Shell)
-                {
                     FlipAndDie();
-                }
                 else
                 {
                     Stomped();
                     Shell = true;
                 }
-                other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(other.gameObject.GetComponent<Rigidbody2D>().velocity.x, other.gameObject.GetComponent<Mario>().SpeedJumpOnEnemy);
+                other.gameObject.GetComponent<Mario>().bounceEnemy();
             }
             else
             {
@@ -39,16 +37,11 @@ public class BuzzyBeetle : Enemy
                     Dir = new Vector2(other.GetContact(0).normal.x, Dir.y);
                 }
                 else
-                {
-                    Debug.Log("Mario Died");
-                }
+                    other.gameObject.GetComponent<Mario>().marioDied();
 
             }
         }
         else
-        {
             CollisionHandler(other);
-        }
-
     }
 }

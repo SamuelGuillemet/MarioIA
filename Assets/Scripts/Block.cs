@@ -28,10 +28,8 @@ public class Block : MonoBehaviour
             {
                 foreach (GameObject enemy in _enemiesOnTop.ToArray())
                 {
-                    //enemy.FlipAndDie(); //method used in Enemy class
-                    Debug.Log("FlipAndDie");
+                    enemy.GetComponentInChildren<Enemy>().FlipAndDie(); //method used in Enemy class
                 }
-
                 StartCoroutine("BrickHit");
             }
         }
@@ -54,15 +52,15 @@ public class Block : MonoBehaviour
             Instantiate(ToSpawn, _posInit, Quaternion.identity);
         }
 
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < 32; i++)
         {
-            this.transform.position = new Vector2(_posInit.x, _posInit.y + 0.03125f * i);
+            this.transform.position = new Vector2(_posInit.x, _posInit.y + (0.5f / 32f) * i);
             yield return null;
         }
 
-        for (int i = 16; i > 0; i--)
+        for (int i = 32; i > 0; i--)
         {
-            this.transform.position = new Vector2(_posInit.x, _posInit.y + 0.03125f * i);
+            this.transform.position = new Vector2(_posInit.x, _posInit.y + (0.5f / 32f) * i);
             yield return null;
         }
 

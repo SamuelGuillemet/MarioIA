@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
     private bool _shell = false;
     public bool Shell { get => _shell; set => _shell = value; }
 
+    private bool _dead = false;
+    public bool Dead { get => _dead; set => _dead = value; }
+
     /// <summary>
     /// Used to kill the enemy if he fall off the screen
     /// </summary>
@@ -77,17 +80,13 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void FlipAndDie()
     {
-        if (TryGetComponent<Collider2D>(out Collider2D coll))
-        {
-            coll.enabled = false;
-        }
-        else
-        {
-            transform.GetChild(0).GetComponent<Collider2D>().enabled = false;
-        }
+        _dead = true;
+        GetComponentInChildren<Collider2D>().enabled = false;
         Dir = Vector2.zero;
         Speed = 0;
         transform.localScale = new Vector2(transform.localScale.x, -1);
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 4f);
+        GetComponentInParent<Rigidbody2D>().velocity = new Vector2(0, 12f);
+        GetComponentInChildren<Animator>().enabled = false;
+        GetComponentInParent<Rigidbody2D>().gravityScale = 4;
     }
 }

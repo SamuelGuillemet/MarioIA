@@ -88,7 +88,7 @@ public class Mario : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var enemy in enemies)
         {
-            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), enemy.GetComponent<Collider2D>(), true);
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), enemy.GetComponentInChildren<Collider2D>(), true);
         }
 
         //Debug mode

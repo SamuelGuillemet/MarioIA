@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Goomba : Enemy
 {
-    //Used to disable the killing of Mrio if Goomba is stomped
-    private bool _died = false;
-
     void Start()
     {
         Animator = GetComponent<Animator>();
@@ -19,22 +16,18 @@ public class Goomba : Enemy
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player" && !_died)
+        if (other.gameObject.tag == "Player" && !Dead)
         {
             if (other.GetContact(0).normal.y <= -0.75f)
             {
                 Stomped();
-                _died = true;
-                other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(other.gameObject.GetComponent<Rigidbody2D>().velocity.x, other.gameObject.GetComponent<Mario>().SpeedJumpOnEnemy);
+                Dead = true;
+                other.gameObject.GetComponent<Mario>().bounceEnemy();
             }
             else
-            {
-                Debug.Log("Mario Died");
-            }
+                other.gameObject.GetComponent<Mario>().marioDied();
         }
         else
-        {
             CollisionHandler(other);
-        }
     }
 }

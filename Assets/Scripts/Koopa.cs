@@ -34,16 +34,13 @@ public class Koopa : Enemy
                     Fly = false;
                 }
                 else if (Shell)
-                {
                     FlipAndDie();
-                }
                 else
                 {
                     Stomped();
                     Shell = true;
                 }
-                //TODO
-                other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(other.gameObject.GetComponent<Rigidbody2D>().velocity.x, other.gameObject.GetComponent<Mario>().SpeedJumpOnEnemy);
+                other.gameObject.GetComponent<Mario>().bounceEnemy();
             }
             else
             {
@@ -53,25 +50,18 @@ public class Koopa : Enemy
                     Dir = new Vector2(other.GetContact(0).normal.x, Dir.y);
                 }
                 else
-                {
-                    //TODO
-                    Debug.Log("Mario Died");
-                }
-
+                    other.gameObject.GetComponent<Mario>().marioDied();
             }
         }
         else
-        {
             CollisionHandler(other);
-        }
-
     }
 
     /// <summary>
     /// This function is called when the koopa paratroopa should jump
     /// </summary>
     /// <returns></returns>
-    IEnumerator Jump()
+    private IEnumerator Jump()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, 8f);
         yield return new WaitForSeconds(0.5f);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HammerBros : MonoBehaviour
+public class HammerBros : Enemy
 {
     [HideInInspector]
     public bool ShouldJump = false;
@@ -45,25 +45,27 @@ public class HammerBros : MonoBehaviour
                 }
             }
         }
-
-        if (MarioTransform.position.x > transform.position.x + 2f)
-            transform.localScale = new Vector2(-1, 1);
-        else if (MarioTransform.position.x < transform.position.x - 2f)
-            transform.localScale = new Vector2(1, 1);
-        _dir = ((int)transform.localScale.x) * -1;
-
-        if (ThrowHammer && !_launch)
+        if (!Dead)
         {
-            _launch = true;
-            StartCoroutine("Throw");
-        }
+            if (MarioTransform.position.x > transform.position.x + 2f)
+                transform.localScale = new Vector2(-1, 1);
+            else if (MarioTransform.position.x < transform.position.x - 2f)
+                transform.localScale = new Vector2(1, 1);
+            _dir = ((int)transform.localScale.x) * -1;
 
-        if (ShouldJump && !_isJumping)
-        {
-            _isJumping = true;
-            StartCoroutine("Jump");
+            if (ThrowHammer && !_launch)
+            {
+                _launch = true;
+                StartCoroutine("Throw");
+            }
+
+            if (ShouldJump && !_isJumping)
+            {
+                _isJumping = true;
+                StartCoroutine("Jump");
+            }
+            Jumping = _isJumping;
         }
-        Jumping = _isJumping;
     }
 
     /// <summary>
@@ -102,10 +104,10 @@ public class HammerBros : MonoBehaviour
     {
         if (other.gameObject.name == "BabyMario")
         {
-            if (other.GetContact(0).point.y > transform.position.y)
+            if (other.GetContact(0).point.y + 1 > transform.position.y)
             {
                 other.gameObject.GetComponent<Mario>().bounceEnemy();
-                Debug.Log("Flip and die");
+                FlipAndDie();
             }
             else
             {
