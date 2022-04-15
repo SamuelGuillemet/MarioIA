@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class HammerBros : Enemy
 {
-    [HideInInspector]
-    public bool ShouldJump = false;
+    //Stuff linked to the jump
+    private bool _shouldJump = false;
     private bool _isJumping = false;
     public int CountJump = 0;
 
-    public bool Jumping;
-
-
+    //Stuff linked to the hammer
     public GameObject hammer;
     private GameObject[] _hammersInTheScene;
     private int _indexOfNextSpawn;
-    [HideInInspector]
-    public bool ThrowHammer = false;
+    private bool _throwHammer = false;
     private bool _launch;
 
+    //Stuff linked to the position
+    //TODO Fix with global environment
     public Transform MarioTransform;
-
     private int _dir;
 
     // Start is called before the first frame update
@@ -31,7 +29,6 @@ public class HammerBros : Enemy
         _dir = ((int)transform.localScale.x) * -1;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         foreach (GameObject item in _hammersInTheScene)
@@ -53,18 +50,17 @@ public class HammerBros : Enemy
                 transform.localScale = new Vector2(1, 1);
             _dir = ((int)transform.localScale.x) * -1;
 
-            if (ThrowHammer && !_launch)
+            if (_throwHammer && !_launch)
             {
                 _launch = true;
                 StartCoroutine("Throw");
             }
 
-            if (ShouldJump && !_isJumping)
+            if (_shouldJump && !_isJumping)
             {
                 _isJumping = true;
                 StartCoroutine("Jump");
             }
-            Jumping = _isJumping;
         }
     }
 

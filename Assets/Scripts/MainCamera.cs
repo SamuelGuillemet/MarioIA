@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour
 {
+    //TODO Fix with global environment
     [SerializeField] private Transform _playerTransform;
     public Transform PlayerTransform { get => _playerTransform; }
 

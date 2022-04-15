@@ -16,10 +16,13 @@ public class Koopa : Enemy
 
     void FixedUpdate()
     {
-        if (Fly && isGrounded())
-            StartCoroutine("Jump");
+        if (GetComponent<Rigidbody2D>().IsAwake())
+        {
+            if (Fly && isGrounded())
+                StartCoroutine("Jump");
 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

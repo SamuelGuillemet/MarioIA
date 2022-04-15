@@ -11,7 +11,8 @@ public class Goomba : Enemy
 
     void FixedUpdate()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
+        if (GetComponent<Rigidbody2D>().IsAwake())
+            GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -11,4 +11,8 @@
 * `Bill` : Gestion du bloc qui tire les bills.
 * `BillBullet` : Les munitions du lanceur de bills.
 * `Plante` : Tue mario en cas de collision.
-* `Hammerbros` : Script qui fournit le comportement de l'ennemi HammerBros
+* `Hammerbros` : Script qui fournit le comportement de l'ennemi HammerBros.
+* `Coin` : If mario collects the coin, it will be destroyed.
+* `DestroyAfterAnimation` : Détruit me gameObject après la fin de son animation.
+* `Blocks` : Script qui donne le comportement des blocs, prend aussi en charge la mort des ennemies sur le dessus des blocs quand mario tape par le dessous.
+* `Enemy` : Script global aux ennemis qui dont les scripts `Goomba`, `Koopa`, `Hammerbros`, `BuzzyBeetle`.

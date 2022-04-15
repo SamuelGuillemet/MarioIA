@@ -23,6 +23,11 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        //TODO Fix with global environment
+        if (GameObject.Find("Main Camera").transform.localPosition.x + 15 > transform.parent.localPosition.x + transform.localPosition.x)
+            GetComponent<Rigidbody2D>().WakeUp();
+        else
+            GetComponent<Rigidbody2D>().Sleep();
     }
 
     /// <summary>

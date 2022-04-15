@@ -8,6 +8,7 @@ public class Block : MonoBehaviour
     public GameObject NextPrefab;
     public GameObject ToSpawn;
     private List<GameObject> _enemiesOnTop = new List<GameObject>();
+    //To avoid the animation to be played when the block is already animating
     private bool _isAnimated;
 
     // Start is called before the first frame update
@@ -28,16 +29,14 @@ public class Block : MonoBehaviour
             {
                 foreach (GameObject enemy in _enemiesOnTop.ToArray())
                 {
-                    enemy.GetComponentInChildren<Enemy>().FlipAndDie(); //method used in Enemy class
+                    enemy.GetComponentInChildren<Enemy>().FlipAndDie();
                 }
                 StartCoroutine("BrickHit");
             }
         }
 
         if (col.gameObject.tag == "Enemy")
-        {
             _enemiesOnTop.Add(col.gameObject);
-        }
     }
 
     /// <summary>
@@ -48,9 +47,7 @@ public class Block : MonoBehaviour
     {
         _isAnimated = true;
         if (ToSpawn)
-        {
             Instantiate(ToSpawn, _posInit, Quaternion.identity);
-        }
 
         for (int i = 0; i < 32; i++)
         {
@@ -83,8 +80,6 @@ public class Block : MonoBehaviour
     void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject.tag == "Enemy")
-        {
             _enemiesOnTop.Remove(other.gameObject);
-        }
     }
 }

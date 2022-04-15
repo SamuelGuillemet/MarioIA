@@ -9,8 +9,9 @@ public class Bill : MonoBehaviour
     private GameObject[] _bulletBillsInTheScene;
     private int _indexOfNextSpawn;
     private int _dir;                       //1 or -1
-    private bool launch = false;            //Bool to prevent multiple launch
+    private bool _launch = false;            //Bool to prevent multiple launch
 
+    //Stuff for the behaviour of the bill
     public AnimationCurve behaviour;        //Curve that handle the behaviour of the bill
     private float _temp;                    //Random time for spawning
 
@@ -27,9 +28,9 @@ public class Bill : MonoBehaviour
     {
         float step = behaviour.Evaluate(((float)Time.fixedTimeAsDouble) + _temp);
 
-        if (step > 0.99 && !launch)
+        if (step > 0.99 && !_launch)
         {
-            launch = true;
+            _launch = true;
             StartCoroutine("Throw");
         }
     }
@@ -59,6 +60,6 @@ public class Bill : MonoBehaviour
         _bulletBillsInTheScene[_indexOfNextSpawn].GetComponent<BillBullet>().Dir = _dir;
         _indexOfNextSpawn = (_indexOfNextSpawn + 1) % _bulletBillsInTheScene.Length;
         _dir = -_dir;
-        launch = false;
+        _launch = false;
     }
 }
