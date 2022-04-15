@@ -83,6 +83,13 @@ public class Mario : MonoBehaviour
         _currentVelocityX = VelocityX.lowSpeed;
         _jumpVelocityX = VelocityX.lowSpeed;
 
+        //Disable the collision between the circle collider and the enemies
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemy in enemies)
+        {
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), enemy.GetComponent<Collider2D>(), true);
+        }
+
         //Debug mode
         if (Debug)
             _infoDebug = GameObject.Find("Debug").GetComponent<Text>();
