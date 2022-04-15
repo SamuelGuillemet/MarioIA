@@ -127,7 +127,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8770571311809518205, guid: dd0b9640c0698554b9b9887189855846, type: 3}
+  m_Sprite: {fileID: 8335539648474822264, guid: dd0b9640c0698554b9b9887189855846, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShouldJump: 0
   CountJump: 0
+  Jumping: 0
   hammer: {fileID: 4068145394121120226, guid: fe6d58405ae89c84687fce7384af6b48, type: 3}
   ThrowHammer: 0
   MarioTransform: {fileID: 0}

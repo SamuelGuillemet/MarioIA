@@ -35,6 +35,11 @@ public class Block : MonoBehaviour
                 StartCoroutine("BrickHit");
             }
         }
+
+        if (col.gameObject.tag == "Enemy")
+        {
+            _enemiesOnTop.Add(col.gameObject);
+        }
     }
 
     /// <summary>
@@ -71,17 +76,7 @@ public class Block : MonoBehaviour
         Destroy(gameObject);
 
     }
-    /// <summary>
-    /// Checks if enemies are on top of a block to add them to a list
-    /// </summary>
-    /// <param name="other"></param>
-    void OnCollisionStay2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            _enemiesOnTop.Add(other.gameObject);
-        }
-    }
+
     /// <summary>
     /// Checks if enemies exit the block to remove them from the list
     /// </summary>
