@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarapaceKoopaTroopa : Enemy
+public class TransitionCarapaceVerte : Enemy
 {   
     bool stomp = false;
     public GameObject CarapaceKoopaTroopaVert;
     private void Start()
-    {   Speed = 0;
+    {   Speed = 8;
+        Dir = Vector2.right;
         _animator = GetComponent<Animator>();
     }
 
@@ -37,12 +38,4 @@ public class CarapaceKoopaTroopa : Enemy
        }     
     }       
        
-      
-       
-         
-            
-        
-    
-      
-    
 }

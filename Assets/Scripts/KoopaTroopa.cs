@@ -19,13 +19,13 @@ public class KoopaTroopa : Enemy
             //rebondissement de mario
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, player.GetComponent<Mario>().SpeedJumpOnEnemy);
             
-            //animation de mort de goomba
+            //arrêt du koopa
             
             Speed = 0;
             
-            //delai avant disparition du Goomba aplati
+            //transformatio du koopa en carapace
             Destroy(gameObject);
-            GameObject a = Instantiate(CarapaceKoopaTroopaVert, transform.position, transform.rotation) as GameObject;
+            GameObject a = Instantiate(CarapaceKoopaTroopaVert, new Vector3(transform.position.x,transform.position.y + 0.2f,transform.position.z), transform.rotation) as GameObject;
             
         }
     }
