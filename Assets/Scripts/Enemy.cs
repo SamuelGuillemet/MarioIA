@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour
     public void shell()
     {
         _animator.SetTrigger("Stomp");
-        StartCoroutine("changeShell");
+        _shell = true;
         Speed = 0f;
     }
 
@@ -95,12 +95,5 @@ public class Enemy : MonoBehaviour
         transform.localScale = new Vector2(transform.localScale.x, -1);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 4f);
         _died = true;
-    }
-
-
-    IEnumerator changeShell()
-    {
-        yield return new WaitForSeconds(0.5f);
-        _shell = true;
     }
 }

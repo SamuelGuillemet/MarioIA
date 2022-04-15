@@ -26,7 +26,6 @@ public class Koopa : Enemy
     {
         if (other.gameObject.tag == "Player" && !Died)
         {
-
             if (other.GetContact(0).normal.y <= -0.75f)
             {
                 if (Fly)
