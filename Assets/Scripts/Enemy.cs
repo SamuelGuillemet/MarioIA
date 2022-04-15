@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     private Animator _animator;
 
     public bool Died { get => _died; set => _died = value; }
-    public Animator Animator { set => _animator = value; }
+    public Animator Animator { get => _animator; set => _animator = value; }
     public bool Shell { get => _shell; set => _shell = value; }
 
     private void FixedUpdate()
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private bool isGrounded()
+    public bool isGrounded()
     {
         Bounds bounds = GetComponent<Collider2D>().bounds;
         float range = bounds.size.y * 0.25f;
@@ -78,9 +78,14 @@ public class Enemy : MonoBehaviour
 
     public void shell()
     {
-        _animator.SetBool("Stomp", true);
+        _animator.SetTrigger("Stomp");
         StartCoroutine("changeShell");
         Speed = 0f;
+    }
+
+    public void fly()
+    {
+        _animator.SetBool("Walk", false);
     }
 
     public void FlipAndDie()
