@@ -5,15 +5,16 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float speed = 2f;
+    public float Speed = 2f;
     public Vector2 Dir = new Vector2(-1, 0);
-    public bool Shell = false;
+    private bool _shell = false;
     private bool _died = false;
 
     private Animator _animator;
 
     public bool Died { get => _died; set => _died = value; }
     public Animator Animator { set => _animator = value; }
+    public bool Shell { get => _shell; set => _shell = value; }
 
     private void FixedUpdate()
     {
@@ -41,6 +42,11 @@ public class Enemy : MonoBehaviour
         }
         else if (coll.gameObject.tag == "Enemy")
         {
+            if (Shell)
+            {
+                coll.gameObject.GetComponent<Enemy>().FlipAndDie();
+                FlipAndDie();
+            }
             GameObject enemy = coll.gameObject;
             if (enemy.GetComponent<Enemy>().Dir.x == Dir.x)
             {
@@ -70,11 +76,26 @@ public class Enemy : MonoBehaviour
         Dir = Vector2.zero;
     }
 
+    public void shell()
+    {
+        _animator.SetBool("Stomp", true);
+        StartCoroutine("changeShell");
+        Speed = 0f;
+    }
+
     public void FlipAndDie()
     {
         GetComponent<Collider2D>().enabled = false;
+        Dir = Vector2.zero;
         transform.localScale = new Vector2(transform.localScale.x, -1);
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 1f);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 4f);
         _died = true;
+    }
+
+
+    IEnumerator changeShell()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _shell = true;
     }
 }

@@ -13,7 +13,7 @@ public class Goomba : Enemy
     // Update is called once per frame
     void FixedUpdate()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * speed, GetComponent<Rigidbody2D>().velocity.y);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
