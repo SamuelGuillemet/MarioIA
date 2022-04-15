@@ -4,33 +4,33 @@ using UnityEngine;
 
 public class Koopa : Enemy
 {
+    //If Fly is true, the koopa will be a koopa paratroopa.
+    [Tooltip("If Fly is true, the koopa will be a koopa paratroopa.")]
     public bool Fly;
-    // Start is called before the first frame update
+
     void Start()
     {
         Animator = GetComponent<Animator>();
         Animator.SetBool("Walk", Fly);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        if (Fly)
-            if (isGrounded())
-                StartCoroutine("Jump");
+        if (Fly && isGrounded())
+            StartCoroutine("Jump");
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player" && !Died)
+        if (other.gameObject.tag == "Player")
         {
             if (other.GetContact(0).normal.y <= -0.75f)
             {
                 if (Fly)
                 {
-                    fly();
+                    Animator.SetBool("Walk", false);
                     Fly = false;
                 }
                 else if (Shell)
@@ -39,8 +39,10 @@ public class Koopa : Enemy
                 }
                 else
                 {
-                    shell();
+                    Stomped();
+                    Shell = true;
                 }
+                //TODO
                 other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(other.gameObject.GetComponent<Rigidbody2D>().velocity.x, other.gameObject.GetComponent<Mario>().SpeedJumpOnEnemy);
             }
             else
@@ -52,6 +54,7 @@ public class Koopa : Enemy
                 }
                 else
                 {
+                    //TODO
                     Debug.Log("Mario Died");
                 }
 
@@ -59,14 +62,33 @@ public class Koopa : Enemy
         }
         else
         {
-            encounterEnemy(other);
+            CollisionHandler(other);
         }
 
     }
 
+    /// <summary>
+    /// This function is called when the koopa paratroopa should jump
+    /// </summary>
+    /// <returns></returns>
     IEnumerator Jump()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, 8f);
         yield return new WaitForSeconds(0.5f);
+    }
+
+    /// <summary>
+    /// This function is called when the koopa paratroopa should jump to see if it is on the ground
+    /// </summary>
+    /// <returns>If the enemy is on the ground</returns>
+    private bool isGrounded()
+    {
+        if (!GetComponent<Collider2D>().enabled)
+            return false;
+        Bounds bounds = GetComponent<Collider2D>().bounds;
+        float range = bounds.size.y * 0.25f;
+        Vector2 v = new Vector2(bounds.center.x, bounds.min.y - range);
+        RaycastHit2D hit = Physics2D.Linecast(v, bounds.center);
+        return (hit.collider.gameObject != gameObject);
     }
 }

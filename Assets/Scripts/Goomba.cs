@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Goomba : Enemy
 {
-    // Start is called before the first frame update
+    //Used to disable the killing of Mrio if Goomba is stomped
+    private bool _died = false;
+
     void Start()
     {
         Animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
@@ -18,20 +19,22 @@ public class Goomba : Enemy
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player" && !Died)
+        if (other.gameObject.tag == "Player" && !_died)
         {
             if (other.GetContact(0).normal.y <= -0.75f)
             {
-                stomp();
+                Stomped();
+                _died = true;
                 other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(other.gameObject.GetComponent<Rigidbody2D>().velocity.x, other.gameObject.GetComponent<Mario>().SpeedJumpOnEnemy);
             }
+            else
             {
                 Debug.Log("Mario Died");
             }
         }
         else
         {
-            encounterEnemy(other);
+            CollisionHandler(other);
         }
     }
 }

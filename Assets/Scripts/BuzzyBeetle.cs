@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class BuzzyBeetle : Enemy
 {
-    // Start is called before the first frame update
     void Start()
     {
         Animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
@@ -18,7 +16,7 @@ public class BuzzyBeetle : Enemy
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player" && !Died)
+        if (other.gameObject.tag == "Player")
         {
             if (other.GetContact(0).normal.y <= -0.75f)
             {
@@ -28,7 +26,8 @@ public class BuzzyBeetle : Enemy
                 }
                 else
                 {
-                    shell();
+                    Stomped();
+                    Shell = true;
                 }
                 other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(other.gameObject.GetComponent<Rigidbody2D>().velocity.x, other.gameObject.GetComponent<Mario>().SpeedJumpOnEnemy);
             }
@@ -48,7 +47,7 @@ public class BuzzyBeetle : Enemy
         }
         else
         {
-            encounterEnemy(other);
+            CollisionHandler(other);
         }
 
     }

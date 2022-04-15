@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float Speed = 2f;
     public Vector2 Dir = new Vector2(-1, 0);
-    private bool _shell = false;
-    private bool _died = false;
-
     private Animator _animator;
-
-    public bool Died { get => _died; set => _died = value; }
     public Animator Animator { get => _animator; set => _animator = value; }
+    private bool _shell = false;
     public bool Shell { get => _shell; set => _shell = value; }
 
-    private void FixedUpdate()
+    /// <summary>
+    /// Used to kill the enemy if he fall off the screen
+    /// </summary>
+    private void Update()
     {
         if (transform.localPosition.y < -1)
         {
@@ -24,16 +22,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public bool isGrounded()
-    {
-        Bounds bounds = GetComponent<Collider2D>().bounds;
-        float range = bounds.size.y * 0.25f;
-        Vector2 v = new Vector2(bounds.center.x, bounds.min.y - range);
-        RaycastHit2D hit = Physics2D.Linecast(v, bounds.center);
-        return (hit.collider.gameObject != gameObject);
-    }
-
-    public void encounterEnemy(Collision2D coll)
+    /// <summary>
+    /// The function that handle the collison with the tag "destination" and with the tag Enemy
+    /// </summary>
+    /// <param name="coll"></param>
+    public void CollisionHandler(Collision2D coll)
     {
         if (coll.gameObject.tag == "Destination" && coll.GetContact(0).normal.y < 0.1f)
         {
@@ -42,7 +35,7 @@ public class Enemy : MonoBehaviour
         }
         else if (coll.gameObject.tag == "Enemy")
         {
-            if (Shell)
+            if (_shell)
             {
                 coll.gameObject.GetComponent<Enemy>().FlipAndDie();
                 FlipAndDie();
@@ -69,31 +62,32 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void stomp()
+    /// <summary>
+    /// The function that make the transition when an enemy is stomped by Mario
+    /// </summary>
+    public void Stomped()
     {
         _animator.SetTrigger("Stomp");
-        _died = true;
         Dir = Vector2.zero;
-    }
-
-    public void shell()
-    {
-        _animator.SetTrigger("Stomp");
-        _shell = true;
         Speed = 0f;
     }
 
-    public void fly()
-    {
-        _animator.SetBool("Walk", false);
-    }
-
+    /// <summary>
+    /// The function that handle the FlipAndDie animation before the death of the enemy
+    /// </summary>
     public void FlipAndDie()
     {
-        GetComponent<Collider2D>().enabled = false;
+        if (TryGetComponent<Collider2D>(out Collider2D coll))
+        {
+            coll.enabled = false;
+        }
+        else
+        {
+            transform.GetChild(0).GetComponent<Collider2D>().enabled = false;
+        }
         Dir = Vector2.zero;
+        Speed = 0;
         transform.localScale = new Vector2(transform.localScale.x, -1);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 4f);
-        _died = true;
     }
 }
