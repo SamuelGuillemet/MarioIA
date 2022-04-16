@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class that describe the bullets of the <see cref="Bill"/>
+/// </summary>
 public class BillBullet : MonoBehaviour
 {
+    /// <summary>
+    /// Reference the <see cref="Bill"/> that launch the <see cref="BillBullet"/>
+    /// </summary>
     private Bill _bill;
-    public Bill Bill { set => _bill = value; }
+    public Bill SetBill { set => _bill = value; }
 
+    /// <summary>
+    /// Reference the index of spawn of the <see cref="BillBullet"/>
+    /// </summary>
     private int _index;
     public int Index { set => _index = value; }
 
+    /// <summary>
+    /// Reference rhe direction of spawn of the <see cref="BillBullet"/>
+    /// </summary>
     private int _dir;
     public int Dir { set => _dir = value; }
 
+    /// <summary>
+    /// The speed of the <see cref="BillBullet"/>
+    /// </summary>
     private float _speed = 5f;
 
     private void FixedUpdate()
@@ -22,9 +37,9 @@ public class BillBullet : MonoBehaviour
     }
 
     /// <summary>
-    /// The function that will be called when mario collides with the bill
+    /// The function that will be called when <see cref="Mario"/> collides with the bill
     /// </summary>
-    /// <param name="other"></param>
+    /// <param name="other">The GameObject collider that collide with the <see cref="BillBullet"/></param>
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.name == "BabyMario")

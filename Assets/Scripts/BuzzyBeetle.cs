@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class describe the behaviour of the <see cref="Enemy"/> BuzzyBeetle
+/// </summary>
 public class BuzzyBeetle : Enemy
 {
     void Start()
@@ -15,6 +18,10 @@ public class BuzzyBeetle : Enemy
             GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
     }
 
+    /// <summary>
+    /// This function handle the behaviour of the <see cref="BuzzyBeetle"/> when he enter collision 
+    /// </summary>
+    /// <param name="other">The GameObject collider that enter the collision with the <see cref="BuzzyBeetle"/></param>
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")

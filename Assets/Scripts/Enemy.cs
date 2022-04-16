@@ -2,20 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class that describe the behaviour of <see cref="Goomba"/>, <see cref="Koopa"/>, <see cref="BuzzyBeetle"/> and <see cref="HammerBros"/>
+/// </summary>
 public class Enemy : MonoBehaviour
 {
+    /// <summary>
+    /// The speed of most of the enemies except for <see cref="HammerBros"/> 
+    /// </summary>
     public float Speed = 2f;
+
+    /// <summary>
+    /// Direction of the mooving of the enemies except for <see cref="HammerBros"/>
+    /// </summary>
     public Vector2 Dir = new Vector2(-1, 0);
+
+    /// <summary>
+    /// The anmiator attached to evry <see cref="Enemy"/>
+    /// </summary>
     private Animator _animator;
     public Animator Animator { get => _animator; set => _animator = value; }
+
+    /// <summary>
+    /// A bool that indicate if the current <see cref="Enemy"/> is a shell or not, useful inside <see cref="CollisionHandler"/>
+    /// </summary>
     private bool _shell = false;
     public bool Shell { get => _shell; set => _shell = value; }
 
+    /// <summary>
+    /// A boolean that stop, the collision of the stomped <see cref="Goomba"/>, and, the behaviour of <see cref="HammerBros"/>
+    /// </summary>
     private bool _dead = false;
     public bool Dead { get => _dead; set => _dead = value; }
 
     /// <summary>
-    /// Used to kill the enemy if he fall off the screen
+    /// Used to kill the enemy if he fall off the screen and handle the WakeUp if <see cref="Mario"/> is close enough to the <see cref="Enemy"/>
     /// </summary>
     private void Update()
     {
@@ -31,7 +52,7 @@ public class Enemy : MonoBehaviour
     }
 
     /// <summary>
-    /// The function that handle the collison with the tag "destination" and with the tag Enemy
+    /// The function that handle the collison with the tag "destination" and with the tag "Enemy"
     /// </summary>
     /// <param name="coll"></param>
     public void CollisionHandler(Collision2D coll)
@@ -46,7 +67,6 @@ public class Enemy : MonoBehaviour
             if (_shell)
             {
                 coll.gameObject.GetComponent<Enemy>().FlipAndDie();
-                //FlipAndDie();
                 return;
             }
             GameObject enemy = coll.gameObject;
@@ -72,7 +92,7 @@ public class Enemy : MonoBehaviour
     }
 
     /// <summary>
-    /// The function that make the transition when an enemy is stomped by Mario
+    /// The function that make the transition when an enemy is stomped by <see cref="Mario"/>
     /// </summary>
     public void Stomped()
     {
@@ -82,7 +102,7 @@ public class Enemy : MonoBehaviour
     }
 
     /// <summary>
-    /// The function that handle the FlipAndDie animation before the death of the enemy
+    /// The function that handle the <see cref="FlipAndDie"/> animation before the death of the enemy
     /// </summary>
     public void FlipAndDie()
     {

@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class describe the behaviour of the <see cref="Enemy"/> koopa
+/// </summary>
 public class Koopa : Enemy
 {
-    //If Fly is true, the koopa will be a koopa paratroopa.
     [Tooltip("If Fly is true, the koopa will be a koopa paratroopa.")]
+    /// <summary>
+    /// If Fly is true, the koopa will be a koopa paratroopa.
+    /// </summary>
     public bool Fly;
 
     void Start()
@@ -25,6 +30,10 @@ public class Koopa : Enemy
         }
     }
 
+    /// <summary>
+    /// This function handle the behaviour of the <see cref="Koopa"/> when he enter collision 
+    /// </summary>
+    /// <param name="other">The GameObject collider that enter the collision with the <see cref="Koopa"/></param>
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")
