@@ -46,7 +46,8 @@ public class Enemy : MonoBehaviour
             if (_shell)
             {
                 coll.gameObject.GetComponent<Enemy>().FlipAndDie();
-                FlipAndDie();
+                //FlipAndDie();
+                return;
             }
             GameObject enemy = coll.gameObject;
             if (enemy.GetComponent<Enemy>().Dir.x == Dir.x)
