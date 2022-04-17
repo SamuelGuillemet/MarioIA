@@ -35,6 +35,12 @@ public class Enemy : MonoBehaviour
     private bool _dead = false;
     public bool Dead { get => _dead; set => _dead = value; }
 
+    private Transform _mainCameraTransform;
+    /// <summary>
+    /// Used to wake up the enemy when <see cref="MainCamera"/> is close enough
+    /// </summary>
+    public Transform MainCameraTransform { set => _mainCameraTransform = value; }
+
     /// <summary>
     /// Used to kill the enemy if he fall off the screen and handle the WakeUp if <see cref="Mario"/> is close enough to the <see cref="Enemy"/>
     /// </summary>
@@ -44,10 +50,9 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //TODO Fix with global environment
-        if (GameObject.Find("Main Camera").transform.localPosition.x + 15 > transform.parent.localPosition.x + transform.localPosition.x)
+        if (_mainCameraTransform.localPosition.x + 15 > transform.parent.localPosition.x + transform.localPosition.x)
             GetComponent<Rigidbody2D>().WakeUp();
-        else
+        else if (!_shell)
             GetComponent<Rigidbody2D>().Sleep();
     }
 

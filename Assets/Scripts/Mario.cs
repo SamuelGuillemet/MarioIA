@@ -310,7 +310,7 @@ public class Mario : MonoBehaviour
         {
             _onTrampoline = true;
             other.gameObject.GetComponent<Animator>().SetTrigger("activate");
-            StartCoroutine("bounceTrampoline");
+            StartCoroutine("BounceTrampoline");
         }
 
         if (other.gameObject.tag == "Flag")

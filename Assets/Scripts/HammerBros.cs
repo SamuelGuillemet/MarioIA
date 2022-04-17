@@ -44,14 +44,16 @@ public class HammerBros : Enemy
     private bool _isThrowingHammer = false;
 
     //Stuff linked to the position
-    //TODO Fix with global environment
-    public Transform MarioTransform;
+    private Transform _marioTransform;
+    /// <summary>
+    /// This is used to inverse the orientation of hammerbros
+    /// </summary>
+    public Transform MarioTransform { get => _marioTransform; set => _marioTransform = value; }
 
     /// <summary>
     /// The direction of the next hammer that will be spawned, based on <see cref="Mario"/> position
     /// </summary>
     private int _dir;
-
 
     void Start()
     {

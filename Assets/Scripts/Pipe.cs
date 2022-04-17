@@ -88,7 +88,7 @@ public class Pipe : MonoBehaviour
         GameObject mario = coll.gameObject;
         if (mario.name == "BabyMario" && coll.GetContact(0).normal == Vector2.down && Mathf.Abs(mario.transform.localPosition.x - 0.5f - gameObject.transform.parent.localPosition.x) < 0.4f)
             if (mario.GetComponent<Mario>().Crouch && Destination)
-                StartCoroutine("pipe", mario);
+                StartCoroutine("PipeTeleportation", mario);
     }
 
     /// <summary>

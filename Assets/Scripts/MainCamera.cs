@@ -7,8 +7,8 @@ using UnityEngine;
 /// </summary>
 public class MainCamera : MonoBehaviour
 {
-    //TODO Fix with global environment
-    [SerializeField] private Transform _playerTransform;
+    private Transform _playerTransform;
+    public Transform PlayerTransform { set => _playerTransform = value; }
 
     /// <summary>
     /// The target aspect of the camera view on the screen

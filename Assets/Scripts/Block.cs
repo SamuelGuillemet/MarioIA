@@ -64,7 +64,7 @@ public class Block : MonoBehaviour
     {
         _isAnimated = true;
         if (ToSpawn)
-            Instantiate(ToSpawn, _posInit, Quaternion.identity);
+            Instantiate(ToSpawn, _posInit, Quaternion.identity, transform.parent);
 
         for (int i = 0; i < 32; i++)
         {
@@ -81,7 +81,7 @@ public class Block : MonoBehaviour
 
         if (NextPrefab)
         {
-            GameObject nextPrefab = Instantiate(NextPrefab, _posInit, Quaternion.identity);
+            GameObject nextPrefab = Instantiate(NextPrefab, _posInit, Quaternion.identity, transform.parent);
             nextPrefab.name = NextPrefab.name;
         }
 
