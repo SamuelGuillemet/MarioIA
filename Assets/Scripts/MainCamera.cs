@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class allow the camera to follow Mario position and fix an the aspect of view
+/// </summary>
 public class MainCamera : MonoBehaviour
 {
-    //TODO Fix with global environment
-    [SerializeField] private Transform _playerTransform;
-    public Transform PlayerTransform { get => _playerTransform; }
+    private Transform _playerTransform;
+    public Transform PlayerTransform { set => _playerTransform = value; }
 
-    public Vector2 targetAspects = new Vector2(16f, 15f);
+    /// <summary>
+    /// The target aspect of the camera view on the screen
+    /// </summary>
+    public Vector2 TargetAspects = new Vector2(16f, 15f);
     private float _yPos;
 
     // Start is called before the first frame update
     void Start()
     {
         _yPos = _playerTransform.localPosition.y + 5;
-        float targetaspect = targetAspects.x / targetAspects.y;
+        float targetaspect = TargetAspects.x / TargetAspects.y;
         float windowaspect = (float)Screen.width / (float)Screen.height;
         float scaleheight = windowaspect / targetaspect;
 
@@ -43,7 +48,6 @@ public class MainCamera : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_playerTransform != null)

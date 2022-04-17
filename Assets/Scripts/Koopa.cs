@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class describe the behaviour of the <see cref="Enemy"/> koopa
+/// </summary>
 public class Koopa : Enemy
 {
-    //If Fly is true, the koopa will be a koopa paratroopa.
     [Tooltip("If Fly is true, the koopa will be a koopa paratroopa.")]
+    /// <summary>
+    /// If Fly is true, the koopa will be a koopa paratroopa.
+    /// </summary>
     public bool Fly;
 
     void Start()
@@ -18,13 +23,17 @@ public class Koopa : Enemy
     {
         if (GetComponent<Rigidbody2D>().IsAwake())
         {
-            if (Fly && isGrounded())
+            if (Fly && IsGrounded())
                 StartCoroutine("Jump");
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
         }
     }
 
+    /// <summary>
+    /// This function handle the behaviour of the <see cref="Koopa"/> when he enter collision 
+    /// </summary>
+    /// <param name="other">The GameObject collider that enter the collision with the <see cref="Koopa"/></param>
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")
@@ -43,7 +52,7 @@ public class Koopa : Enemy
                     Stomped();
                     Shell = true;
                 }
-                other.gameObject.GetComponent<Mario>().bounceEnemy();
+                other.gameObject.GetComponent<Mario>().BounceEnemy();
             }
             else
             {
@@ -53,7 +62,7 @@ public class Koopa : Enemy
                     Dir = new Vector2(other.GetContact(0).normal.x, Dir.y);
                 }
                 else
-                    other.gameObject.GetComponent<Mario>().marioDied();
+                    other.gameObject.GetComponent<Mario>().MarioDied();
             }
         }
         else
@@ -74,7 +83,7 @@ public class Koopa : Enemy
     /// This function is called when the koopa paratroopa should jump to see if it is on the ground
     /// </summary>
     /// <returns>If the enemy is on the ground</returns>
-    private bool isGrounded()
+    private bool IsGrounded()
     {
         if (!GetComponent<Collider2D>().enabled)
             return false;

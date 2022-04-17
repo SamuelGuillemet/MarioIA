@@ -3,32 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class handle the deplacement of <see cref="Mario"/> with custom gravity and custom acceleration 
+/// </summary>
 public class Mario : MonoBehaviour
 {
-    enum input
+    /// <summary>
+    /// The different state of input possible
+    /// </summary>
+    enum InputState
     {
         arret,
         marche,
         course
     }
-    private input _currentInput;
+    /// <summary>
+    /// The current input based on the pressed keys
+    /// </summary>
+    private InputState _currentInput;
 
+    /// <summary>
+    /// The different state of velocity on the x axis possible
+    /// </summary>
     public enum VelocityX
     {
         lowSpeed,
         marche,
         course
     }
-    private VelocityX _currentVelocityX;                     //Velocité du joueur
-    private VelocityX _jumpVelocityX;                        //Vélocité au départ du saut
+    /// <summary>
+    /// The current x velocity of <see cref="Mario"/>
+    /// </summary>
+    private VelocityX _currentVelocityX;
 
+    /// <summary>
+    /// The x velocity at the beginning of the jump
+    /// </summary>
+    private VelocityX _jumpVelocityX;
+
+    /// <summary>
+    /// The different direction of <see cref="Mario"/> body
+    /// </summary>
     enum BodyDirection
     {
         gauche = -1,
         arret = 0,
         droite = 1,
     }
-    private BodyDirection _currentBodyDirection;        //Direction voulue par le joueur
+
+    /// <summary>
+    /// The direction wantyed by the player based on the pressed keys
+    /// </summary>
+    private BodyDirection _currentBodyDirection;
 
     //Composants associés au joueur
     private Rigidbody2D _rb;
@@ -62,12 +88,18 @@ public class Mario : MonoBehaviour
     float[] HoldingJumpGravity = { 28.125f, 26.36f, 35.1f };        // Arret, marche, course
     float[] FallingGravity = { 88f, 74f, 100f };                    // Arret, marche, course
 
+    /// <summary>
+    /// Use by <see cref="Pipe"/> to teleport <see cref="Mario"/>
+    /// </summary>
     public bool Crouch { get => _crouch; }
 
     //Debug mode
-    public bool debug = false;
+    [SerializeField] private bool _debug = false;
     private Text _infoDebug;
     private bool _onTrampoline = false;
+
+    private Environment _currentEnvironment;
+    public Environment CurrentEnvironment { set => _currentEnvironment = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -79,7 +111,7 @@ public class Mario : MonoBehaviour
         m_GroundCheck2 = transform.Find("groundCheck2");
 
         //Initialisation des variables
-        _currentInput = input.arret;
+        _currentInput = InputState.arret;
         _currentBodyDirection = BodyDirection.arret;
         _currentVelocityX = VelocityX.lowSpeed;
         _jumpVelocityX = VelocityX.lowSpeed;
@@ -92,7 +124,7 @@ public class Mario : MonoBehaviour
         }
 
         //Debug mode
-        if (debug)
+        if (_debug)
             _infoDebug = GameObject.Find("Debug").GetComponent<Text>();
     }
 
@@ -117,13 +149,13 @@ public class Mario : MonoBehaviour
         _an.SetBool("Jumping", _jump);
 
         //Debug mode
-        if (debug)
+        if (_debug)
             _infoDebug.text = "acceleration = " + _acceleration + "\nspeedX = " + _rb.velocity.x + "\nspeedY = " + _speedY + "\ngravity = " + _gravity + "\njump = " + _jump + "\ngrounded = " + _grounded + "\naddVitesse = " + _acceleration * Time.deltaTime;
 
     }
 
     /// <summary>
-    /// The function that handle the deplacement of Mario
+    /// The function that handle the deplacement of <see cref="Mario"/>
     /// </summary>
     private void MoveMario()
     {
@@ -131,7 +163,7 @@ public class Mario : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) //Marche
         {
-            _currentInput = input.marche;
+            _currentInput = InputState.marche;
             if (Input.GetKey(KeyCode.LeftArrow)) //Direction
                 _inputDirection = -1;
             else
@@ -140,12 +172,12 @@ public class Mario : MonoBehaviour
         }
         else
         {
-            _currentInput = input.arret;
+            _currentInput = InputState.arret;
             _inputDirection = 0;
         }
 
-        if (Input.GetKey(KeyCode.Space) && _currentInput == input.marche) //Run
-            _currentInput = input.course;
+        if (Input.GetKey(KeyCode.Space) && _currentInput == InputState.marche) //Run
+            _currentInput = InputState.course;
 
         if (Input.GetKey(KeyCode.UpArrow) && _grounded) //Jump
         {
@@ -183,13 +215,13 @@ public class Mario : MonoBehaviour
     }
 
     /// <summary>
-    /// Function that handle the maximum of speed based on <paramref name="_currentInput"/> 
+    /// Function that handle the maximum of speed based on <see cref="_currentInput"/> 
     /// </summary>
     private void LimitSpeed()
     {
         if (_absSpeedX > courseSpeed)
             _rb.velocity = new Vector2(courseSpeed * ((int)_currentBodyDirection), _rb.velocity.y);   //Vitesse de course max
-        if (_currentInput == input.marche && _absSpeedX > marcheSpeed)
+        if (_currentInput == InputState.marche && _absSpeedX > marcheSpeed)
             _rb.velocity = new Vector2(marcheSpeed * ((int)_currentBodyDirection), _rb.velocity.y);   //Vitesse de marche max
         if (_speedY < maxFallSpeed)
             _rb.velocity = new Vector2(_rb.velocity.x, maxFallSpeed + 0.4f);                          //Vitesse de chute max
@@ -223,7 +255,7 @@ public class Mario : MonoBehaviour
     {
         if (_grounded)
         {
-            if (_currentInput == input.arret)
+            if (_currentInput == InputState.arret)
             {
                 if (_absSpeedX > arretSpeed)
                 {
@@ -249,7 +281,7 @@ public class Mario : MonoBehaviour
         }
         else
         {
-            if (_currentInput == input.arret)
+            if (_currentInput == InputState.arret)
             {
                 return 0;
             }
@@ -272,44 +304,52 @@ public class Mario : MonoBehaviour
     }
 
     /// <summary>
-    /// The function that handle the jump on the trampoline
+    /// The function that handle the jump on the trampoline and the detection of the flag
     /// </summary>
-    /// <param name="other"></param>
+    /// <param name="other">The Collider to which <see cref="Mario"/> collides with</param>
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.name.Contains("Trampoline") && !_onTrampoline)
         {
             _onTrampoline = true;
             other.gameObject.GetComponent<Animator>().SetTrigger("activate");
-            Invoke("bounceTrampoline", 0.200f);         //Time to end the animation/2
+            StartCoroutine("BounceTrampoline");
         }
 
         if (other.gameObject.tag == "Flag")
         {
             Debug.Log("Flag touch");
+            if (_currentEnvironment)
+                _currentEnvironment.Reset();
         }
     }
 
-    private void bounceTrampoline()
+    /// <summary>
+    /// The function that is called when <see cref="Mario"/> should bounce up the trampoline
+    /// </summary>
+    IEnumerator BounceTrampoline()
     {
+        yield return new WaitForSeconds(0.200f); //Time to end the animation/2
         _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[4]);
         _onTrampoline = false;
     }
 
     /// <summary>
-    /// The function that is called when mario hit an Enemy
+    /// The function that is called when <see cref="Mario"/> hit an <see cref="Enemy"/>
     /// </summary>
-    public void bounceEnemy()
+    public void BounceEnemy()
     {
         _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[3]);
     }
 
     /// <summary>
-    /// The function that is called when mario should die
+    /// The function that is called when <see cref="Mario"/> should die
     /// </summary>
-    public void marioDied()
+    public void MarioDied()
     {
         Debug.Log("Mario Died");
+        if (_currentEnvironment)
+            _currentEnvironment.Reset();
     }
 }
 

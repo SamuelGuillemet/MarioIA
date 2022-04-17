@@ -2,30 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class that handle the behaviour of blocks  and handle the death of enemies when <see cref="Mario"/> hits underneath
+/// </summary>
 public class Block : MonoBehaviour
 {
     private Vector2 _posInit;
+
+    /// <summary>
+    /// The prefab that will be spawned after the <see cref="Block"/> will be destroyed.
+    /// </summary>
     public GameObject NextPrefab;
+
+    /// <summary>
+    /// The prefab that will be spawned when <see cref="Mario"/> hit the block by underneath
+    /// </summary>
     public GameObject ToSpawn;
+
+    /// <summary>
+    /// A list of GameObject that are on teh top of the current <see cref="Block"/>
+    /// </summary>
     private List<GameObject> _enemiesOnTop = new List<GameObject>();
-    //To avoid the animation to be played when the block is already animating
+
+    /// <summary>
+    /// Bool to avoid the animation to be played when the block is already animating
+    /// </summary>
     private bool _isAnimated;
 
-    // Start is called before the first frame update
     void Start()
     {
         _posInit = transform.position;
         _isAnimated = false;
     }
+
     /// <summary>
-    /// Checks if Mario hits a block, launches animation, and kills enemies on top of said block.
+    /// Checks if Mario hits a block, launches animation, and kills enemies on top of the <see cref="Block"/> based on the list <see cref="_enemiesOnTop"/>
     /// </summary>
-    /// <param name="col"></param>
-    void OnCollisionEnter2D(Collision2D col)
+    /// <param name="coll">The GameObject collider that enter the collision with the <see cref="Block"/></param>
+    void OnCollisionEnter2D(Collision2D coll)
     {
-        if (col.gameObject.name == "BabyMario")
+        if (coll.gameObject.name == "BabyMario")
         {
-            if (col.GetContact(0).normal.y >= 0.5 && !_isAnimated) //if Mario hits from under and animation not already started
+            if (coll.GetContact(0).normal.y >= 0.5 && !_isAnimated) //if Mario hits from under and animation not already started
             {
                 foreach (GameObject enemy in _enemiesOnTop.ToArray())
                 {
@@ -35,19 +53,18 @@ public class Block : MonoBehaviour
             }
         }
 
-        if (col.gameObject.tag == "Enemy")
-            _enemiesOnTop.Add(col.gameObject);
+        if (coll.gameObject.tag == "Enemy")
+            _enemiesOnTop.Add(coll.gameObject);
     }
 
     /// <summary>
-    /// Animates the block and replaces it with the block it should spawn next
+    /// Animates the block and replaces it with <see cref="NextPrefab"/>, and spawn <see cref="ToSpawn"/>
     /// </summary>
-    /// <returns></returns>
     private IEnumerator BrickHit()
     {
         _isAnimated = true;
         if (ToSpawn)
-            Instantiate(ToSpawn, _posInit, Quaternion.identity);
+            Instantiate(ToSpawn, _posInit, Quaternion.identity, transform.parent);
 
         for (int i = 0; i < 32; i++)
         {
@@ -64,7 +81,7 @@ public class Block : MonoBehaviour
 
         if (NextPrefab)
         {
-            GameObject nextPrefab = Instantiate(NextPrefab, _posInit, Quaternion.identity);
+            GameObject nextPrefab = Instantiate(NextPrefab, _posInit, Quaternion.identity, transform.parent);
             nextPrefab.name = NextPrefab.name;
         }
 
@@ -73,9 +90,9 @@ public class Block : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if enemies exit the block to remove them from the list
+    /// Checks if enemies exit the block to remove them from the list <see cref="_enemiesOnTop"/>
     /// </summary>
-    /// <param name="other"></param>
+    /// <param name="other">The GameObject collider that exit the collision with the <see cref="Block"/></param>
 
     void OnCollisionExit2D(Collision2D other)
     {

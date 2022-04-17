@@ -1,54 +1,76 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// This class handle the behaviour of the pipe, with teleporation of <see cref="Mario"/> and <see cref="Plante"/> growing
+/// </summary>
 public class Pipe : MonoBehaviour
 {
-    //Mario teleporation Stuff
+
     [Header("Mario sinking")]
     [Tooltip("To create the animation of mario sinking into the pipe")]
-    public AnimationCurve MarioCurve;       //To create the animation of mario sinking into the pipe
+    /// <summary>
+    /// To create the animation of <see cref="Mario"/> sinking into the pipe
+    /// </summary>
+    public AnimationCurve MarioCurve;
+
     [Tooltip("The pipe of destinantion ; could be Null")]
-    public GameObject Destination;          //The destinantion pipe
+    /// <summary>
+    /// The destinantion pipe
+    /// </summary>
+    public GameObject Destination;
     private Vector2 _dest;                  //Field linked to the destination of the pipe when mario goes in
 
     //Plante stuff
     [Header("Plante stuff")]
     [Tooltip("To create the animation of the plante sinking into the pipe")]
-    public AnimationCurve PlanteCurve;      //To create the animation of the plante sinking into the pipe
-    [Tooltip("The plante GameObject that will be spawned ; could be Null")]
-    public GameObject Plante;               //The plante GameObject that will be spawned
-    private GameObject _newPlante;          // The plante associated to the pipe
-    private float _addy;                    //Random start pos
-    private float _randomAddTime;           //Random strat time
+    /// <summary>
+    /// To create the animation of the <see cref="Plante"/> sinking into the pipe
+    /// </summary>
+    public AnimationCurve PlanteCurve;
 
+    [Tooltip("The plante GameObject that will be spawned ; could be Null")]
+    /// <summary>
+    /// The <see cref="Plante"/> GameObject that will be spawned
+    /// </summary>
+    public GameObject PlanteGameObject;
+    private GameObject _newPlante;          // The plante associated to the pipe
 
     /// <summary>
-    /// We create the plante at start
+    /// Random start pos to avoid multiple same exact behaviour
     /// </summary>
+    private float _addy;
+
+    /// <summary>
+    /// Random start time to avoid multiple same exact behaviour
+    /// </summary>     
+    private float _randomAddTime;
+
+
     private void Start()
     {
         if (Destination)
             _dest = Destination.transform.parent.localPosition + Destination.transform.localPosition + new Vector3(0.5f, 1.015f, 0);
-        else if (Plante)
-            createPlante();
+        else if (PlanteGameObject)
+            CreatePlante();
     }
 
     /// <summary>
-    /// Function called at start to create the plante
+    /// Function called at start to create the <see cref="Plante"/>
     /// </summary>
-    public void createPlante()
+    public void CreatePlante()
     {
-        _newPlante = Instantiate(Plante, transform.localPosition + new Vector3(0, 0.5f) + transform.parent.position, Quaternion.identity, transform.parent);
+        _newPlante = Instantiate(PlanteGameObject, transform.localPosition + new Vector3(0, 0.5f) + transform.parent.position, Quaternion.identity, transform.parent);
         _addy = _newPlante.transform.localPosition.y - 0.5f;
         _randomAddTime = Random.Range(0f, 5f);
     }
 
     /// <summary>
-    /// Run on evry frame to move the plante according to its Curve
+    /// Run on evry frame to move the <see cref="Plante"/> according to <see cref="PlanteCurve"/>
     /// </summary>
     private void FixedUpdate()
     {
-        if (!Destination && Plante)
+        if (!Destination && PlanteGameObject)
         {
             double time = Time.realtimeSinceStartupAsDouble + _randomAddTime;
             float posPlante = PlanteCurve.Evaluate((float)time) * 2 + _addy;
@@ -58,23 +80,22 @@ public class Pipe : MonoBehaviour
     }
 
     /// <summary>
-    /// Handle the detection of mario crouching on top of a pipe
+    /// Handle the detection of <see cref="Mario"/> crouching on top of a pipe
     /// </summary>
-    /// <param name="coll"></param>
+    /// <param name="coll">Will be <see cref="Mario"/> most of the time</param>
     void OnCollisionStay2D(Collision2D coll)
     {
         GameObject mario = coll.gameObject;
         if (mario.name == "BabyMario" && coll.GetContact(0).normal == Vector2.down && Mathf.Abs(mario.transform.localPosition.x - 0.5f - gameObject.transform.parent.localPosition.x) < 0.4f)
             if (mario.GetComponent<Mario>().Crouch && Destination)
-                StartCoroutine("pipe", mario);
+                StartCoroutine("PipeTeleportation", mario);
     }
 
     /// <summary>
-    /// Move mario to the next pipe
+    /// Move mario to the next pipe with the animation based on <see cref="MarioCurve"/>
     /// </summary>
     /// <param name="mario"></param>
-    /// <returns></returns>
-    IEnumerator pipe(GameObject mario)
+    IEnumerator PipeTeleportation(GameObject mario)
     {
         Vector2 pos = mario.transform.localPosition;
 
