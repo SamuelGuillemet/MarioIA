@@ -26,7 +26,7 @@ public class Environment : MonoBehaviour
     private GameObject[] _objectsInTheScene;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         _environmentPrefab = Resources.Load("Levels/" + gameObject.name) as GameObject;
 
