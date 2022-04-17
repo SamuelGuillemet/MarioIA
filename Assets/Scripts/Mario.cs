@@ -11,7 +11,7 @@ public class Mario : MonoBehaviour
     /// <summary>
     /// The different state of input possible
     /// </summary>
-    enum input
+    enum InputState
     {
         arret,
         marche,
@@ -20,7 +20,7 @@ public class Mario : MonoBehaviour
     /// <summary>
     /// The current input based on the pressed keys
     /// </summary>
-    private input _currentInput;
+    private InputState _currentInput;
 
     /// <summary>
     /// The different state of velocity on the x axis possible
@@ -108,7 +108,7 @@ public class Mario : MonoBehaviour
         m_GroundCheck2 = transform.Find("groundCheck2");
 
         //Initialisation des variables
-        _currentInput = input.arret;
+        _currentInput = InputState.arret;
         _currentBodyDirection = BodyDirection.arret;
         _currentVelocityX = VelocityX.lowSpeed;
         _jumpVelocityX = VelocityX.lowSpeed;
@@ -160,7 +160,7 @@ public class Mario : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) //Marche
         {
-            _currentInput = input.marche;
+            _currentInput = InputState.marche;
             if (Input.GetKey(KeyCode.LeftArrow)) //Direction
                 _inputDirection = -1;
             else
@@ -169,12 +169,12 @@ public class Mario : MonoBehaviour
         }
         else
         {
-            _currentInput = input.arret;
+            _currentInput = InputState.arret;
             _inputDirection = 0;
         }
 
-        if (Input.GetKey(KeyCode.Space) && _currentInput == input.marche) //Run
-            _currentInput = input.course;
+        if (Input.GetKey(KeyCode.Space) && _currentInput == InputState.marche) //Run
+            _currentInput = InputState.course;
 
         if (Input.GetKey(KeyCode.UpArrow) && _grounded) //Jump
         {
@@ -218,7 +218,7 @@ public class Mario : MonoBehaviour
     {
         if (_absSpeedX > courseSpeed)
             _rb.velocity = new Vector2(courseSpeed * ((int)_currentBodyDirection), _rb.velocity.y);   //Vitesse de course max
-        if (_currentInput == input.marche && _absSpeedX > marcheSpeed)
+        if (_currentInput == InputState.marche && _absSpeedX > marcheSpeed)
             _rb.velocity = new Vector2(marcheSpeed * ((int)_currentBodyDirection), _rb.velocity.y);   //Vitesse de marche max
         if (_speedY < maxFallSpeed)
             _rb.velocity = new Vector2(_rb.velocity.x, maxFallSpeed + 0.4f);                          //Vitesse de chute max
@@ -252,7 +252,7 @@ public class Mario : MonoBehaviour
     {
         if (_grounded)
         {
-            if (_currentInput == input.arret)
+            if (_currentInput == InputState.arret)
             {
                 if (_absSpeedX > arretSpeed)
                 {
@@ -278,7 +278,7 @@ public class Mario : MonoBehaviour
         }
         else
         {
-            if (_currentInput == input.arret)
+            if (_currentInput == InputState.arret)
             {
                 return 0;
             }
@@ -322,7 +322,7 @@ public class Mario : MonoBehaviour
     /// <summary>
     /// The function that is called when <see cref="Mario"/> should bounce up the trampoline
     /// </summary>
-    IEnumerator bounceTrampoline()
+    IEnumerator BounceTrampoline()
     {
         yield return new WaitForSeconds(0.200f); //Time to end the animation/2
         _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[4]);
@@ -332,7 +332,7 @@ public class Mario : MonoBehaviour
     /// <summary>
     /// The function that is called when <see cref="Mario"/> hit an <see cref="Enemy"/>
     /// </summary>
-    public void bounceEnemy()
+    public void BounceEnemy()
     {
         _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[3]);
     }
@@ -340,7 +340,7 @@ public class Mario : MonoBehaviour
     /// <summary>
     /// The function that is called when <see cref="Mario"/> should die
     /// </summary>
-    public void marioDied()
+    public void MarioDied()
     {
         Debug.Log("Mario Died");
     }

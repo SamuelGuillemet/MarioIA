@@ -7,22 +7,22 @@ using UnityEngine;
 /// </summary>
 public class BillBullet : MonoBehaviour
 {
-    /// <summary>
-    /// Reference the <see cref="Bill"/> that launch the <see cref="BillBullet"/>
-    /// </summary>
     private Bill _bill;
+    /// <summary>
+    /// Reference the <see cref="Bill"/> that launched the <see cref="BillBullet"/>
+    /// </summary>
     public Bill SetBill { set => _bill = value; }
 
+    private int _index;
     /// <summary>
     /// Reference the index of spawn of the <see cref="BillBullet"/>
     /// </summary>
-    private int _index;
     public int Index { set => _index = value; }
 
+    private int _dir;
     /// <summary>
     /// Reference rhe direction of spawn of the <see cref="BillBullet"/>
     /// </summary>
-    private int _dir;
     public int Dir { set => _dir = value; }
 
     /// <summary>
@@ -46,12 +46,12 @@ public class BillBullet : MonoBehaviour
         {
             if (other.GetContact(0).point.y > transform.position.y)
             {
-                other.gameObject.GetComponent<Mario>().bounceEnemy();
+                other.gameObject.GetComponent<Mario>().BounceEnemy();
                 _bill.DeleteBillBullet(_index);
             }
             else
             {
-                other.gameObject.GetComponent<Mario>().marioDied();
+                other.gameObject.GetComponent<Mario>().MarioDied();
             }
         }
     }

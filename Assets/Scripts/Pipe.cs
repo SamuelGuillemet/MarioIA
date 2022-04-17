@@ -52,13 +52,13 @@ public class Pipe : MonoBehaviour
         if (Destination)
             _dest = Destination.transform.parent.localPosition + Destination.transform.localPosition + new Vector3(0.5f, 1.015f, 0);
         else if (PlanteGameObject)
-            createPlante();
+            CreatePlante();
     }
 
     /// <summary>
     /// Function called at start to create the <see cref="Plante"/>
     /// </summary>
-    public void createPlante()
+    public void CreatePlante()
     {
         _newPlante = Instantiate(PlanteGameObject, transform.localPosition + new Vector3(0, 0.5f) + transform.parent.position, Quaternion.identity, transform.parent);
         _addy = _newPlante.transform.localPosition.y - 0.5f;
@@ -95,7 +95,7 @@ public class Pipe : MonoBehaviour
     /// Move mario to the next pipe with the animation based on <see cref="MarioCurve"/>
     /// </summary>
     /// <param name="mario"></param>
-    IEnumerator pipe(GameObject mario)
+    IEnumerator PipeTeleportation(GameObject mario)
     {
         Vector2 pos = mario.transform.localPosition;
 

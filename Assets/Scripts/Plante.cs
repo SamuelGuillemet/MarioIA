@@ -15,7 +15,7 @@ public class Plante : MonoBehaviour
     {
         if (other.gameObject.name == "BabyMario")
         {
-            other.gameObject.GetComponent<Mario>().marioDied();
+            other.gameObject.GetComponent<Mario>().MarioDied();
         }
     }
 }

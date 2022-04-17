@@ -23,7 +23,7 @@ public class Koopa : Enemy
     {
         if (GetComponent<Rigidbody2D>().IsAwake())
         {
-            if (Fly && isGrounded())
+            if (Fly && IsGrounded())
                 StartCoroutine("Jump");
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
@@ -52,7 +52,7 @@ public class Koopa : Enemy
                     Stomped();
                     Shell = true;
                 }
-                other.gameObject.GetComponent<Mario>().bounceEnemy();
+                other.gameObject.GetComponent<Mario>().BounceEnemy();
             }
             else
             {
@@ -62,7 +62,7 @@ public class Koopa : Enemy
                     Dir = new Vector2(other.GetContact(0).normal.x, Dir.y);
                 }
                 else
-                    other.gameObject.GetComponent<Mario>().marioDied();
+                    other.gameObject.GetComponent<Mario>().MarioDied();
             }
         }
         else
@@ -83,7 +83,7 @@ public class Koopa : Enemy
     /// This function is called when the koopa paratroopa should jump to see if it is on the ground
     /// </summary>
     /// <returns>If the enemy is on the ground</returns>
-    private bool isGrounded()
+    private bool IsGrounded()
     {
         if (!GetComponent<Collider2D>().enabled)
             return false;

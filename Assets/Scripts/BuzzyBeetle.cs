@@ -35,7 +35,7 @@ public class BuzzyBeetle : Enemy
                     Stomped();
                     Shell = true;
                 }
-                other.gameObject.GetComponent<Mario>().bounceEnemy();
+                other.gameObject.GetComponent<Mario>().BounceEnemy();
             }
             else
             {
@@ -45,7 +45,7 @@ public class BuzzyBeetle : Enemy
                     Dir = new Vector2(other.GetContact(0).normal.x, Dir.y);
                 }
                 else
-                    other.gameObject.GetComponent<Mario>().marioDied();
+                    other.gameObject.GetComponent<Mario>().MarioDied();
 
             }
         }

@@ -25,7 +25,7 @@ public class HammerBros : Enemy
     /// <summary>
     /// The prefab that will be thrown by <see cref="HammerBros"/>
     /// </summary>
-    public GameObject hammer;
+    public GameObject Hammer;
 
     /// <summary>
     /// All hammers in the scene are refernced in this list, maximu is 4 at the same time in the scene
@@ -69,7 +69,7 @@ public class HammerBros : Enemy
                 item.transform.eulerAngles = Vector3.forward * ((item.transform.eulerAngles.z + 15) % 360);
                 if (item.GetComponent<Collider2D>().IsTouching(MarioTransform.gameObject.GetComponent<BoxCollider2D>()))
                 {
-                    MarioTransform.gameObject.GetComponent<Mario>().marioDied();
+                    MarioTransform.gameObject.GetComponent<Mario>().MarioDied();
                 }
             }
         }
@@ -103,7 +103,7 @@ public class HammerBros : Enemy
         yield return new WaitForSeconds(0.25f);
         if (_hammersInTheScene[_indexOfNextSpawn] != null)
             Destroy(_hammersInTheScene[_indexOfNextSpawn]);
-        _hammersInTheScene[_indexOfNextSpawn] = Instantiate(hammer, transform.position + Vector3.up, Quaternion.identity, transform.parent);
+        _hammersInTheScene[_indexOfNextSpawn] = Instantiate(Hammer, transform.position + Vector3.up, Quaternion.identity, transform.parent);
         _hammersInTheScene[_indexOfNextSpawn].GetComponent<Rigidbody2D>().velocity = new Vector2(3.5f * _dir, 8);
         _indexOfNextSpawn = (_indexOfNextSpawn + 1) % 4;
         _isThrowingHammer = false;
@@ -133,12 +133,12 @@ public class HammerBros : Enemy
         {
             if (other.GetContact(0).point.y + 1 > transform.position.y)
             {
-                other.gameObject.GetComponent<Mario>().bounceEnemy();
+                other.gameObject.GetComponent<Mario>().BounceEnemy();
                 FlipAndDie();
             }
             else
             {
-                other.gameObject.GetComponent<Mario>().marioDied();
+                other.gameObject.GetComponent<Mario>().MarioDied();
             }
         }
     }

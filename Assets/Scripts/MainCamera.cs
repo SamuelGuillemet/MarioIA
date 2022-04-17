@@ -11,16 +11,16 @@ public class MainCamera : MonoBehaviour
     [SerializeField] private Transform _playerTransform;
 
     /// <summary>
-    /// The target ascpect of the camera view on the screen
+    /// The target aspect of the camera view on the screen
     /// </summary>
-    public Vector2 targetAspects = new Vector2(16f, 15f);
+    public Vector2 TargetAspects = new Vector2(16f, 15f);
     private float _yPos;
 
     // Start is called before the first frame update
     void Start()
     {
         _yPos = _playerTransform.localPosition.y + 5;
-        float targetaspect = targetAspects.x / targetAspects.y;
+        float targetaspect = TargetAspects.x / TargetAspects.y;
         float windowaspect = (float)Screen.width / (float)Screen.height;
         float scaleheight = windowaspect / targetaspect;
 

@@ -30,10 +30,10 @@ public class Goomba : Enemy
             {
                 Stomped();
                 Dead = true;
-                other.gameObject.GetComponent<Mario>().bounceEnemy();
+                other.gameObject.GetComponent<Mario>().BounceEnemy();
             }
             else
-                other.gameObject.GetComponent<Mario>().marioDied();
+                other.gameObject.GetComponent<Mario>().MarioDied();
         }
         else
             CollisionHandler(other);
