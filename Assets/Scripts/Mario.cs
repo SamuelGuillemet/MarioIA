@@ -98,6 +98,9 @@ public class Mario : MonoBehaviour
     private Text _infoDebug;
     private bool _onTrampoline = false;
 
+    private Environment _currentEnvironment;
+    public Environment CurrentEnvironment { set => _currentEnvironment = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -316,6 +319,8 @@ public class Mario : MonoBehaviour
         if (other.gameObject.tag == "Flag")
         {
             Debug.Log("Flag touch");
+            if (_currentEnvironment)
+                _currentEnvironment.Reset();
         }
     }
 
@@ -343,6 +348,8 @@ public class Mario : MonoBehaviour
     public void MarioDied()
     {
         Debug.Log("Mario Died");
+        if (_currentEnvironment)
+            _currentEnvironment.Reset();
     }
 }
 
