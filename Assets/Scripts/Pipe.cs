@@ -86,7 +86,7 @@ public class Pipe : MonoBehaviour
     void OnCollisionStay2D(Collision2D coll)
     {
         GameObject mario = coll.gameObject;
-        if (mario.name == "BabyMario" && coll.GetContact(0).normal == Vector2.down && Mathf.Abs(mario.transform.localPosition.x - 0.5f - gameObject.transform.parent.localPosition.x) < 0.4f)
+        if (mario.tag == "Player" && coll.GetContact(0).normal == Vector2.down && Mathf.Abs(mario.transform.localPosition.x - 0.5f - gameObject.transform.parent.localPosition.x) < 0.4f)
             if (mario.GetComponent<Mario>().Crouch && Destination)
                 StartCoroutine("PipeTeleportation", mario);
     }

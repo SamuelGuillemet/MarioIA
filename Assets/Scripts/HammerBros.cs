@@ -131,7 +131,7 @@ public class HammerBros : Enemy
     /// <param name="other"><see cref="Mario"/> most of the time</param>
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "BabyMario")
+        if (other.gameObject.tag == "Player")
         {
             if (other.GetContact(0).point.y + 1 > transform.position.y)
             {

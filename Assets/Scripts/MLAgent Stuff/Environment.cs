@@ -20,6 +20,10 @@ public class Environment : MonoBehaviour
     /// </summary>
     public MainCamera Camera { get => _camera; set => _camera = value; }
 
+    private MLAgent _marioAgent;
+    public MLAgent MarioAgent { get => _marioAgent; set => _marioAgent = value; }
+
+
     private GameObject _environmentPrefab;
     private string[] _names = { "Questionmarks", "Bricks", "Enemies", "Conduits", "Coins" };
     private List<GameObject> _objectsToInstantiate;
@@ -56,10 +60,17 @@ public class Environment : MonoBehaviour
     {
         MarioPlayer = GetComponentInChildren<Mario>();
         Camera = GetComponentInChildren<MainCamera>();
+        MarioAgent = GetComponentInChildren<MLAgent>();
 
         Camera.PlayerTransform = MarioPlayer.transform;
         _marioInitPosition = MarioPlayer.transform.localPosition;
         MarioPlayer.CurrentEnvironment = this;
+        if (MarioAgent)
+        {
+            MarioPlayer.MarioAgent = MarioAgent;
+            MarioAgent.CurrentEnvironment = this;
+            MarioAgent.CurrentMario = MarioPlayer;
+        }
 
         foreach (Enemy enemy in GetComponentsInChildren<Enemy>())
         {

@@ -99,7 +99,16 @@ public class Mario : MonoBehaviour
     private bool _onTrampoline = false;
 
     private Environment _currentEnvironment;
+    /// <summary>
+    /// Used to get the <see cref="Environment.Reset"/> function
+    /// </summary>
     public Environment CurrentEnvironment { set => _currentEnvironment = value; }
+
+    private MLAgent _marioAgent;
+    /// <summary>
+    /// This is used to control if we should called <see cref="MoveMario()"/> when the <see cref="MLAgent"/> is used
+    /// </summary>
+    public MLAgent MarioAgent { set => _marioAgent = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -134,7 +143,8 @@ public class Mario : MonoBehaviour
         _grounded = Physics2D.OverlapPoint(m_GroundCheck1.position, LayerMask.GetMask("Blocks")) || Physics2D.OverlapPoint(m_GroundCheck2.position, LayerMask.GetMask("Blocks"));
 
         SetConstant();
-        MoveMario();
+        if (_marioAgent == null)
+            MoveMario();
 
         _gravity = AdjustGravity() / 9.81f;
         _rb.gravityScale = _gravity;
@@ -152,6 +162,8 @@ public class Mario : MonoBehaviour
         if (_debug)
             _infoDebug.text = "acceleration = " + _acceleration + "\nspeedX = " + _rb.velocity.x + "\nspeedY = " + _speedY + "\ngravity = " + _gravity + "\njump = " + _jump + "\ngrounded = " + _grounded + "\naddVitesse = " + _acceleration * Time.deltaTime;
 
+        if (transform.localPosition.y < -1)
+            MarioDied();
     }
 
     /// <summary>
@@ -350,6 +362,38 @@ public class Mario : MonoBehaviour
         Debug.Log("Mario Died");
         if (_currentEnvironment)
             _currentEnvironment.Reset();
+    }
+
+    /// <summary>
+    /// This function is called when the behaviour is driven by the ML Agent
+    /// </summary>
+    /// <param name="dir"></param>
+    /// <param name="run"></param>
+    /// <param name="jump"></param>
+    public void MLMoveMario(int dir, int run, int jump)
+    {
+        this._jump = (jump == 1) && _speedY >= 0;
+
+        if (dir != 0)
+        {
+            _currentInput = InputState.marche;
+            _inputDirection = dir;
+            transform.localScale = new Vector2(Mathf.Sign(_inputDirection), transform.localScale.y);
+        }
+        else
+        {
+            _currentInput = InputState.arret;
+            _inputDirection = 0;
+        }
+
+        if (run == 1 && _currentInput == InputState.marche) //Course
+            _currentInput = InputState.course;
+
+        if (jump == 1 && _grounded)
+        {
+            _jumpVelocityX = _currentVelocityX;
+            _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[((int)_currentVelocityX)]);
+        }
     }
 }
 

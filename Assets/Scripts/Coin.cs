@@ -13,7 +13,7 @@ public class Coin : MonoBehaviour
     /// <param name="other">Basically <see cref="Mario"/></param>
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "BabyMario")
+        if (other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
         }

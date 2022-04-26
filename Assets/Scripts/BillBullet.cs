@@ -42,7 +42,7 @@ public class BillBullet : MonoBehaviour
     /// <param name="other">The GameObject collider that collide with the <see cref="BillBullet"/></param>
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "BabyMario")
+        if (other.gameObject.tag == "Player")
         {
             if (other.GetContact(0).point.y > transform.position.y)
             {

@@ -41,7 +41,7 @@ public class Block : MonoBehaviour
     /// <param name="coll">The GameObject collider that enter the collision with the <see cref="Block"/></param>
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.name == "BabyMario")
+        if (coll.gameObject.tag == "Player")
         {
             if (coll.GetContact(0).normal.y >= 0.5 && !_isAnimated) //if Mario hits from under and animation not already started
             {
