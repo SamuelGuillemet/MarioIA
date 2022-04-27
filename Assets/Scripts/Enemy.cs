@@ -51,9 +51,9 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
         if (_mainCameraTransform.localPosition.x + 15 > transform.parent.localPosition.x + transform.localPosition.x)
-            GetComponent<Rigidbody2D>().WakeUp();
+            GetComponentInParent<Rigidbody2D>().WakeUp();
         else if (!_shell)
-            GetComponent<Rigidbody2D>().Sleep();
+            GetComponentInParent<Rigidbody2D>().Sleep();
     }
 
     /// <summary>
@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
     /// <param name="coll"></param>
     public void CollisionHandler(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Destination" && coll.GetContact(0).normal.y < 0.1f)
+        if (coll.gameObject.tag == "Destination" && coll.GetContact(0).normal.y < 0.25f)
         {
             transform.localScale = new Vector2(-1 * transform.localScale.x, transform.localScale.y);
             Dir = new Vector2(-1 * Dir.x, Dir.y);
