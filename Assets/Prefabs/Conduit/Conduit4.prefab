@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 387338744434720749}
   m_Layer: 8
   m_Name: Conduit4
-  m_TagString: Untagged
+  m_TagString: Destination
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
