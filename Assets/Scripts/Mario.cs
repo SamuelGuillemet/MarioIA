@@ -34,6 +34,7 @@ public class Mario : MonoBehaviour
     /// <summary>
     /// The current x velocity of <see cref="Mario"/>
     /// </summary>
+    public VelocityX CurrentVelocityX { get => _currentVelocityX; }
     private VelocityX _currentVelocityX;
 
     /// <summary>
@@ -331,7 +332,9 @@ public class Mario : MonoBehaviour
         if (other.gameObject.tag == "Flag")
         {
             Debug.Log("Flag touch");
-            if (_currentEnvironment)
+            if (_marioAgent)
+                _marioAgent.FlagTouch(transform.localPosition.y);
+            else if (_currentEnvironment)
                 _currentEnvironment.Reset();
         }
     }
@@ -352,6 +355,8 @@ public class Mario : MonoBehaviour
     public void BounceEnemy()
     {
         _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[3]);
+        if (_marioAgent)
+            _marioAgent.GetReward(0.5f);
     }
 
     /// <summary>
@@ -360,7 +365,9 @@ public class Mario : MonoBehaviour
     public void MarioDied()
     {
         Debug.Log("Mario Died");
-        if (_currentEnvironment)
+        if (_marioAgent)
+            _marioAgent.CustomDeath();
+        else if (_currentEnvironment)
             _currentEnvironment.Reset();
     }
 

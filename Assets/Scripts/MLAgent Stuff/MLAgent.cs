@@ -12,7 +12,7 @@ using System.IO;
 /// </summary>
 public class MLAgent : Agent
 {
-
+    private Text _rewardText;
     private Environment _currentEnvironment;
     /// <summary>
     /// The current environment of the agent to use <see cref="Environment.Reset"/>
@@ -30,6 +30,18 @@ public class MLAgent : Agent
         CurrentEnvironment.Reset();
     }
 
+
+    private void Start()
+    {
+        _rewardText = GameObject.Find("Reward").GetComponent<Text>();
+    }
+
+
+    public override void CollectObservations(VectorSensor sensor)
+    {
+        sensor.AddObservation(1f);
+    }
+
     /// <summary>
     /// Use the <see cref="Mario.MLMoveMario"/> function to control <see cref="Mario"/> based on <paramref name="actions"/>
     /// </summary>
@@ -45,6 +57,15 @@ public class MLAgent : Agent
         int jump = actions.DiscreteActions[2]; //jump
 
         CurrentMario.MLMoveMario(dir, run, jump);
+
+        AddReward(-0.0025f);
+        if (GetComponent<Rigidbody2D>().velocity.x > 0)
+        {
+            if (_currentMario.CurrentVelocityX == Mario.VelocityX.course)
+                AddReward(0.002f);
+            else
+                AddReward(0.0015f);
+        }
     }
 
     /// <summary>
@@ -73,5 +94,35 @@ public class MLAgent : Agent
             discreteAction[2] = 1;
         else
             discreteAction[2] = 0;
+    }
+
+    private void FixedUpdate()
+    {
+        _rewardText.text = GetCumulativeReward().ToString();
+    }
+
+    public void CustomDeath()
+    {
+        AddReward(-10f);
+        CustomEndEpisode();
+        _currentEnvironment.Reset();
+    }
+
+    public void GetReward(float amount)
+    {
+        AddReward(amount);
+    }
+
+    public void FlagTouch(float position)
+    {
+        AddReward(5f + position);
+        CustomEndEpisode();
+    }
+
+    private void CustomEndEpisode()
+    {
+        var statsRecorder = Academy.Instance.StatsRecorder;
+        statsRecorder.Add("Mario/" + _currentEnvironment.name + "/Distance_reached", transform.position.x, StatAggregationMethod.Histogram);
+        EndEpisode();
     }
 }

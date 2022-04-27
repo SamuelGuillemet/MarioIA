@@ -25,7 +25,7 @@ public class Environment : MonoBehaviour
 
 
     private GameObject _environmentPrefab;
-    private string[] _names = { "Questionmarks", "Bricks", "Enemies", "Conduits", "Coins" };
+    private string[] _names = { "Questionmarks", "Enemies", "Coins" };
     private List<GameObject> _objectsToInstantiate;
     private GameObject[] _objectsInTheScene;
 
@@ -35,10 +35,9 @@ public class Environment : MonoBehaviour
         _environmentPrefab = Resources.Load("Levels/" + gameObject.name) as GameObject;
 
         InitVariables();
-
+        _objectsToInstantiate = new List<GameObject>();
         if (_environmentPrefab)
         {
-            _objectsToInstantiate = new List<GameObject>();
             foreach (string name in _names)
             {
                 if (_environmentPrefab.transform.Find(name) != null)
@@ -62,9 +61,12 @@ public class Environment : MonoBehaviour
         Camera = GetComponentInChildren<MainCamera>();
         MarioAgent = GetComponentInChildren<MLAgent>();
 
-        Camera.PlayerTransform = MarioPlayer.transform;
         _marioInitPosition = MarioPlayer.transform.localPosition;
         MarioPlayer.CurrentEnvironment = this;
+
+        if (Camera)
+            Camera.PlayerTransform = MarioPlayer.transform;
+
         if (MarioAgent)
         {
             MarioPlayer.MarioAgent = MarioAgent;

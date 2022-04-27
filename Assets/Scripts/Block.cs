@@ -64,7 +64,12 @@ public class Block : MonoBehaviour
     {
         _isAnimated = true;
         if (ToSpawn)
+        {
             Instantiate(ToSpawn, _posInit, Quaternion.identity, transform.parent);
+            var agent = GetComponentInParent<Environment>().MarioAgent;
+            if (agent != null)
+                agent.GetReward(0.5f);
+        }
 
         for (int i = 0; i < 32; i++)
         {

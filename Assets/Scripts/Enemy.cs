@@ -111,6 +111,10 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void FlipAndDie()
     {
+        var agent = GetComponentInParent<Environment>().MarioAgent;
+        if (agent != null)
+            agent.GetReward(0.5f);
+
         _dead = true;
         GetComponentInChildren<Collider2D>().enabled = false;
         Dir = Vector2.zero;

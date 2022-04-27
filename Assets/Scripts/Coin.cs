@@ -16,6 +16,8 @@ public class Coin : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
+            if (other.TryGetComponent<MLAgent>(out MLAgent _marioAgent))
+                _marioAgent.GetReward(0.5f);
         }
     }
 }
