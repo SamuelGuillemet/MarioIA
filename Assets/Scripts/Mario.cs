@@ -152,6 +152,8 @@ public class Mario : MonoBehaviour
         if (_debug)
             _infoDebug.text = "acceleration = " + _acceleration + "\nspeedX = " + _rb.velocity.x + "\nspeedY = " + _speedY + "\ngravity = " + _gravity + "\njump = " + _jump + "\ngrounded = " + _grounded + "\naddVitesse = " + _acceleration * Time.deltaTime;
 
+        if (transform.localPosition.y < -1)
+            MarioDied();
     }
 
     /// <summary>
@@ -352,5 +354,3 @@ public class Mario : MonoBehaviour
             _currentEnvironment.Reset();
     }
 }
-
-

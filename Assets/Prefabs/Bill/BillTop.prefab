@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletBill: {fileID: 2265915140690314589, guid: 2cd8f37361deda747b2d95f4e42efd39, type: 3}
-  behaviour:
+  Behaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -136,23 +136,14 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.75
-      value: 0.85
-      inSlope: 0.94956994
-      outSlope: 7.089991
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.40928593
-    - serializedVersion: 3
-      time: 0.8
+      time: 1
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0
+      outWeight: 0.40928593
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4

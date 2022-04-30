@@ -165,7 +165,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: ThrowHammer
+    attribute: ShouldThrowHammer
     path: 
     classID: 114
     script: {fileID: 11500000, guid: c415611d850c76545b4e6d85e2eff42b, type: 3}
@@ -398,7 +398,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: ThrowHammer
+    attribute: ShouldThrowHammer
     path: 
     classID: 114
     script: {fileID: 11500000, guid: c415611d850c76545b4e6d85e2eff42b, type: 3}

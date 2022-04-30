@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 387338744434720749}
   m_Layer: 8
   m_Name: Conduit4
-  m_TagString: Untagged
+  m_TagString: Destination
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -269,6 +269,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 28441456681731327, guid: b68eef070698dd34b8be06cf44244156, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2676953504717631543, guid: b68eef070698dd34b8be06cf44244156, type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2676953504717631543, guid: b68eef070698dd34b8be06cf44244156, type: 3}
+      propertyPath: m_MaskInteraction
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6186630144572441190, guid: b68eef070698dd34b8be06cf44244156, type: 3}

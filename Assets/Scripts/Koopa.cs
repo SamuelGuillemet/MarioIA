@@ -19,7 +19,7 @@ public class Koopa : Enemy
         Animator.SetBool("Walk", Fly);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (GetComponent<Rigidbody2D>().IsAwake())
         {

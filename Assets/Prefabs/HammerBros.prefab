@@ -187,9 +187,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2
   Dir: {x: -1, y: 0}
-  ShouldJump: 0
   CountJump: 0
-  Jumping: 0
-  hammer: {fileID: 4068145394121120226, guid: fe6d58405ae89c84687fce7384af6b48, type: 3}
-  ThrowHammer: 0
-  MarioTransform: {fileID: 0}
+  Hammer: {fileID: 4068145394121120226, guid: fe6d58405ae89c84687fce7384af6b48, type: 3}
