@@ -21,7 +21,7 @@ public class Environment : MonoBehaviour
     public MainCamera Camera { get => _camera; set => _camera = value; }
 
     private GameObject _environmentPrefab;
-    private string[] _names = { "Questionmarks", "Bricks", "Enemies", "Conduits", "Coins" };
+    private string[] _names = { "Questionmarks", "Enemies", "Coins" };
     private List<GameObject> _objectsToInstantiate;
     private GameObject[] _objectsInTheScene;
 
@@ -84,6 +84,7 @@ public class Environment : MonoBehaviour
             _objectsInTheScene[i].name = _objectsToInstantiate.ToArray()[i].name;
         }
         MarioPlayer.transform.localPosition = _marioInitPosition;
+        MarioPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         InitVariables();
     }
 }

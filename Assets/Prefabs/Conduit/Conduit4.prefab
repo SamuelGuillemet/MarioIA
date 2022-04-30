@@ -271,6 +271,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2676953504717631543, guid: b68eef070698dd34b8be06cf44244156, type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2676953504717631543, guid: b68eef070698dd34b8be06cf44244156, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6186630144572441190, guid: b68eef070698dd34b8be06cf44244156, type: 3}
       propertyPath: m_Name
       value: Pipe_1

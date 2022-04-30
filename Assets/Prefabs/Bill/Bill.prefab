@@ -39,50 +39,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7012389832291737427}
     m_Modifications:
-    - target: {fileID: -181219580560786283, guid: 0c81ece9142c93745afd0bb5e5e8cb42, type: 3}
-      propertyPath: Behaviour.m_PreInfinity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -181219580560786283, guid: 0c81ece9142c93745afd0bb5e5e8cb42, type: 3}
-      propertyPath: Behaviour.m_PostInfinity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -181219580560786283, guid: 0c81ece9142c93745afd0bb5e5e8cb42, type: 3}
-      propertyPath: Behaviour.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -181219580560786283, guid: 0c81ece9142c93745afd0bb5e5e8cb42, type: 3}
-      propertyPath: Behaviour.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -181219580560786283, guid: 0c81ece9142c93745afd0bb5e5e8cb42, type: 3}
-      propertyPath: Behaviour.m_Curve.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -181219580560786283, guid: 0c81ece9142c93745afd0bb5e5e8cb42, type: 3}
-      propertyPath: Behaviour.m_Curve.Array.data[0].inSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -181219580560786283, guid: 0c81ece9142c93745afd0bb5e5e8cb42, type: 3}
-      propertyPath: Behaviour.m_Curve.Array.data[1].inSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -181219580560786283, guid: 0c81ece9142c93745afd0bb5e5e8cb42, type: 3}
-      propertyPath: Behaviour.m_Curve.Array.data[0].outSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -181219580560786283, guid: 0c81ece9142c93745afd0bb5e5e8cb42, type: 3}
-      propertyPath: Behaviour.m_Curve.Array.data[1].outSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -181219580560786283, guid: 0c81ece9142c93745afd0bb5e5e8cb42, type: 3}
-      propertyPath: Behaviour.m_Curve.Array.data[0].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -181219580560786283, guid: 0c81ece9142c93745afd0bb5e5e8cb42, type: 3}
-      propertyPath: Behaviour.m_Curve.Array.data[1].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 353536893885248754, guid: 0c81ece9142c93745afd0bb5e5e8cb42, type: 3}
       propertyPath: m_RootOrder
       value: 1

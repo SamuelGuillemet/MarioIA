@@ -354,5 +354,3 @@ public class Mario : MonoBehaviour
             _currentEnvironment.Reset();
     }
 }
-
-
