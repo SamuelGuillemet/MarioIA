@@ -18,8 +18,6 @@ var searchData=
   ['_5flaunch_15',['_launch',['../classBill.html#a4e222ea8ed313b5215597d95a2eb378a',1,'Bill']]],
   ['_5frandomaddtime_16',['_randomAddTime',['../classPipe.html#abffeb6ffefb05ae86103973c5cab6667',1,'Pipe']]],
   ['_5fshell_17',['_shell',['../classEnemy.html#a3e816e21c2c5eed9632a37570c108793',1,'Enemy']]],
-  ['_5fshouldjump_18',['_shouldJump',['../classHammerBros.html#a7a7849ceca469fb865b9f28cb3eaac4b',1,'HammerBros']]],
-  ['_5fshouldthrowhammer_19',['_shouldThrowHammer',['../classHammerBros.html#ac74ee41bdf79b6f043bc160c0c6e07fb',1,'HammerBros']]],
-  ['_5fspeed_20',['_speed',['../classBillBullet.html#a6da41acd4778a9c30c41d072e2cf9b1b',1,'BillBullet']]],
-  ['_5ftemp_21',['_temp',['../classBill.html#af86cbb1787fb01cbe243e407369e7ab3',1,'Bill']]]
+  ['_5fspeed_18',['_speed',['../classBillBullet.html#a6da41acd4778a9c30c41d072e2cf9b1b',1,'BillBullet']]],
+  ['_5ftemp_19',['_temp',['../classBill.html#af86cbb1787fb01cbe243e407369e7ab3',1,'Bill']]]
 ];

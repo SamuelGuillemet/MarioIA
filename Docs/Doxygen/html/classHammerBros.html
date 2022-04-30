@@ -108,6 +108,10 @@ Inheritance diagram for HammerBros:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a137adcce5a1807adfc0fd870aa0af241"><td class="memItemLeft" align="right" valign="top"><a id="a137adcce5a1807adfc0fd870aa0af241" name="a137adcce5a1807adfc0fd870aa0af241"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ShouldJump</b> = false</td></tr>
+<tr class="memdesc:a137adcce5a1807adfc0fd870aa0af241"><td class="mdescLeft">&#160;</td><td class="mdescRight">This boolean is controlled by the animation and said if <a class="el" href="classHammerBros.html" title="This class describe the behaviour of the Enemy HammerBros">HammerBros</a> should jump <br /></td></tr>
+<tr class="separator:a137adcce5a1807adfc0fd870aa0af241"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a444523162ddcca3c726fc17559365df3"><td class="memItemLeft" align="right" valign="top"><a id="a444523162ddcca3c726fc17559365df3" name="a444523162ddcca3c726fc17559365df3"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>CountJump</b> = 0</td></tr>
 <tr class="memdesc:a444523162ddcca3c726fc17559365df3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Between 0 and 3 included and describe the cycle of the <a class="el" href="classHammerBros.html" title="This class describe the behaviour of the Enemy HammerBros">HammerBros</a> and where he is on the plateform <br /></td></tr>
@@ -116,6 +120,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>CountJump</b> = 0</td>
 GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>Hammer</b></td></tr>
 <tr class="memdesc:a94eaff47ae0244bdbd606606ebe75698"><td class="mdescLeft">&#160;</td><td class="mdescRight">The prefab that will be thrown by <a class="el" href="classHammerBros.html" title="This class describe the behaviour of the Enemy HammerBros">HammerBros</a> <br /></td></tr>
 <tr class="separator:a94eaff47ae0244bdbd606606ebe75698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f9550841a632c292b3ca06909c9feac"><td class="memItemLeft" align="right" valign="top"><a id="a4f9550841a632c292b3ca06909c9feac" name="a4f9550841a632c292b3ca06909c9feac"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ShouldThrowHammer</b> = false</td></tr>
+<tr class="memdesc:a4f9550841a632c292b3ca06909c9feac"><td class="mdescLeft">&#160;</td><td class="mdescRight">This boolean is controlled by the animation and said if <a class="el" href="classHammerBros.html" title="This class describe the behaviour of the Enemy HammerBros">HammerBros</a> should throw hammer <br /></td></tr>
+<tr class="separator:a4f9550841a632c292b3ca06909c9feac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classEnemy"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classEnemy')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classEnemy.html">Enemy</a></td></tr>
 <tr class="memitem:a61efabcca15cccefe7d85ea6da6af5e3 inherit pub_attribs_classEnemy"><td class="memItemLeft" align="right" valign="top"><a id="a61efabcca15cccefe7d85ea6da6af5e3" name="a61efabcca15cccefe7d85ea6da6af5e3"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>Speed</b> = 2f</td></tr>
@@ -160,10 +168,6 @@ IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>Jump</b> ()</t
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a7a7849ceca469fb865b9f28cb3eaac4b"><td class="memItemLeft" align="right" valign="top"><a id="a7a7849ceca469fb865b9f28cb3eaac4b" name="a7a7849ceca469fb865b9f28cb3eaac4b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_shouldJump</b> = false</td></tr>
-<tr class="memdesc:a7a7849ceca469fb865b9f28cb3eaac4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This boolean is controlled by the animation and said if <a class="el" href="classHammerBros.html" title="This class describe the behaviour of the Enemy HammerBros">HammerBros</a> should jump <br /></td></tr>
-<tr class="separator:a7a7849ceca469fb865b9f28cb3eaac4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d161b5edf7c28bd8bccb2c941f81c72"><td class="memItemLeft" align="right" valign="top"><a id="a5d161b5edf7c28bd8bccb2c941f81c72" name="a5d161b5edf7c28bd8bccb2c941f81c72"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>_isJumping</b> = false</td></tr>
 <tr class="memdesc:a5d161b5edf7c28bd8bccb2c941f81c72"><td class="mdescLeft">&#160;</td><td class="mdescRight">This boolean prevent from multiple jumps <br /></td></tr>
@@ -172,10 +176,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_isJumping</b> = fals
 GameObject[]&#160;</td><td class="memItemRight" valign="bottom"><b>_hammersInTheScene</b></td></tr>
 <tr class="memdesc:a0f152facca3482a416e81d2356ab7981"><td class="mdescLeft">&#160;</td><td class="mdescRight">All hammers in the scene are refernced in this list, maximu is 4 at the same time in the scene <br /></td></tr>
 <tr class="separator:a0f152facca3482a416e81d2356ab7981"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac74ee41bdf79b6f043bc160c0c6e07fb"><td class="memItemLeft" align="right" valign="top"><a id="ac74ee41bdf79b6f043bc160c0c6e07fb" name="ac74ee41bdf79b6f043bc160c0c6e07fb"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_shouldThrowHammer</b> = false</td></tr>
-<tr class="memdesc:ac74ee41bdf79b6f043bc160c0c6e07fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This boolean is controlled by the animation and said if <a class="el" href="classHammerBros.html" title="This class describe the behaviour of the Enemy HammerBros">HammerBros</a> should throw hammer <br /></td></tr>
-<tr class="separator:ac74ee41bdf79b6f043bc160c0c6e07fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a535f5185633be1c601bf5321ee17377f"><td class="memItemLeft" align="right" valign="top"><a id="a535f5185633be1c601bf5321ee17377f" name="a535f5185633be1c601bf5321ee17377f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>_isThrowingHammer</b> = false</td></tr>
 <tr class="memdesc:a535f5185633be1c601bf5321ee17377f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This boolean prevent from multiple throw <br /></td></tr>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['update_0',['Update',['../classEnemy.html#aec0783b5a136e042adcc47bae4fe5291',1,'Enemy']]]
+  ['velocityx_0',['VelocityX',['../classMario.html#ad9b599fe39cd121cf91805f31466dbf6',1,'Mario']]]
 ];

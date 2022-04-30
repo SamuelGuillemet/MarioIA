@@ -9,9 +9,9 @@ var classHammerBros =
     [ "_hammersInTheScene", "classHammerBros.html#a0f152facca3482a416e81d2356ab7981", null ],
     [ "_isJumping", "classHammerBros.html#a5d161b5edf7c28bd8bccb2c941f81c72", null ],
     [ "_isThrowingHammer", "classHammerBros.html#a535f5185633be1c601bf5321ee17377f", null ],
-    [ "_shouldJump", "classHammerBros.html#a7a7849ceca469fb865b9f28cb3eaac4b", null ],
-    [ "_shouldThrowHammer", "classHammerBros.html#ac74ee41bdf79b6f043bc160c0c6e07fb", null ],
     [ "CountJump", "classHammerBros.html#a444523162ddcca3c726fc17559365df3", null ],
     [ "Hammer", "classHammerBros.html#a94eaff47ae0244bdbd606606ebe75698", null ],
+    [ "ShouldJump", "classHammerBros.html#a137adcce5a1807adfc0fd870aa0af241", null ],
+    [ "ShouldThrowHammer", "classHammerBros.html#a4f9550841a632c292b3ca06909c9feac", null ],
     [ "MarioTransform", "classHammerBros.html#adeb6d395a3854ea01c90f65c0edfe56e", null ]
 ];
