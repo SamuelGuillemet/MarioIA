@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.MLAgents.Sensors;
 
 /// <summary>
 /// This script is at the root of every level, and it handles the global working of the game, like death of <see cref="Mario"/> or the different assignation of variables
@@ -19,10 +19,11 @@ public class Environment : MonoBehaviour
     /// Reference the Camera of the level
     /// </summary>
     public MainCamera Camera { get => _camera; set => _camera = value; }
+    private CameraSensorComponent _sensor;
+    public CameraSensorComponent Sensor { get => _sensor; set => _sensor = value; }
 
     private MLAgent _marioAgent;
     public MLAgent MarioAgent { get => _marioAgent; set => _marioAgent = value; }
-
 
     private GameObject _environmentPrefab;
     private string[] _names = { "Questionmarks", "Enemies", "Coins" };
@@ -60,13 +61,16 @@ public class Environment : MonoBehaviour
         MarioPlayer = GetComponentInChildren<Mario>();
         Camera = GetComponentInChildren<MainCamera>();
         MarioAgent = GetComponentInChildren<MLAgent>();
+        Sensor = GetComponentInChildren<CameraSensorComponent>();
 
         _marioInitPosition = MarioPlayer.transform.localPosition;
         MarioPlayer.CurrentEnvironment = this;
 
         if (Camera)
+        {
             Camera.PlayerTransform = MarioPlayer.transform;
-
+            Sensor.Camera = Camera.GetComponent<Camera>();
+        }
         if (MarioAgent)
         {
             MarioPlayer.MarioAgent = MarioAgent;
