@@ -36,12 +36,6 @@ public class MLAgent : Agent
         _rewardText = GameObject.Find("Reward").GetComponent<Text>();
     }
 
-
-    public override void CollectObservations(VectorSensor sensor)
-    {
-        sensor.AddObservation(1f);
-    }
-
     /// <summary>
     /// Use the <see cref="Mario.MLMoveMario"/> function to control <see cref="Mario"/> based on <paramref name="actions"/>
     /// </summary>

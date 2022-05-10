@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8171591890243910421}
   - component: {fileID: 1492300397278617100}
   - component: {fileID: 5640703964347154256}
+  - component: {fileID: 6525535704049513898}
   m_Layer: 7
   m_Name: BabyMarioIA
   m_TagString: Player
@@ -200,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 0
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -233,7 +234,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 1000
 --- !u!114 &5640703964347154256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +249,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecisionPeriod: 1
   TakeActionsBetweenDecisions: 1
+--- !u!114 &6525535704049513898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7109727096812671367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282f342c2ab144bf38be65d4d0c4e07d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 0}
+  m_SensorName: CameraSensor
+  m_Width: 50
+  m_Height: 50
+  m_Grayscale: 0
+  m_ObservationType: 0
+  m_ObservationStacks: 3
+  m_Compression: 1
 --- !u!1 &7109727097270380994
 GameObject:
   m_ObjectHideFlags: 0
