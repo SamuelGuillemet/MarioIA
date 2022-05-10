@@ -67,10 +67,11 @@ public class Environment : MonoBehaviour
         MarioPlayer.CurrentEnvironment = this;
 
         if (Camera)
-        {
             Camera.PlayerTransform = MarioPlayer.transform;
+
+        if (Sensor)
             Sensor.Camera = Camera.GetComponent<Camera>();
-        }
+
         if (MarioAgent)
         {
             MarioPlayer.MarioAgent = MarioAgent;
