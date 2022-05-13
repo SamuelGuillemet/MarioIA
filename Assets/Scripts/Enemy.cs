@@ -41,19 +41,30 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public Transform MainCameraTransform { set => _mainCameraTransform = value; }
 
+    private void OnEnable()
+    {
+        GetComponentInParent<Rigidbody2D>().Sleep();
+    }
+
     /// <summary>
     /// Used to kill the enemy if he fall off the screen and handle the WakeUp if <see cref="Mario"/> is close enough to the <see cref="Enemy"/>
     /// </summary>
-    private void Update()
+    private void FixedUpdate()
     {
         if (transform.localPosition.y < -1)
         {
             Destroy(gameObject);
         }
         if (_mainCameraTransform.localPosition.x + 15 > transform.parent.localPosition.x + transform.localPosition.x)
-            GetComponent<Rigidbody2D>().WakeUp();
+        {
+            GetComponentInParent<Rigidbody2D>().WakeUp();
+            Speed = 2f;
+        }
         else if (!_shell)
-            GetComponent<Rigidbody2D>().Sleep();
+        {
+            GetComponentInParent<Rigidbody2D>().Sleep();
+            Speed = 0f;
+        }
     }
 
     /// <summary>
@@ -62,7 +73,7 @@ public class Enemy : MonoBehaviour
     /// <param name="coll"></param>
     public void CollisionHandler(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Destination" && coll.GetContact(0).normal.y < 0.1f)
+        if (coll.gameObject.tag == "Destination" && (Mathf.Abs(coll.GetContact(0).normal.x) > 0.75f || coll.GetContact(0).normal.y < 0.25f))
         {
             transform.localScale = new Vector2(-1 * transform.localScale.x, transform.localScale.y);
             Dir = new Vector2(-1 * Dir.x, Dir.y);

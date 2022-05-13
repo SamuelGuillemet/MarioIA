@@ -102,6 +102,7 @@ public class Environment : MonoBehaviour
             _objectsInTheScene[i].name = _objectsToInstantiate.ToArray()[i].name;
         }
         MarioPlayer.transform.localPosition = _marioInitPosition;
+        MarioPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         InitVariables();
     }
 }

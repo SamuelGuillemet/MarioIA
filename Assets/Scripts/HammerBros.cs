@@ -7,10 +7,11 @@ using UnityEngine;
 /// </summary>
 public class HammerBros : Enemy
 {
+    [HideInInspector]
     /// <summary>
     /// This boolean is controlled by the animation and said if <see cref="HammerBros"/> should jump
     /// </summary>
-    private bool _shouldJump = false;
+    public bool ShouldJump = false;
 
     /// <summary>
     /// This boolean prevent from multiple jumps
@@ -33,10 +34,11 @@ public class HammerBros : Enemy
     private GameObject[] _hammersInTheScene;
     private int _indexOfNextSpawn;
 
+    [HideInInspector]
     /// <summary>
     /// This boolean is controlled by the animation and said if <see cref="HammerBros"/> should throw hammer
     /// </summary>
-    private bool _shouldThrowHammer = false;
+    public bool ShouldThrowHammer = false;
 
     /// <summary>
     /// This boolean prevent from multiple throw
@@ -57,7 +59,7 @@ public class HammerBros : Enemy
 
     void Start()
     {
-        _hammersInTheScene = new GameObject[4];
+        _hammersInTheScene = new GameObject[2];
         _indexOfNextSpawn = 0;
         _dir = ((int)transform.localScale.x) * -1;
     }
@@ -83,13 +85,13 @@ public class HammerBros : Enemy
                 transform.localScale = new Vector2(1, 1);
             _dir = ((int)transform.localScale.x) * -1;
 
-            if (_shouldThrowHammer && !_isThrowingHammer)
+            if (ShouldThrowHammer && !_isThrowingHammer)
             {
                 _isThrowingHammer = true;
                 StartCoroutine("Throw");
             }
 
-            if (_shouldJump && !_isJumping)
+            if (ShouldJump && !_isJumping)
             {
                 _isJumping = true;
                 StartCoroutine("Jump");
@@ -107,7 +109,7 @@ public class HammerBros : Enemy
             Destroy(_hammersInTheScene[_indexOfNextSpawn]);
         _hammersInTheScene[_indexOfNextSpawn] = Instantiate(Hammer, transform.position + Vector3.up, Quaternion.identity, transform.parent);
         _hammersInTheScene[_indexOfNextSpawn].GetComponent<Rigidbody2D>().velocity = new Vector2(3.5f * _dir, 8);
-        _indexOfNextSpawn = (_indexOfNextSpawn + 1) % 4;
+        _indexOfNextSpawn = (_indexOfNextSpawn + 1) % _hammersInTheScene.Length;
         _isThrowingHammer = false;
     }
 

@@ -12,7 +12,7 @@ public class Goomba : Enemy
         Animator = GetComponent<Animator>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (GetComponent<Rigidbody2D>().IsAwake())
             GetComponent<Rigidbody2D>().velocity = new Vector2(Dir.x * Speed, GetComponent<Rigidbody2D>().velocity.y);
