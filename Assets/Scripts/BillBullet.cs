@@ -30,7 +30,7 @@ public class BillBullet : MonoBehaviour
     /// </summary>
     private float _speed = 5f;
 
-    private void FixedUpdate()
+    private void Start()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(_dir * _speed, 0);
         transform.localScale = new Vector2(-_dir, 1);
@@ -53,6 +53,10 @@ public class BillBullet : MonoBehaviour
             {
                 other.gameObject.GetComponent<Mario>().MarioDied();
             }
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }
