@@ -331,7 +331,7 @@ public class Mario : MonoBehaviour
 
         if (other.gameObject.tag == "Flag")
         {
-            Debug.Log("Flag touch");
+            //Debug.Log("Flag touch");
             if (_marioAgent)
                 _marioAgent.FlagTouch(transform.localPosition.y);
             else if (_currentEnvironment)
@@ -364,7 +364,7 @@ public class Mario : MonoBehaviour
     /// </summary>
     public void MarioDied()
     {
-        Debug.Log("Mario Died");
+        //Debug.Log("Mario Died");
         if (_marioAgent)
             _marioAgent.CustomDeath();
         else if (_currentEnvironment)
