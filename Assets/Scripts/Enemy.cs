@@ -124,7 +124,7 @@ public class Enemy : MonoBehaviour
     {
         var agent = GetComponentInParent<Environment>().MarioAgent;
         if (agent != null)
-            agent.GetReward(0.5f);
+            agent.GetReward(0.75f);
 
         _dead = true;
         GetComponentInChildren<Collider2D>().enabled = false;

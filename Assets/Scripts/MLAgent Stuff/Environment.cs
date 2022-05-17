@@ -19,10 +19,17 @@ public class Environment : MonoBehaviour
     /// Reference the Camera of the level
     /// </summary>
     public MainCamera Camera { get => _camera; set => _camera = value; }
+
     private CameraSensorComponent _sensor;
+    /// <summary>
+    /// Reference the componment CameraSensor for the <see cref="MLAgent"/>
+    /// </summary>
     public CameraSensorComponent Sensor { get => _sensor; set => _sensor = value; }
 
     private MLAgent _marioAgent;
+    /// <summary>
+    /// Reference the <see cref="MLAgent"/> if it is in the <see cref="Environment"/>
+    /// </summary>
     public MLAgent MarioAgent { get => _marioAgent; set => _marioAgent = value; }
 
     private GameObject _environmentPrefab;
@@ -30,9 +37,53 @@ public class Environment : MonoBehaviour
     private List<GameObject> _objectsToInstantiate;
     private GameObject[] _objectsInTheScene;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// The game object of the <see cref="Checkpoint"/>
+    /// </summary>
+    public GameObject CheckpointSingle;
+
+    private List<Checkpoint> _checkpointList;
+    /// <summary>
+    /// All the <see cref="Checkpoint"/> of the <see cref="Environment"/> are in this 
+    /// </summary>
+    public List<Checkpoint> CheckpointList { get => _checkpointList; }
+
+    /// <summary>
+    /// Used to know if <see cref="Mario"/> passed through the correct <see cref="Checkpoint"/>
+    /// </summary>
+    private int _nextCheckpointIndex;
+    public int NextCheckpoitnIndex { set => _nextCheckpointIndex = value; }
+
+
+    /// <summary>
+    /// This script is called at the beginning of the simulation to create the checkpoint system and the reset varaibles
+    /// </summary>
     void OnEnable()
     {
+        MarioPlayer = GetComponentInChildren<Mario>();
+        MarioAgent = GetComponentInChildren<MLAgent>();
+        Camera = GetComponentInChildren<MainCamera>();
+        Sensor = GetComponentInChildren<CameraSensorComponent>();
+
+        if (MarioAgent)
+        {
+            GameObject _checkpoints = new GameObject("Checkpoints");
+            _checkpoints.transform.SetParent(transform);
+            _checkpoints.transform.localPosition = Vector3.zero;
+
+
+            Transform _flagTransform = transform.Find("Flag");
+
+            float pos = MarioPlayer.transform.localPosition.x + 2;
+            while (pos < _flagTransform.localPosition.x)
+            {
+                Instantiate(CheckpointSingle, transform.localPosition + (new Vector3(pos, 7, 0)), Quaternion.identity, _checkpoints.transform);
+                pos += 5;
+            }
+
+            InitCheckpoints();
+        }
+
         _environmentPrefab = Resources.Load("Levels/" + gameObject.name) as GameObject;
 
         InitVariables();
@@ -58,11 +109,6 @@ public class Environment : MonoBehaviour
     /// </summary>
     private void InitVariables()
     {
-        MarioPlayer = GetComponentInChildren<Mario>();
-        Camera = GetComponentInChildren<MainCamera>();
-        MarioAgent = GetComponentInChildren<MLAgent>();
-        Sensor = GetComponentInChildren<CameraSensorComponent>();
-
         _marioInitPosition = MarioPlayer.transform.localPosition;
         MarioPlayer.CurrentEnvironment = this;
 
@@ -105,4 +151,41 @@ public class Environment : MonoBehaviour
         MarioPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         InitVariables();
     }
+
+    /// <summary>
+    /// This function is called when the IA enter the checkpoint to give it some points
+    /// </summary>
+    /// <param name="checkpoint"></param>
+    public void PlayerThroughCheckpoint(Checkpoint checkpoint)
+    {
+        if (_checkpointList.IndexOf(checkpoint) == _nextCheckpointIndex)
+        {
+            _nextCheckpointIndex++;
+            _marioAgent.GetReward(0.75f);
+        }
+        else
+        {
+            _marioAgent.GetReward(-0.5f);
+        }
+    }
+
+    /// <summary>
+    /// Called at start to init the system of the checkpoints
+    /// </summary>
+    private void InitCheckpoints()
+    {
+        Transform checkpointsTransform = transform.Find("Checkpoints");
+        if (checkpointsTransform != null)
+        {
+            _checkpointList = new List<Checkpoint>();
+            _nextCheckpointIndex = 0;
+            foreach (Transform checkpointSingleTransform in checkpointsTransform)
+            {
+                Checkpoint checkpoint = checkpointSingleTransform.GetComponent<Checkpoint>();
+                checkpoint.SetEnvironment(this);
+                _checkpointList.Add(checkpoint);
+            }
+        }
+    }
+
 }

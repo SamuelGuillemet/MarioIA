@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
-using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 using UnityEngine.UI;
-using System.IO;
 
 /// <summary>
 /// This class is used to implement the MLAgent IA in the game
@@ -34,6 +32,11 @@ public class MLAgent : Agent
     private void Start()
     {
         _rewardText = GameObject.Find("Reward").GetComponent<Text>();
+
+        foreach (Checkpoint item in CurrentEnvironment.CheckpointList)
+        {
+            Physics2D.IgnoreCollision(item.GetComponent<Collider2D>(), gameObject.GetComponent<BoxCollider2D>());
+        }
     }
 
     /// <summary>
@@ -52,13 +55,22 @@ public class MLAgent : Agent
 
         CurrentMario.MLMoveMario(dir, run, jump);
 
-        AddReward(-0.0025f);
-        if (GetComponent<Rigidbody2D>().velocity.x > 0)
+
+        if (GetComponent<Rigidbody2D>().velocity.x > 0.1f)
         {
             if (_currentMario.CurrentVelocityX == Mario.VelocityX.course)
-                AddReward(0.002f);
+                AddReward(-0.00015f);
             else
-                AddReward(0.0015f);
+                AddReward(-0.0005f);
+        }
+        else
+        {
+            AddReward(-0.003f);
+        }
+
+        if (jump == 1)
+        {
+            AddReward(0.001f);
         }
     }
 
@@ -93,30 +105,60 @@ public class MLAgent : Agent
     private void FixedUpdate()
     {
         _rewardText.text = GetCumulativeReward().ToString();
+        if (StepCount > 750 && CurrentEnvironment.gameObject.name.Contains("Initializer") || StepCount > 5000)
+        {
+            SaveDataToTensorboard();
+            EpisodeInterrupted();
+        }
     }
 
+    /// <summary>
+    /// This is called when we want to make the IA die after he has to
+    /// </summary>
     public void CustomDeath()
     {
         AddReward(-10f);
-        CustomEndEpisode();
+        SaveDataToTensorboard();
+        EndEpisode();
         _currentEnvironment.Reset();
     }
 
+    /// <summary>
+    /// This function gives reward to the IA
+    /// </summary>
+    /// <param name="amount">Amount of reward to give to the IA</param>
     public void GetReward(float amount)
     {
         AddReward(amount);
     }
 
+    /// <summary>
+    /// This fucntion is called when <see cref="Mario"/> touches the flag
+    /// </summary>
+    /// <param name="position">Position of the collision to increase the value of the reward</param>
     public void FlagTouch(float position)
     {
-        AddReward(5f + position);
-        CustomEndEpisode();
+        AddReward(10f + position);
+        SaveDataToTensorboard();
+        EndEpisode();
     }
 
-    private void CustomEndEpisode()
+    /// <summary>
+    /// This function is used to add data to the tensorboard to monitor the position of the IA
+    /// </summary>
+    private void SaveDataToTensorboard()
     {
         var statsRecorder = Academy.Instance.StatsRecorder;
-        statsRecorder.Add("Mario/" + _currentEnvironment.name + "/Distance_reached", transform.position.x, StatAggregationMethod.Histogram);
-        EndEpisode();
+        statsRecorder.Add("Mario/" + _currentEnvironment.name + "/Distance_reached", transform.localPosition.x, StatAggregationMethod.Histogram);
+    }
+
+    /// <summary>
+    /// This fucntion is called essentially when <see cref="MLAgent"/> enter a <see cref="Checkpoint"/>
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Checkpoint")
+            other.gameObject.GetComponent<Checkpoint>().EnterCheckpoint();
     }
 }

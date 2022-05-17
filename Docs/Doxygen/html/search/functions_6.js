@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jump_0',['Jump',['../classHammerBros.html#aa342ac3273e6a6b2330394159cdb5732',1,'HammerBros.Jump()'],['../classKoopa.html#aa342ac3273e6a6b2330394159cdb5732',1,'Koopa.Jump()']]]
+  ['getreward_0',['GetReward',['../classMLAgent.html#a6304fdbe6111c805fc42147fda834281',1,'MLAgent']]]
 ];

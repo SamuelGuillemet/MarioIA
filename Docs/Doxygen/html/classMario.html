@@ -121,13 +121,28 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>BounceEnemy</b> ()</t
 void&#160;</td><td class="memItemRight" valign="bottom"><b>MarioDied</b> ()</td></tr>
 <tr class="memdesc:a664357b784f5afbef22d1c526d6b240a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function that is called when <a class="el" href="classMario.html" title="This class handle the deplacement of Mario with custom gravity and custom acceleration">Mario</a> should die <br /></td></tr>
 <tr class="separator:a664357b784f5afbef22d1c526d6b240a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26435b6849a3e48302207d92168aa554"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMario.html#a26435b6849a3e48302207d92168aa554">MLMoveMario</a> (int dir, int run, int jump)</td></tr>
+<tr class="memdesc:a26435b6849a3e48302207d92168aa554"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is called when the behaviour is driven by the <a class="el" href="classMLAgent.html" title="This class is used to implement the MLAgent IA in the game">MLAgent</a>  <a href="classMario.html#a26435b6849a3e48302207d92168aa554">More...</a><br /></td></tr>
+<tr class="separator:a26435b6849a3e48302207d92168aa554"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:adddea96a60eb5ffd8dda53183f1272f7"><td class="memItemLeft" align="right" valign="top"><a id="adddea96a60eb5ffd8dda53183f1272f7" name="adddea96a60eb5ffd8dda53183f1272f7"></a>
+<a class="el" href="classMario.html#ad9b599fe39cd121cf91805f31466dbf6">VelocityX</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CurrentVelocityX</b><code> [get]</code></td></tr>
+<tr class="memdesc:adddea96a60eb5ffd8dda53183f1272f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current x velocity of <a class="el" href="classMario.html" title="This class handle the deplacement of Mario with custom gravity and custom acceleration">Mario</a> <br /></td></tr>
+<tr class="separator:adddea96a60eb5ffd8dda53183f1272f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada6f0af48dce657a8e2ef8ed2deb7b4d"><td class="memItemLeft" align="right" valign="top"><a id="ada6f0af48dce657a8e2ef8ed2deb7b4d" name="ada6f0af48dce657a8e2ef8ed2deb7b4d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>Crouch</b><code> [get]</code></td></tr>
 <tr class="memdesc:ada6f0af48dce657a8e2ef8ed2deb7b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use by <a class="el" href="classPipe.html" title="This class handle the behaviour of the pipe, with teleporation of Mario and Plante growing">Pipe</a> to teleport <a class="el" href="classMario.html" title="This class handle the deplacement of Mario with custom gravity and custom acceleration">Mario</a> <br /></td></tr>
 <tr class="separator:ada6f0af48dce657a8e2ef8ed2deb7b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c98be8399f097042024f32b37787d09"><td class="memItemLeft" align="right" valign="top"><a id="a1c98be8399f097042024f32b37787d09" name="a1c98be8399f097042024f32b37787d09"></a>
+<a class="el" href="classEnvironment.html">Environment</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CurrentEnvironment</b><code> [set]</code></td></tr>
+<tr class="memdesc:a1c98be8399f097042024f32b37787d09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to get the <a class="el" href="classEnvironment.html#a372de693ad40b3f42839c8ec6ac845f4" title="This function handle the reset of the level when Mario hits an enemy or the flag">Environment.Reset</a> function <br /></td></tr>
+<tr class="separator:a1c98be8399f097042024f32b37787d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03b689cec4e6ea10d31404d02a00ab32"><td class="memItemLeft" align="right" valign="top"><a id="a03b689cec4e6ea10d31404d02a00ab32" name="a03b689cec4e6ea10d31404d02a00ab32"></a>
+<a class="el" href="classMLAgent.html">MLAgent</a>&#160;</td><td class="memItemRight" valign="bottom"><b>MarioAgent</b><code> [set]</code></td></tr>
+<tr class="memdesc:a03b689cec4e6ea10d31404d02a00ab32"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is used to control if we should called <a class="el" href="classMario.html#a7c6e16d052a92ed703597b31a5f521c7" title="The function that handle the deplacement of Mario">MoveMario()</a> when the <a class="el" href="classMLAgent.html" title="This class is used to implement the MLAgent IA in the game">MLAgent</a> is used <br /></td></tr>
+<tr class="separator:a03b689cec4e6ea10d31404d02a00ab32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -172,10 +187,6 @@ Private Attributes</h2></td></tr>
 <a class="el" href="classMario.html#aecfb003a08d29c0b75cd266ca0cadb76">InputState</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_currentInput</b></td></tr>
 <tr class="memdesc:a50b45931069be164578ae47da383c666"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current input based on the pressed keys <br /></td></tr>
 <tr class="separator:a50b45931069be164578ae47da383c666"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31f38426ad50a5fa8ad109daf20fb28f"><td class="memItemLeft" align="right" valign="top"><a id="a31f38426ad50a5fa8ad109daf20fb28f" name="a31f38426ad50a5fa8ad109daf20fb28f"></a>
-<a class="el" href="classMario.html#ad9b599fe39cd121cf91805f31466dbf6">VelocityX</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_currentVelocityX</b></td></tr>
-<tr class="memdesc:a31f38426ad50a5fa8ad109daf20fb28f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current x velocity of <a class="el" href="classMario.html" title="This class handle the deplacement of Mario with custom gravity and custom acceleration">Mario</a> <br /></td></tr>
-<tr class="separator:a31f38426ad50a5fa8ad109daf20fb28f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4a4f23af9dda7aa62b20fe744f1c52c"><td class="memItemLeft" align="right" valign="top"><a id="aa4a4f23af9dda7aa62b20fe744f1c52c" name="aa4a4f23af9dda7aa62b20fe744f1c52c"></a>
 <a class="el" href="classMario.html#ad9b599fe39cd121cf91805f31466dbf6">VelocityX</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_jumpVelocityX</b></td></tr>
 <tr class="memdesc:aa4a4f23af9dda7aa62b20fe744f1c52c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The x velocity at the beginning of the jump <br /></td></tr>
@@ -241,6 +252,50 @@ Private Attributes</h2></td></tr>
 
 <p>The function that handle the custom gravity </p>
 <dl class="section return"><dt>Returns</dt><dd>Returns the value of gravity which has to be divided by 9.81f </dd></dl>
+
+</div>
+</div>
+<a id="a26435b6849a3e48302207d92168aa554" name="a26435b6849a3e48302207d92168aa554"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26435b6849a3e48302207d92168aa554">&#9670;&nbsp;</a></span>MLMoveMario()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MLMoveMario </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>run</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jump</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function is called when the behaviour is driven by the <a class="el" href="classMLAgent.html" title="This class is used to implement the MLAgent IA in the game">MLAgent</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dir</td><td></td></tr>
+    <tr><td class="paramname">run</td><td></td></tr>
+    <tr><td class="paramname">jump</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

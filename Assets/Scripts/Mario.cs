@@ -356,7 +356,7 @@ public class Mario : MonoBehaviour
     {
         _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[3]);
         if (_marioAgent)
-            _marioAgent.GetReward(0.5f);
+            _marioAgent.GetReward(0.75f);
     }
 
     /// <summary>
@@ -372,7 +372,7 @@ public class Mario : MonoBehaviour
     }
 
     /// <summary>
-    /// This function is called when the behaviour is driven by the ML Agent
+    /// This function is called when the behaviour is driven by the <see cref="MLAgent"/>
     /// </summary>
     /// <param name="dir"></param>
     /// <param name="run"></param>
@@ -400,6 +400,7 @@ public class Mario : MonoBehaviour
         {
             _jumpVelocityX = _currentVelocityX;
             _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[((int)_currentVelocityX)]);
+            _marioAgent.GetReward(-0.25f);
         }
     }
 }

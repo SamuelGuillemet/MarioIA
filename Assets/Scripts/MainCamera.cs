@@ -46,6 +46,8 @@ public class MainCamera : MonoBehaviour
             rect.y = 0;
             camera.rect = rect;
         }
+
+        transform.localPosition = new Vector3(_playerTransform.localPosition.x, _yPos, transform.localPosition.z);
     }
 
     void Update()
@@ -54,9 +56,9 @@ public class MainCamera : MonoBehaviour
         {
             float playerPos = _playerTransform.localPosition.x;
             float camPos = transform.localPosition.x;
-            if (playerPos > camPos)
+            if (playerPos > camPos - 3.5f)
             {
-                transform.localPosition = new Vector3(playerPos, _yPos, transform.localPosition.z);
+                transform.localPosition = new Vector3(playerPos + 3.5f, _yPos, transform.localPosition.z);
             }
             else if (playerPos < camPos - 5)
             {

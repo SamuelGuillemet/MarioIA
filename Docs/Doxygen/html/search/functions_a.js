@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pipeteleportation_0',['PipeTeleportation',['../classPipe.html#a309a6c66ee0a190bbae298423831734d',1,'Pipe']]]
+  ['limitspeed_0',['LimitSpeed',['../classMario.html#addc5bd30977a9d3f66cfd971adefabda',1,'Mario']]]
 ];

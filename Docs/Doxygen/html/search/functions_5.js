@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['initvariables_0',['InitVariables',['../classEnvironment.html#a7c7c37ba1098374d4e90dba4d8c24f04',1,'Environment']]],
-  ['isgrounded_1',['IsGrounded',['../classKoopa.html#a3355f33969150f3f11945645aa66d23f',1,'Koopa']]]
+  ['fixedupdate_0',['FixedUpdate',['../classEnemy.html#a64cb65bfc7daed53934ffc6d155ff1ed',1,'Enemy.FixedUpdate()'],['../classPipe.html#a64cb65bfc7daed53934ffc6d155ff1ed',1,'Pipe.FixedUpdate()']]],
+  ['flagtouch_1',['FlagTouch',['../classMLAgent.html#af23ac1e85eae6994c94e0235c6115ced',1,'MLAgent']]],
+  ['flipanddie_2',['FlipAndDie',['../classEnemy.html#a285c5bc6a1364ef3787e1450d32dc31a',1,'Enemy']]]
 ];

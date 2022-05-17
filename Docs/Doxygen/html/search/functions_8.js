@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['mariodied_0',['MarioDied',['../classMario.html#a664357b784f5afbef22d1c526d6b240a',1,'Mario']]],
-  ['movemario_1',['MoveMario',['../classMario.html#a7c6e16d052a92ed703597b31a5f521c7',1,'Mario']]]
+  ['initcheckpoints_0',['InitCheckpoints',['../classEnvironment.html#ade6e05be79d5862848b06818cc2ed7af',1,'Environment']]],
+  ['initvariables_1',['InitVariables',['../classEnvironment.html#a7c7c37ba1098374d4e90dba4d8c24f04',1,'Environment']]],
+  ['isgrounded_2',['IsGrounded',['../classKoopa.html#a3355f33969150f3f11945645aa66d23f',1,'Koopa']]]
 ];

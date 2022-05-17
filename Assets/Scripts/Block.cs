@@ -70,6 +70,12 @@ public class Block : MonoBehaviour
             if (agent != null)
                 agent.GetReward(0.5f);
         }
+        else
+        {
+            var agent = GetComponentInParent<Environment>().MarioAgent;
+            if (agent != null)
+                agent.GetReward(-0.25f);
+        }
 
         for (int i = 0; i < 32; i++)
         {
