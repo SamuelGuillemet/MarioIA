@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19d4d7cf167bc644a26768208f58cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CheckpointSingle: {fileID: 6688776844699112996, guid: e1fd8183b0e4efd43ab9e154407c7531, type: 3}
 --- !u!1 &4302794176257009306
 GameObject:
   m_ObjectHideFlags: 0
@@ -4028,7 +4029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1636775417694014721, guid: ddd1eb30628d39f46aa66a7cb4905828, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1636775417694014721, guid: ddd1eb30628d39f46aa66a7cb4905828, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4520,7 +4521,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1492300397278617100, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: MaxStep
-      value: 1000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7109727096812671367, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: m_Name
@@ -4950,6 +4951,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5046690554550492481, guid: 55856d4c08007ea4e954ab3f44d7925d, type: 3}
+      propertyPath: m_TargetDisplay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55856d4c08007ea4e954ab3f44d7925d, type: 3}
 --- !u!20 &9061219170568077186 stripped
@@ -4975,7 +4980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1636775417694014721, guid: ddd1eb30628d39f46aa66a7cb4905828, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1636775417694014721, guid: ddd1eb30628d39f46aa66a7cb4905828, type: 3}
       propertyPath: m_LocalPosition.y

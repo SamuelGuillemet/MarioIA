@@ -18,13 +18,13 @@ behaviors:
       extrinsic:
         gamma: 0.99
         strength: 1.0
-      #gail:
-        #strength: 0.5
-        #demo_path: demos/TallJump.demo
-        #use_actions: True
-    #behavioral_cloning:
-      #strength: 0.8
-      #demo_path: demos/TallJump.demo
+      gail:
+        strength: 0.5
+        demo_path: demos/TallJump.demo
+        use_actions: True
+    behavioral_cloning:
+      strength: 0.8
+      demo_path: demos/TallJump.demo
     keep_checkpoints: 5
     checkpoint_interval: 500000
     max_steps: 10000000
