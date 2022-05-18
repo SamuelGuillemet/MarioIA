@@ -15,9 +15,10 @@ var searchData=
   ['_5fisthrowinghammer_12',['_isThrowingHammer',['../classHammerBros.html#a535f5185633be1c601bf5321ee17377f',1,'HammerBros']]],
   ['_5fjumpvelocityx_13',['_jumpVelocityX',['../classMario.html#aa4a4f23af9dda7aa62b20fe744f1c52c',1,'Mario']]],
   ['_5flaunch_14',['_launch',['../classBill.html#a4e222ea8ed313b5215597d95a2eb378a',1,'Bill']]],
-  ['_5fnextcheckpointindex_15',['_nextCheckpointIndex',['../classEnvironment.html#a0052c8a3fb4b2e63bc63820e43877d5a',1,'Environment']]],
-  ['_5frandomaddtime_16',['_randomAddTime',['../classPipe.html#abffeb6ffefb05ae86103973c5cab6667',1,'Pipe']]],
-  ['_5fshell_17',['_shell',['../classEnemy.html#a3e816e21c2c5eed9632a37570c108793',1,'Enemy']]],
-  ['_5fspeed_18',['_speed',['../classBillBullet.html#a6da41acd4778a9c30c41d072e2cf9b1b',1,'BillBullet']]],
-  ['_5ftemp_19',['_temp',['../classBill.html#af86cbb1787fb01cbe243e407369e7ab3',1,'Bill']]]
+  ['_5fmaxstep_15',['_maxStep',['../classMLAgent.html#a62cefb4ac9bc17ca256aa714d1c461f8',1,'MLAgent']]],
+  ['_5fnextcheckpointindex_16',['_nextCheckpointIndex',['../classEnvironment.html#a0052c8a3fb4b2e63bc63820e43877d5a',1,'Environment']]],
+  ['_5frandomaddtime_17',['_randomAddTime',['../classPipe.html#abffeb6ffefb05ae86103973c5cab6667',1,'Pipe']]],
+  ['_5fshell_18',['_shell',['../classEnemy.html#a3e816e21c2c5eed9632a37570c108793',1,'Enemy']]],
+  ['_5fspeed_19',['_speed',['../classBillBullet.html#a6da41acd4778a9c30c41d072e2cf9b1b',1,'BillBullet']]],
+  ['_5ftemp_20',['_temp',['../classBill.html#af86cbb1787fb01cbe243e407369e7ab3',1,'Bill']]]
 ];

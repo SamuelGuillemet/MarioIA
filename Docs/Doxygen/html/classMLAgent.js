@@ -7,6 +7,7 @@ var classMLAgent =
     [ "OnActionReceived", "classMLAgent.html#a2a66924a43ff45e203d1f68ceb0f8102", null ],
     [ "OnTriggerEnter2D", "classMLAgent.html#ad8977c264b58f2c0e3e69af81c83644d", null ],
     [ "SaveDataToTensorboard", "classMLAgent.html#ac48ae8c53b5103da1ef9a99cd9203f89", null ],
+    [ "_maxStep", "classMLAgent.html#a62cefb4ac9bc17ca256aa714d1c461f8", null ],
     [ "CurrentEnvironment", "classMLAgent.html#a1c98be8399f097042024f32b37787d09", null ],
     [ "CurrentMario", "classMLAgent.html#a03a18595a934af4980f32534a4a26900", null ]
 ];
