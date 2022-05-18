@@ -127,7 +127,7 @@ public class MLAgent : Agent
     /// </summary>
     public void CustomDeath()
     {
-        AddReward(-5f);
+        AddReward(-2f);
         SaveDataToTensorboard();
         EndEpisode();
         _currentEnvironment.Reset();

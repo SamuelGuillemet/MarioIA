@@ -119,10 +119,11 @@ public class Environment : MonoBehaviour
         foreach (var cam in cameras)
         {
             cam.PlayerTransform = MarioPlayer.transform;
-            if (cam.TargetAspects.y == 16)
+            if (cam.name == "CameraIA")
                 Camera = cam;
         }
-        //        Camera = GetComponentInChildren<MainCamera>();
+        if (!Camera)
+            Camera = GetComponentInChildren<MainCamera>();
 
 
         _marioInitPosition = MarioPlayer.transform.localPosition;
