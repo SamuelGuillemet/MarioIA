@@ -1595,6 +1595,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!224 &258902198 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5767982391688326734, guid: dcc327321a806764cbfe1e0a5e0dc4e8, type: 3}
+  m_PrefabInstance: {fileID: 5767982391568489129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &264332728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5726,6 +5731,85 @@ Transform:
   m_Father: {fileID: 850515892}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &884422022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 884422023}
+  - component: {fileID: 884422025}
+  - component: {fileID: 884422024}
+  m_Layer: 5
+  m_Name: Debug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &884422023
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884422022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1070747490}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -46.071426, y: 46.071426}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &884422024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884422022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &884422025
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884422022}
+  m_CullTransparentMesh: 1
 --- !u!1 &904642354
 GameObject:
   m_ObjectHideFlags: 0
@@ -6689,6 +6773,10 @@ PrefabInstance:
       propertyPath: MaxStep
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7109727096812671366, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
+      propertyPath: _debug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7109727096812671367, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: m_Name
       value: BabyMarioIA
@@ -7529,6 +7617,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 478495019}
+  - {fileID: 884422023}
   m_Father: {fileID: 1519351816}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11584,6 +11673,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1571419449}
     m_Modifications:
+    - target: {fileID: 7109727096812671366, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
+      propertyPath: _debug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7109727096812671367, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: m_Name
       value: BabyMarioIA
@@ -12444,11 +12537,11 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 44.52174
+  orthographic size: 45
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 3063
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -12468,7 +12561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684453723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 87.5, y: 38.5, z: -10}
+  m_LocalPosition: {x: 87.5, y: 35, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12802,6 +12895,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1492300397278617100, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: MaxStep
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7109727096812671366, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
+      propertyPath: _debug
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7109727096812671367, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
@@ -13294,6 +13391,10 @@ PrefabInstance:
       propertyPath: MaxStep
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7109727096812671366, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
+      propertyPath: _debug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7109727096812671367, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: m_Name
       value: BabyMarioIA
@@ -13345,7 +13446,7 @@ PrefabInstance:
     - target: {fileID: 8171591890243910421, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: dcad6eb5f84d4f34598481b8ea3dd136, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8171591890243910421, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: m_BehaviorType
       value: 0
@@ -14903,6 +15004,10 @@ PrefabInstance:
       propertyPath: MaxStep
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7109727096812671366, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
+      propertyPath: _debug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7109727096812671367, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: m_Name
       value: BabyMarioIA
@@ -15187,6 +15292,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014937755}
   m_CullTransparentMesh: 1
+--- !u!1 &2063788903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2063788904}
+  - component: {fileID: 2063788906}
+  - component: {fileID: 2063788905}
+  m_Layer: 5
+  m_Name: Debug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2063788904
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063788903}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 258902198}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -46.071426, y: 46.071426}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2063788905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063788903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &2063788906
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063788903}
+  m_CullTransparentMesh: 1
 --- !u!1 &2072537852
 GameObject:
   m_ObjectHideFlags: 0
@@ -15444,6 +15628,10 @@ PrefabInstance:
       propertyPath: MaxStep
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7109727096812671366, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
+      propertyPath: _debug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7109727096812671367, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: m_Name
       value: BabyMarioIA
@@ -15495,7 +15683,7 @@ PrefabInstance:
     - target: {fileID: 8171591890243910421, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: dcad6eb5f84d4f34598481b8ea3dd136, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8171591890243910421, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: m_BehaviorType
       value: 0
@@ -15514,6 +15702,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1195968268}
     m_Modifications:
+    - target: {fileID: 7109727096812671366, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
+      propertyPath: _debug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7109727096812671367, guid: 73929767e44e73245b4466eb6f77e1b8, type: 3}
       propertyPath: m_Name
       value: BabyMarioIA
@@ -15634,7 +15826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5046690554550492481, guid: 55856d4c08007ea4e954ab3f44d7925d, type: 3}
       propertyPath: m_TargetDisplay
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55856d4c08007ea4e954ab3f44d7925d, type: 3}
@@ -17061,6 +17253,10 @@ PrefabInstance:
       propertyPath: m_Model
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8173053360709402486, guid: 96829fb3948741a4c806901082aa75c3, type: 3}
+      propertyPath: _debug
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96829fb3948741a4c806901082aa75c3, type: 3}
 --- !u!1 &1430695265572117622
@@ -17209,6 +17405,10 @@ PrefabInstance:
     - target: {fileID: 7247981772013384450, guid: 6465c1f944194a14287b8aa2ba1ef1eb, type: 3}
       propertyPath: m_Model
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8600610448180730257, guid: 6465c1f944194a14287b8aa2ba1ef1eb, type: 3}
+      propertyPath: _debug
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6465c1f944194a14287b8aa2ba1ef1eb, type: 3}
@@ -18835,6 +19035,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2956160829638664988, guid: a04a6ab2532c25a4c81358ec0bfa7c9c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5452935269851354505, guid: a04a6ab2532c25a4c81358ec0bfa7c9c, type: 3}
+      propertyPath: _debug
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6368431941254790938, guid: a04a6ab2532c25a4c81358ec0bfa7c9c, type: 3}
@@ -21690,6 +21894,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2408492227635680933, guid: dcc327321a806764cbfe1e0a5e0dc4e8, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 65d0bf1e832be434f97eb93b956d2ba7, type: 3}
+    - target: {fileID: 3648248080396844086, guid: dcc327321a806764cbfe1e0a5e0dc4e8, type: 3}
+      propertyPath: _debug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5767982390474910756, guid: dcc327321a806764cbfe1e0a5e0dc4e8, type: 3}
       propertyPath: m_Name
       value: 2PipesEnemy
@@ -22867,6 +23079,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 175298686894434182, guid: 1933240c9c11a4344830a1e3b23a7cb1, type: 3}
+      propertyPath: _debug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1270940459679681813, guid: 1933240c9c11a4344830a1e3b23a7cb1, type: 3}
       propertyPath: m_Model
       value: 
@@ -25075,6 +25291,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 975667372800916137, guid: 86fad06e69ccd8148ada803a160a24af, type: 3}
       propertyPath: m_BehaviorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2181929050475515962, guid: 86fad06e69ccd8148ada803a160a24af, type: 3}
+      propertyPath: _debug
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9001877382747735824, guid: 86fad06e69ccd8148ada803a160a24af, type: 3}

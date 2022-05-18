@@ -13,6 +13,7 @@ public class Environment : MonoBehaviour
     /// </summary>
     public Mario MarioPlayer { get => _mario; set => _mario = value; }
     private Vector3 _marioInitPosition;
+    public float MarioInitPositionX { get => _marioInitPosition.x; }
 
     private MainCamera _camera;
     /// <summary>
@@ -54,6 +55,12 @@ public class Environment : MonoBehaviour
     private int _nextCheckpointIndex;
     public int NextCheckpoitnIndex { set => _nextCheckpointIndex = value; }
 
+    private Transform _flagTransform;
+    /// <summary>
+    /// Used to set up the maxStep value of <see cref="MLAgent"/>
+    /// </summary>
+    public Transform FlagTransform { get => _flagTransform; }
+
 
     /// <summary>
     /// This script is called at the beginning of the simulation to create the checkpoint system and the reset varaibles
@@ -62,7 +69,6 @@ public class Environment : MonoBehaviour
     {
         MarioPlayer = GetComponentInChildren<Mario>();
         MarioAgent = GetComponentInChildren<MLAgent>();
-        Camera = GetComponentInChildren<MainCamera>();
         Sensor = GetComponentInChildren<CameraSensorComponent>();
 
         if (MarioAgent)
@@ -72,7 +78,7 @@ public class Environment : MonoBehaviour
             _checkpoints.transform.localPosition = Vector3.zero;
 
 
-            Transform _flagTransform = transform.Find("Flag");
+            _flagTransform = transform.Find("Flag");
 
             float pos = MarioPlayer.transform.localPosition.x + 2;
             while (pos < _flagTransform.localPosition.x)
@@ -109,6 +115,16 @@ public class Environment : MonoBehaviour
     /// </summary>
     private void InitVariables()
     {
+        MainCamera[] cameras = GetComponentsInChildren<MainCamera>();
+        foreach (var cam in cameras)
+        {
+            cam.PlayerTransform = MarioPlayer.transform;
+            if (cam.TargetAspects.y == 16)
+                Camera = cam;
+        }
+        //        Camera = GetComponentInChildren<MainCamera>();
+
+
         _marioInitPosition = MarioPlayer.transform.localPosition;
         MarioPlayer.CurrentEnvironment = this;
 
@@ -150,6 +166,7 @@ public class Environment : MonoBehaviour
         MarioPlayer.transform.localPosition = _marioInitPosition;
         MarioPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         InitVariables();
+        _nextCheckpointIndex = 0;
     }
 
     /// <summary>
@@ -160,12 +177,15 @@ public class Environment : MonoBehaviour
     {
         if (_checkpointList.IndexOf(checkpoint) == _nextCheckpointIndex)
         {
+            if (_nextCheckpointIndex % 10 == 0 && _nextCheckpointIndex != 0)
+                _marioAgent.GetReward(5f);
+            else
+                _marioAgent.GetReward(1f);
             _nextCheckpointIndex++;
-            _marioAgent.GetReward(0.75f);
         }
         else
         {
-            _marioAgent.GetReward(-0.5f);
+            _marioAgent.GetReward(-0.75f);
         }
     }
 

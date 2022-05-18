@@ -109,7 +109,7 @@ public class Mario : MonoBehaviour
     /// <summary>
     /// This is used to control if we should called <see cref="MoveMario()"/> when the <see cref="MLAgent"/> is used
     /// </summary>
-    public MLAgent MarioAgent { set => _marioAgent = value; }
+    public MLAgent MarioAgent { set => _marioAgent = value; get => _marioAgent; }
 
     // Start is called before the first frame update
     void Start()
@@ -165,6 +165,9 @@ public class Mario : MonoBehaviour
 
         if (transform.localPosition.y < -1)
             MarioDied();
+
+        if (_debug && MarioAgent)
+            Debug.Log(MarioAgent.GetCumulativeReward());
     }
 
     /// <summary>
@@ -356,7 +359,7 @@ public class Mario : MonoBehaviour
     {
         _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[3]);
         if (_marioAgent)
-            _marioAgent.GetReward(0.75f);
+            _marioAgent.GetReward(1f);
     }
 
     /// <summary>

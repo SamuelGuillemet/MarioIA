@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This class is used to implement the MLAgent IA in the game
@@ -23,6 +24,11 @@ public class MLAgent : Agent
     /// </summary>
     public Mario CurrentMario { get => _currentMario; set => _currentMario = value; }
 
+    /// <summary>
+    /// The maximum number of steps before <see cref="Agent.EpisodeInterrupted"/> is called
+    /// </summary>
+    private float _maxStep;
+
     public override void OnEpisodeBegin()
     {
         CurrentEnvironment.Reset();
@@ -37,6 +43,8 @@ public class MLAgent : Agent
         {
             Physics2D.IgnoreCollision(item.GetComponent<Collider2D>(), gameObject.GetComponent<BoxCollider2D>());
         }
+
+        _maxStep = 25 * CurrentEnvironment.FlagTransform.localPosition.x;
     }
 
     /// <summary>
@@ -61,7 +69,7 @@ public class MLAgent : Agent
             if (_currentMario.CurrentVelocityX == Mario.VelocityX.course)
                 AddReward(-0.00015f);
             else
-                AddReward(-0.0005f);
+                AddReward(-0.001f);
         }
         else
         {
@@ -105,8 +113,10 @@ public class MLAgent : Agent
     private void FixedUpdate()
     {
         _rewardText.text = GetCumulativeReward().ToString();
-        if (StepCount > 750 && CurrentEnvironment.gameObject.name.Contains("Initializer") || StepCount > 5000)
+        if (StepCount > 500 && (CurrentEnvironment.gameObject.name.Contains("Initializer") || SceneManager.GetActiveScene().name.Contains("Training")) || StepCount > _maxStep)
         {
+            if ((Mathf.Abs(transform.localPosition.x - CurrentEnvironment.MarioInitPositionX) < 2f) && !CurrentEnvironment.gameObject.name.Contains("Initializer"))
+                AddReward(-5f);
             SaveDataToTensorboard();
             EpisodeInterrupted();
         }
@@ -117,7 +127,7 @@ public class MLAgent : Agent
     /// </summary>
     public void CustomDeath()
     {
-        AddReward(-10f);
+        AddReward(-5f);
         SaveDataToTensorboard();
         EndEpisode();
         _currentEnvironment.Reset();
@@ -138,7 +148,7 @@ public class MLAgent : Agent
     /// <param name="position">Position of the collision to increase the value of the reward</param>
     public void FlagTouch(float position)
     {
-        AddReward(10f + position);
+        AddReward(5f + position);
         SaveDataToTensorboard();
         EndEpisode();
     }
@@ -149,7 +159,9 @@ public class MLAgent : Agent
     private void SaveDataToTensorboard()
     {
         var statsRecorder = Academy.Instance.StatsRecorder;
-        statsRecorder.Add("Mario/" + _currentEnvironment.name + "/Distance_reached", transform.localPosition.x, StatAggregationMethod.Histogram);
+        statsRecorder.Add("MarioDistance/" + _currentEnvironment.name + "/Distance_reached", ((int)Mathf.Floor(transform.localPosition.x)), StatAggregationMethod.Histogram);
+        statsRecorder.Add("MarioReward/" + _currentEnvironment.name + "/Collected_Reward", ((int)Mathf.Floor(GetCumulativeReward())), StatAggregationMethod.Histogram);
+        //Debug.Log(((int)Mathf.Floor(transform.localPosition.x)) + " : " + ((int)Mathf.Floor(GetCumulativeReward())));
     }
 
     /// <summary>
