@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 2641815297842949574, guid: f9b275b1878a9be4d92db99466b9d71e, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 41d43207bc80f1b428ff0af37837a066, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4603049289068211520, guid: f9b275b1878a9be4d92db99466b9d71e, type: 3}
       propertyPath: m_Name
       value: Level 1-1 IA

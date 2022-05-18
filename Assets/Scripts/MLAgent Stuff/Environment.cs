@@ -34,7 +34,7 @@ public class Environment : MonoBehaviour
     public MLAgent MarioAgent { get => _marioAgent; set => _marioAgent = value; }
 
     private GameObject _environmentPrefab;
-    private string[] _names = { "Questionmarks", "Enemies", "Coins" };
+    private string[] _names = { "Questionmarks", "Enemies", "Coins", "Conduits" };
     private List<GameObject> _objectsToInstantiate;
     private GameObject[] _objectsInTheScene;
 
@@ -150,6 +150,24 @@ public class Environment : MonoBehaviour
         foreach (HammerBros hammerBros in GetComponentsInChildren<HammerBros>())
         {
             hammerBros.MarioTransform = MarioPlayer.transform;
+        }
+
+        foreach (Pipe pipe in GetComponentsInChildren<Pipe>())
+        {
+            GameObject bounty = new GameObject("BountyPipe");
+            bounty.transform.SetParent(pipe.transform.parent);
+            bounty.transform.localPosition = new Vector3(1, 5, 0);
+            bounty.AddComponent<Coin>();
+            bounty.GetComponent<Coin>().CustomReward = 2.25f;
+            bounty.AddComponent<SpriteRenderer>();
+            bounty.GetComponent<SpriteRenderer>().sprite = CheckpointSingle.GetComponent<SpriteRenderer>().sprite;
+            bounty.GetComponent<SpriteRenderer>().color = new Color(0.82f, 0.82f, 0.31f, 0.45f);
+            bounty.GetComponent<SpriteRenderer>().drawMode = SpriteDrawMode.Tiled;
+            bounty.GetComponent<SpriteRenderer>().size = new Vector2(0.25f, 14f);
+            bounty.AddComponent<BoxCollider2D>();
+            bounty.GetComponent<BoxCollider2D>().size = new Vector2(0.25f, 14f);
+            bounty.GetComponent<BoxCollider2D>().isTrigger = true;
+
         }
     }
 
