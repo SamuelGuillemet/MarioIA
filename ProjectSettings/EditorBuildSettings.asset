@@ -11,13 +11,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Levels-IA/Training/Training1.unity
     guid: e6012f68d6a2c05458eea98385a8eb89
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Levels-IA/LevelsIA/Level1-IA.unity
     guid: 428534996a110594d80529a2071232f0
   - enabled: 0
     path: Assets/Scenes/Levels-IA/Training/Initializer.unity
     guid: 63067f033e700f248aa31f979b27f888
   - enabled: 0
-    path: Assets/Scenes/Levels-IA/Training/Training1-Full.unity
+    path: Assets/Scenes/Levels-IA/Training/Stage1-Full.unity
     guid: d3e667b0265209542911e13f54a52a49
+  - enabled: 1
+    path: Assets/Scenes/Levels-IA/LevelsIA/Level2-IA.unity
+    guid: 35efe6b15945b004cbec895b81573231
   m_configObjects: {}
