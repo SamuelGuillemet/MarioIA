@@ -86,14 +86,14 @@ public class Enemy : MonoBehaviour
                 return;
             }
             GameObject enemy = coll.gameObject;
-            if (enemy.GetComponent<Enemy>().Dir.x == Dir.x)
+            if (enemy.GetComponent<Enemy>().Dir.normalized.x == Dir.normalized.x)
             {
-                if (gameObject.transform.localPosition.x > enemy.transform.localPosition.x && Dir.x == -1)
+                if (gameObject.transform.localPosition.x > enemy.transform.localPosition.x && Dir.normalized.x == -1)
                 {
                     transform.localScale = new Vector2(-1 * transform.localScale.x, transform.localScale.y);
                     Dir = new Vector2(-1 * Dir.x, Dir.y);
                 }
-                if (gameObject.transform.localPosition.x < enemy.transform.localPosition.x && Dir.x == 1)
+                if (gameObject.transform.localPosition.x < enemy.transform.localPosition.x && Dir.normalized.x == 1)
                 {
                     transform.localScale = new Vector2(-1 * transform.localScale.x, transform.localScale.y);
                     Dir = new Vector2(-1 * Dir.x, Dir.y);
