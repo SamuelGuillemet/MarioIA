@@ -61,7 +61,7 @@ public class MLAgent : Agent
 
         int jump = actions.DiscreteActions[2]; //jump
 
-        CurrentMario.MLMoveMario(dir, run, jump);
+        //CurrentMario.MLMoveMario(dir, run, jump);
 
 
         if (GetComponent<Rigidbody2D>().velocity.x > 0.1f)
@@ -112,7 +112,8 @@ public class MLAgent : Agent
 
     private void FixedUpdate()
     {
-        _rewardText.text = GetCumulativeReward().ToString();
+        if (_rewardText)
+            _rewardText.text = GetCumulativeReward().ToString();
         if (StepCount > 500 && (CurrentEnvironment.gameObject.name.Contains("Initializer") || SceneManager.GetActiveScene().name.Contains("Training")) || StepCount > _maxStep)
         {
             if ((Mathf.Abs(transform.localPosition.x - CurrentEnvironment.MarioInitPositionX) < 2f) && !CurrentEnvironment.gameObject.name.Contains("Initializer"))
@@ -130,7 +131,6 @@ public class MLAgent : Agent
         AddReward(-2f);
         SaveDataToTensorboard();
         EndEpisode();
-        _currentEnvironment.Reset();
     }
 
     /// <summary>
