@@ -34,8 +34,9 @@ public class Environment : MonoBehaviour
     public MLAgent MarioAgent { get => _marioAgent; set => _marioAgent = value; }
 
     private GameObject _environmentPrefab;
+    public GameObject EnvironmentPrefab { set => _environmentPrefab = value; }
     private string[] _names = { "Questionmarks", "Enemies", "Coins", "Conduits" };
-    private List<GameObject> _objectsToInstantiate;
+    public List<GameObject> _objectsToInstantiate;
     private GameObject[] _objectsInTheScene;
 
     /// <summary>
@@ -65,7 +66,7 @@ public class Environment : MonoBehaviour
     /// <summary>
     /// This script is called at the beginning of the simulation to create the checkpoint system and the reset varaibles
     /// </summary>
-    void OnEnable()
+    public void OnEnable()
     {
         MarioPlayer = GetComponentInChildren<Mario>();
         MarioAgent = GetComponentInChildren<MLAgent>();
@@ -89,8 +90,8 @@ public class Environment : MonoBehaviour
 
             InitCheckpoints();
         }
-
-        _environmentPrefab = Resources.Load("Levels/" + gameObject.name) as GameObject;
+        if (!_environmentPrefab)
+            _environmentPrefab = Resources.Load("Levels/" + gameObject.name) as GameObject;
 
         InitVariables();
         _objectsToInstantiate = new List<GameObject>();
@@ -145,6 +146,7 @@ public class Environment : MonoBehaviour
         foreach (Enemy enemy in GetComponentsInChildren<Enemy>())
         {
             enemy.MainCameraTransform = Camera.transform;
+
         }
 
         foreach (HammerBros hammerBros in GetComponentsInChildren<HammerBros>())
