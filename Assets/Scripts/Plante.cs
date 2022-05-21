@@ -13,7 +13,7 @@ public class Plante : MonoBehaviour
     /// <param name="other">It will be <see cref="Mario"/> most of the time</param>
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "BabyMario")
+        if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<Mario>().MarioDied();
         }

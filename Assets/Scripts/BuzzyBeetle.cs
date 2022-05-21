@@ -26,7 +26,7 @@ public class BuzzyBeetle : Enemy
     {
         if (other.gameObject.tag == "Player")
         {
-            if (other.GetContact(0).normal.y <= -0.75f)
+            if ((transform.localPosition.y <= other.transform.localPosition.y - 0.5f))
             {
                 if (Shell)
                     FlipAndDie();
@@ -42,7 +42,7 @@ public class BuzzyBeetle : Enemy
                 if (Shell && Speed == 0f)
                 {
                     Speed = 6f;
-                    Dir = new Vector2(other.GetContact(0).normal.x, Dir.y);
+                    Dir = new Vector2(other.GetContact(0).normal.normalized.x, Dir.y);
                 }
                 else
                     other.gameObject.GetComponent<Mario>().MarioDied();

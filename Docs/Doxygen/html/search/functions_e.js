@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['update_0',['Update',['../classEnemy.html#aec0783b5a136e042adcc47bae4fe5291',1,'Enemy']]]
+  ['reset_0',['Reset',['../classEnvironment.html#a372de693ad40b3f42839c8ec6ac845f4',1,'Environment']]]
 ];

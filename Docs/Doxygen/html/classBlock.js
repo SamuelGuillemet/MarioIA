@@ -1,6 +1,6 @@
 var classBlock =
 [
-    [ "BrickHit", "classBlock.html#a2af500769fafefdbd145a115aa52d11d", null ],
+    [ "BrickHit", "classBlock.html#ae0cc3c035ec94f6e093445098ecfec0b", null ],
     [ "OnCollisionEnter2D", "classBlock.html#a1772e945508b106147d6d32067353e2a", null ],
     [ "OnCollisionExit2D", "classBlock.html#a911e4aec325f5e798892c7c3617ba147", null ],
     [ "_enemiesOnTop", "classBlock.html#a7b27ecd26b3eda831766ffef614f8dfd", null ],

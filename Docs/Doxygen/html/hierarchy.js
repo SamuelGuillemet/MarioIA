@@ -1,9 +1,13 @@
 var hierarchy =
 [
+    [ "Agent", null, [
+      [ "MLAgent", "classMLAgent.html", null ]
+    ] ],
     [ "MonoBehaviour", null, [
       [ "Bill", "classBill.html", null ],
       [ "BillBullet", "classBillBullet.html", null ],
       [ "Block", "classBlock.html", null ],
+      [ "Checkpoint", "classCheckpoint.html", null ],
       [ "Coin", "classCoin.html", null ],
       [ "Enemy", "classEnemy.html", [
         [ "BuzzyBeetle", "classBuzzyBeetle.html", null ],

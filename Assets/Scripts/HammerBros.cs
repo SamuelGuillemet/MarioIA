@@ -75,6 +75,8 @@ public class HammerBros : Enemy
                 {
                     MarioTransform.gameObject.GetComponent<Mario>().MarioDied();
                 }
+                if (item.transform.localPosition.y < -1)
+                    Destroy(item);
             }
         }
         if (!Dead)
@@ -88,13 +90,13 @@ public class HammerBros : Enemy
             if (ShouldThrowHammer && !_isThrowingHammer)
             {
                 _isThrowingHammer = true;
-                StartCoroutine("Throw");
+                StartCoroutine(Throw());
             }
 
             if (ShouldJump && !_isJumping)
             {
                 _isJumping = true;
-                StartCoroutine("Jump");
+                StartCoroutine(Jump());
             }
         }
     }
@@ -133,7 +135,7 @@ public class HammerBros : Enemy
     /// <param name="other"><see cref="Mario"/> most of the time</param>
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "BabyMario")
+        if (other.gameObject.tag == "Player")
         {
             if (other.GetContact(0).point.y + 1 > transform.position.y)
             {

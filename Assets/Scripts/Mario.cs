@@ -34,6 +34,7 @@ public class Mario : MonoBehaviour
     /// <summary>
     /// The current x velocity of <see cref="Mario"/>
     /// </summary>
+    public VelocityX CurrentVelocityX { get => _currentVelocityX; }
     private VelocityX _currentVelocityX;
 
     /// <summary>
@@ -99,7 +100,16 @@ public class Mario : MonoBehaviour
     private bool _onTrampoline = false;
 
     private Environment _currentEnvironment;
+    /// <summary>
+    /// Used to get the <see cref="Environment.Reset"/> function
+    /// </summary>
     public Environment CurrentEnvironment { set => _currentEnvironment = value; }
+
+    private MLAgent _marioAgent;
+    /// <summary>
+    /// This is used to control if we should called <see cref="MoveMario()"/> when the <see cref="MLAgent"/> is used
+    /// </summary>
+    public MLAgent MarioAgent { set => _marioAgent = value; get => _marioAgent; }
 
     // Start is called before the first frame update
     void Start()
@@ -134,7 +144,8 @@ public class Mario : MonoBehaviour
         _grounded = Physics2D.OverlapPoint(m_GroundCheck1.position, LayerMask.GetMask("Blocks")) || Physics2D.OverlapPoint(m_GroundCheck2.position, LayerMask.GetMask("Blocks"));
 
         SetConstant();
-        MoveMario();
+        if (_marioAgent == null)
+            MoveMario();
 
         _gravity = AdjustGravity() / 9.81f;
         _rb.gravityScale = _gravity;
@@ -320,8 +331,10 @@ public class Mario : MonoBehaviour
 
         if (other.gameObject.tag == "Flag")
         {
-            Debug.Log("Flag touch");
-            if (_currentEnvironment)
+            //Debug.Log("Flag touch");
+            if (_marioAgent)
+                _marioAgent.FlagTouch(transform.localPosition.y);
+            else if (_currentEnvironment)
                 _currentEnvironment.Reset();
         }
     }
@@ -342,6 +355,8 @@ public class Mario : MonoBehaviour
     public void BounceEnemy()
     {
         _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[3]);
+        if (_marioAgent)
+            _marioAgent.GetReward(1f);
     }
 
     /// <summary>
@@ -349,8 +364,45 @@ public class Mario : MonoBehaviour
     /// </summary>
     public void MarioDied()
     {
-        Debug.Log("Mario Died");
-        if (_currentEnvironment)
+        //Debug.Log("Mario Died");
+        if (_marioAgent)
+            _marioAgent.CustomDeath();
+        else if (_currentEnvironment)
             _currentEnvironment.Reset();
     }
+
+    /// <summary>
+    /// This function is called when the behaviour is driven by the <see cref="MLAgent"/>
+    /// </summary>
+    /// <param name="dir"></param>
+    /// <param name="run"></param>
+    /// <param name="jump"></param>
+    public void MLMoveMario(int dir, int run, int jump)
+    {
+        this._jump = (jump == 1) && _speedY >= 0;
+
+        if (dir != 0)
+        {
+            _currentInput = InputState.marche;
+            _inputDirection = dir;
+            transform.localScale = new Vector2(Mathf.Sign(_inputDirection), transform.localScale.y);
+        }
+        else
+        {
+            _currentInput = InputState.arret;
+            _inputDirection = 0;
+        }
+
+        if (run == 1 && _currentInput == InputState.marche) //Course
+            _currentInput = InputState.course;
+
+        if (jump == 1 && _grounded)
+        {
+            _jumpVelocityX = _currentVelocityX;
+            _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[((int)_currentVelocityX)]);
+            _marioAgent.GetReward(-0.005f);
+        }
+    }
 }
+
+

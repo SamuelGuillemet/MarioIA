@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (_mainCameraTransform.localPosition.x + 15 > transform.parent.localPosition.x + transform.localPosition.x)
+        if (_mainCameraTransform.localPosition.x + 15 > transform.parent.localPosition.x + transform.localPosition.x && !_shell)
         {
             GetComponentInParent<Rigidbody2D>().WakeUp();
             Speed = 2f;
@@ -122,6 +122,10 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void FlipAndDie()
     {
+        var agent = GetComponentInParent<Environment>().MarioAgent;
+        if (agent != null)
+            agent.GetReward(0.75f);
+
         _dead = true;
         GetComponentInChildren<Collider2D>().enabled = false;
         Dir = Vector2.zero;

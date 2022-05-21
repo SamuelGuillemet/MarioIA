@@ -1,0 +1,9 @@
+mlagents-learn config/configDemo.yaml --env=Builds/Initializer/MarioIA.exe --run-id=TrainingV1.1 --num-envs=2
+mlagents-learn config/config.yaml --env=Builds/Initializer/MarioIA.exe --run-id=TrainingV1.2 --num-envs=2 --initialize-from=TrainingV1.1
+mlagents-learn config/config.yaml --env=Builds/Training1/MarioIA.exe --run-id=TrainingV2.1 --num-envs=2 --initialize-from=TrainingV1.2
+mlagents-learn config/config.yaml --env=Builds/Training2/MarioIA.exe --run-id=TrainingV2.2 --num-envs=2 --initialize-from=TrainingV2.1
+mlagents-learn config/config.yaml --env=Builds/Level1-1-IA/MarioIA.exe --run-id=TrainingV3.1 --num-envs=2 --initialize-from=TrainingV2.2
+mlagents-learn config/config.yaml --env=Builds/Level2-1-IA/MarioIA.exe --run-id=TrainingV4.1 --num-envs=2 --initialize-from=TrainingV3.1
+mlagents-learn config/config.yaml --env=Builds/Stab1-1_2-1/MarioIA.exe --run-id=TrainingV5.1 --num-envs=2 --initialize-from=TrainingV4.1
+mlagents-learn config/config.yaml --env=Builds/Level3-1-IA/MarioIA.exe --run-id=TrainingV6.1 --num-envs=2 --initialize-from=TrainingV5.1
+mlagents-learn config/config.yaml --env=Builds/Stab1-1_2-1_3-1/MarioIA.exe --run-id=TrainingV7.1 --num-envs=2 --initialize-from=TrainingV6.1

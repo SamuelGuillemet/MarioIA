@@ -41,15 +41,25 @@ public class Block : MonoBehaviour
     /// <param name="coll">The GameObject collider that enter the collision with the <see cref="Block"/></param>
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.name == "BabyMario")
+        if (coll.gameObject.tag == "Player")
         {
             if (coll.GetContact(0).normal.y >= 0.5 && !_isAnimated) //if Mario hits from under and animation not already started
             {
                 foreach (GameObject enemy in _enemiesOnTop.ToArray())
                 {
-                    enemy.GetComponentInChildren<Enemy>().FlipAndDie();
+                    if (enemy)
+                        enemy.GetComponentInChildren<Enemy>().FlipAndDie();
                 }
-                StartCoroutine("BrickHit");
+
+
+                if (coll.gameObject.TryGetComponent<MLAgent>(out MLAgent _marioAgent))
+                {
+                    StartCoroutine(BrickHit(_marioAgent));
+                }
+                else
+                {
+                    StartCoroutine(BrickHit());
+                }
             }
         }
 
@@ -60,11 +70,20 @@ public class Block : MonoBehaviour
     /// <summary>
     /// Animates the block and replaces it with <see cref="NextPrefab"/>, and spawn <see cref="ToSpawn"/>
     /// </summary>
-    private IEnumerator BrickHit()
+    private IEnumerator BrickHit(MLAgent agent = null)
     {
         _isAnimated = true;
         if (ToSpawn)
+        {
             Instantiate(ToSpawn, _posInit, Quaternion.identity, transform.parent);
+            if (agent != null)
+                agent.GetReward(0.5f);
+        }
+        else
+        {
+            if (agent != null)
+                agent.GetReward(-0.25f);
+        }
 
         for (int i = 0; i < 32; i++)
         {

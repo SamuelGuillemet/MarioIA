@@ -6,8 +6,8 @@
 | Image | Nom | 
 | :---: | :-- |
 | ![Goomba](/Docs/Images/Goomba.png) | Goomba |
-| ![Koopa](/Docs/Images/Koopa.png) | Koopa |
-| ![Koopa ParaTroopa](/Docs/Images/Troopa.png) | Troopa |
+| ![Koopa Troopa](/Docs/Images/Koopa.png) | Koopa Troopa |
+| ![Koopa ParaTroopa](/Docs/Images/Troopa.png) | Koopa ParaTroopa |
 | ![BillBullet](/Docs/Images/BillBullet.png) | BillBullet |
 | ![BuzzyBeetle](/Docs/Images/BuzzyBeetle.png) | Buzzy Beetle |
 | ![HammerBros](/Docs/Images/HammerBros.png) ![Hammer](/Docs/Images/Hammer.png) | HammerBros|

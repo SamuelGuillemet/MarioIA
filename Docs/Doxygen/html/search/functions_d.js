@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['throw_0',['Throw',['../classBill.html#a06ed11aac94220a1921d52fbb9694c59',1,'Bill.Throw()'],['../classHammerBros.html#a06ed11aac94220a1921d52fbb9694c59',1,'HammerBros.Throw()']]]
+  ['pipeteleportation_0',['PipeTeleportation',['../classPipe.html#a309a6c66ee0a190bbae298423831734d',1,'Pipe']]],
+  ['playerthroughcheckpoint_1',['PlayerThroughCheckpoint',['../classEnvironment.html#afe5d15918a8d33dce9debb3afcc85eb1',1,'Environment']]]
 ];

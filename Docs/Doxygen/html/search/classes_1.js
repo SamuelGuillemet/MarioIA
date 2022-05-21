@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['coin_0',['Coin',['../classCoin.html',1,'']]]
+  ['checkpoint_0',['Checkpoint',['../classCheckpoint.html',1,'']]],
+  ['coin_1',['Coin',['../classCoin.html',1,'']]]
 ];

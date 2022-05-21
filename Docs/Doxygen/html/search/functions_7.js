@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['limitspeed_0',['LimitSpeed',['../classMario.html#addc5bd30977a9d3f66cfd971adefabda',1,'Mario']]]
+  ['heuristic_0',['Heuristic',['../classMLAgent.html#ac780cf9df8e4ca59270c7e139c7e128b',1,'MLAgent']]]
 ];

@@ -92,7 +92,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>_bulletBillsInTheScene&#160;:&#160;<a class="el" href="classBill.html#a8cdffaf9b6e1025ac5c675c427847086">Bill</a></li>
 <li>_currentBodyDirection&#160;:&#160;<a class="el" href="classMario.html#ac1c07dea1547d2c56965c5ee98b0dfff">Mario</a></li>
 <li>_currentInput&#160;:&#160;<a class="el" href="classMario.html#a50b45931069be164578ae47da383c666">Mario</a></li>
-<li>_currentVelocityX&#160;:&#160;<a class="el" href="classMario.html#a31f38426ad50a5fa8ad109daf20fb28f">Mario</a></li>
 <li>_dead&#160;:&#160;<a class="el" href="classEnemy.html#aec74f09acac5b326f2ca1cd4476a6186">Enemy</a></li>
 <li>_dir&#160;:&#160;<a class="el" href="classBill.html#aef65d4683623c27ac0a1e0ecf9717f68">Bill</a>, <a class="el" href="classHammerBros.html#aef65d4683623c27ac0a1e0ecf9717f68">HammerBros</a></li>
 <li>_enemiesOnTop&#160;:&#160;<a class="el" href="classBlock.html#a7b27ecd26b3eda831766ffef614f8dfd">Block</a></li>
@@ -103,6 +102,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>_isThrowingHammer&#160;:&#160;<a class="el" href="classHammerBros.html#a535f5185633be1c601bf5321ee17377f">HammerBros</a></li>
 <li>_jumpVelocityX&#160;:&#160;<a class="el" href="classMario.html#aa4a4f23af9dda7aa62b20fe744f1c52c">Mario</a></li>
 <li>_launch&#160;:&#160;<a class="el" href="classBill.html#a4e222ea8ed313b5215597d95a2eb378a">Bill</a></li>
+<li>_maxStep&#160;:&#160;<a class="el" href="classMLAgent.html#a62cefb4ac9bc17ca256aa714d1c461f8">MLAgent</a></li>
+<li>_nextCheckpointIndex&#160;:&#160;<a class="el" href="classEnvironment.html#a0052c8a3fb4b2e63bc63820e43877d5a">Environment</a></li>
 <li>_randomAddTime&#160;:&#160;<a class="el" href="classPipe.html#abffeb6ffefb05ae86103973c5cab6667">Pipe</a></li>
 <li>_shell&#160;:&#160;<a class="el" href="classEnemy.html#a3e816e21c2c5eed9632a37570c108793">Enemy</a></li>
 <li>_speed&#160;:&#160;<a class="el" href="classBillBullet.html#a6da41acd4778a9c30c41d072e2cf9b1b">BillBullet</a></li>
@@ -121,17 +122,24 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>BodyDirection&#160;:&#160;<a class="el" href="classMario.html#a7ea1a651acc8c9b61cb4931984e1ae26">Mario</a></li>
 <li>BounceEnemy()&#160;:&#160;<a class="el" href="classMario.html#a084369b09a9042a44dd5602cca460e56">Mario</a></li>
 <li>BounceTrampoline()&#160;:&#160;<a class="el" href="classMario.html#af7c907e227a42d605ff93b8b6acdea45">Mario</a></li>
-<li>BrickHit()&#160;:&#160;<a class="el" href="classBlock.html#a2af500769fafefdbd145a115aa52d11d">Block</a></li>
+<li>BrickHit()&#160;:&#160;<a class="el" href="classBlock.html#ae0cc3c035ec94f6e093445098ecfec0b">Block</a></li>
 <li>BulletBill&#160;:&#160;<a class="el" href="classBill.html#a43126e70757d993578eaea8a0741e587">Bill</a></li>
 </ul>
 
 
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
 <li>Camera&#160;:&#160;<a class="el" href="classEnvironment.html#a0e0fe589cf6a1653bb6c6cc5a02bec40">Environment</a></li>
+<li>CheckpointList&#160;:&#160;<a class="el" href="classEnvironment.html#ad6a4039c9485e04a1fd07231a69d0e3a">Environment</a></li>
+<li>CheckpointSingle&#160;:&#160;<a class="el" href="classEnvironment.html#ad0a2feac5ae7e4897e70e30653824242">Environment</a></li>
 <li>CollisionHandler()&#160;:&#160;<a class="el" href="classEnemy.html#af719373039f9cf51a6a3a137882d4996">Enemy</a></li>
 <li>CountJump&#160;:&#160;<a class="el" href="classHammerBros.html#a444523162ddcca3c726fc17559365df3">HammerBros</a></li>
+<li>CreateBountyPipe()&#160;:&#160;<a class="el" href="classEnvironment.html#a4428bd16045c2c0ba034c4e355a93b25">Environment</a></li>
 <li>CreatePlante()&#160;:&#160;<a class="el" href="classPipe.html#a44c9776523a0112b80b1a7377f471174">Pipe</a></li>
 <li>Crouch&#160;:&#160;<a class="el" href="classMario.html#ada6f0af48dce657a8e2ef8ed2deb7b4d">Mario</a></li>
+<li>CurrentEnvironment&#160;:&#160;<a class="el" href="classMario.html#a1c98be8399f097042024f32b37787d09">Mario</a>, <a class="el" href="classMLAgent.html#a1c98be8399f097042024f32b37787d09">MLAgent</a></li>
+<li>CurrentMario&#160;:&#160;<a class="el" href="classMLAgent.html#a03a18595a934af4980f32534a4a26900">MLAgent</a></li>
+<li>CurrentVelocityX&#160;:&#160;<a class="el" href="classMario.html#adddea96a60eb5ffd8dda53183f1272f7">Mario</a></li>
+<li>CustomDeath()&#160;:&#160;<a class="el" href="classMLAgent.html#a8228ded2fac501bcb99ab63cbb4298d3">MLAgent</a></li>
 </ul>
 
 
@@ -142,20 +150,34 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </ul>
 
 
+<h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
+<li>EnterCheckpoint()&#160;:&#160;<a class="el" href="classCheckpoint.html#a7474eef4de89a271d856c4c4a7abc89f">Checkpoint</a></li>
+</ul>
+
+
 <h3><a id="index_f" name="index_f"></a>- f -</h3><ul>
 <li>FixedUpdate()&#160;:&#160;<a class="el" href="classEnemy.html#a64cb65bfc7daed53934ffc6d155ff1ed">Enemy</a>, <a class="el" href="classPipe.html#a64cb65bfc7daed53934ffc6d155ff1ed">Pipe</a></li>
+<li>FlagTouch()&#160;:&#160;<a class="el" href="classMLAgent.html#af23ac1e85eae6994c94e0235c6115ced">MLAgent</a></li>
+<li>FlagTransform&#160;:&#160;<a class="el" href="classEnvironment.html#ae01b42395880f695548d83c64902a480">Environment</a></li>
 <li>FlipAndDie()&#160;:&#160;<a class="el" href="classEnemy.html#a285c5bc6a1364ef3787e1450d32dc31a">Enemy</a></li>
 <li>Fly&#160;:&#160;<a class="el" href="classKoopa.html#a94d39e7cc8de2a0a20c47a946fdae0a1">Koopa</a></li>
 </ul>
 
 
+<h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
+<li>GetReward()&#160;:&#160;<a class="el" href="classMLAgent.html#a6304fdbe6111c805fc42147fda834281">MLAgent</a></li>
+</ul>
+
+
 <h3><a id="index_h" name="index_h"></a>- h -</h3><ul>
 <li>Hammer&#160;:&#160;<a class="el" href="classHammerBros.html#a94eaff47ae0244bdbd606606ebe75698">HammerBros</a></li>
+<li>Heuristic()&#160;:&#160;<a class="el" href="classMLAgent.html#ac780cf9df8e4ca59270c7e139c7e128b">MLAgent</a></li>
 </ul>
 
 
 <h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
 <li>Index&#160;:&#160;<a class="el" href="classBillBullet.html#a075e1e3c9dd399cef584d7338cc37938">BillBullet</a></li>
+<li>InitCheckpoints()&#160;:&#160;<a class="el" href="classEnvironment.html#ade6e05be79d5862848b06818cc2ed7af">Environment</a></li>
 <li>InitVariables()&#160;:&#160;<a class="el" href="classEnvironment.html#a7c7c37ba1098374d4e90dba4d8c24f04">Environment</a></li>
 <li>InputState&#160;:&#160;<a class="el" href="classMario.html#aecfb003a08d29c0b75cd266ca0cadb76">Mario</a></li>
 <li>IsGrounded()&#160;:&#160;<a class="el" href="classKoopa.html#a3355f33969150f3f11945645aa66d23f">Koopa</a></li>
@@ -174,10 +196,12 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
 <li>MainCameraTransform&#160;:&#160;<a class="el" href="classEnemy.html#aa5719b96aa74b645fa47752dcdef3afb">Enemy</a></li>
+<li>MarioAgent&#160;:&#160;<a class="el" href="classEnvironment.html#a03b689cec4e6ea10d31404d02a00ab32">Environment</a>, <a class="el" href="classMario.html#a03b689cec4e6ea10d31404d02a00ab32">Mario</a></li>
 <li>MarioCurve&#160;:&#160;<a class="el" href="classPipe.html#a8d7d43e3811fd2b62f4bf77a84fd75bc">Pipe</a></li>
 <li>MarioDied()&#160;:&#160;<a class="el" href="classMario.html#a664357b784f5afbef22d1c526d6b240a">Mario</a></li>
 <li>MarioPlayer&#160;:&#160;<a class="el" href="classEnvironment.html#acd4a5c63a33b55925a82107a89eb90af">Environment</a></li>
 <li>MarioTransform&#160;:&#160;<a class="el" href="classHammerBros.html#adeb6d395a3854ea01c90f65c0edfe56e">HammerBros</a></li>
+<li>MLMoveMario()&#160;:&#160;<a class="el" href="classMario.html#a26435b6849a3e48302207d92168aa554">Mario</a></li>
 <li>MoveMario()&#160;:&#160;<a class="el" href="classMario.html#a7c6e16d052a92ed703597b31a5f521c7">Mario</a></li>
 </ul>
 
@@ -188,11 +212,13 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<li>OnActionReceived()&#160;:&#160;<a class="el" href="classMLAgent.html#a2a66924a43ff45e203d1f68ceb0f8102">MLAgent</a></li>
 <li>OnCollisionEnter2D()&#160;:&#160;<a class="el" href="classBillBullet.html#a9d716aa3dc79f96ed064726bccbb3df0">BillBullet</a>, <a class="el" href="classBlock.html#a1772e945508b106147d6d32067353e2a">Block</a>, <a class="el" href="classBuzzyBeetle.html#a9d716aa3dc79f96ed064726bccbb3df0">BuzzyBeetle</a>, <a class="el" href="classGoomba.html#a9d716aa3dc79f96ed064726bccbb3df0">Goomba</a>, <a class="el" href="classHammerBros.html#a9d716aa3dc79f96ed064726bccbb3df0">HammerBros</a>, <a class="el" href="classKoopa.html#a9d716aa3dc79f96ed064726bccbb3df0">Koopa</a>, <a class="el" href="classMario.html#a9d716aa3dc79f96ed064726bccbb3df0">Mario</a>, <a class="el" href="classPlante.html#a9d716aa3dc79f96ed064726bccbb3df0">Plante</a></li>
 <li>OnCollisionExit2D()&#160;:&#160;<a class="el" href="classBlock.html#a911e4aec325f5e798892c7c3617ba147">Block</a></li>
 <li>OnCollisionStay2D()&#160;:&#160;<a class="el" href="classPipe.html#ae0bec419612c7415b0620df57bf349fa">Pipe</a></li>
+<li>OnEnable()&#160;:&#160;<a class="el" href="classEnvironment.html#a84e23ba394eacd818d2e005cc466c4d1">Environment</a></li>
 <li>OnStateEnter()&#160;:&#160;<a class="el" href="classDestroyAfterAnimation.html#a2da132f9ff53dd9fb1cecb51be94af10">DestroyAfterAnimation</a></li>
-<li>OnTriggerEnter2D()&#160;:&#160;<a class="el" href="classCoin.html#ad8977c264b58f2c0e3e69af81c83644d">Coin</a>, <a class="el" href="classHammerBros.html#ad8977c264b58f2c0e3e69af81c83644d">HammerBros</a></li>
+<li>OnTriggerEnter2D()&#160;:&#160;<a class="el" href="classCoin.html#ad8977c264b58f2c0e3e69af81c83644d">Coin</a>, <a class="el" href="classHammerBros.html#ad8977c264b58f2c0e3e69af81c83644d">HammerBros</a>, <a class="el" href="classMLAgent.html#ad8977c264b58f2c0e3e69af81c83644d">MLAgent</a></li>
 <li>OnTriggerExit2D()&#160;:&#160;<a class="el" href="classHammerBros.html#a44ebcf048524a4fc189c39533c950641">HammerBros</a></li>
 </ul>
 
@@ -201,6 +227,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>PipeTeleportation()&#160;:&#160;<a class="el" href="classPipe.html#a309a6c66ee0a190bbae298423831734d">Pipe</a></li>
 <li>PlanteCurve&#160;:&#160;<a class="el" href="classPipe.html#a735c1eae2eb832f21f1adf3ebc587801">Pipe</a></li>
 <li>PlanteGameObject&#160;:&#160;<a class="el" href="classPipe.html#aadb89e0135699603ad099c0ea6228925">Pipe</a></li>
+<li>PlayerThroughCheckpoint()&#160;:&#160;<a class="el" href="classEnvironment.html#afe5d15918a8d33dce9debb3afcc85eb1">Environment</a></li>
 </ul>
 
 
@@ -210,8 +237,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
+<li>SaveDataToTensorboard()&#160;:&#160;<a class="el" href="classMLAgent.html#ac48ae8c53b5103da1ef9a99cd9203f89">MLAgent</a></li>
+<li>Sensor&#160;:&#160;<a class="el" href="classEnvironment.html#a9711754ca611bf6255807a13d85da450">Environment</a></li>
 <li>SetBill&#160;:&#160;<a class="el" href="classBillBullet.html#ae80e05be58db2ec1454a85b24434af09">BillBullet</a></li>
 <li>SetConstant()&#160;:&#160;<a class="el" href="classMario.html#aa2db7ce42751755fa20093861fb3b5ac">Mario</a></li>
+<li>SetEnvironment()&#160;:&#160;<a class="el" href="classCheckpoint.html#a7a7b73df3bd3deaf1418fe1602c57e0d">Checkpoint</a></li>
 <li>ShouldJump&#160;:&#160;<a class="el" href="classHammerBros.html#a137adcce5a1807adfc0fd870aa0af241">HammerBros</a></li>
 <li>ShouldThrowHammer&#160;:&#160;<a class="el" href="classHammerBros.html#a4f9550841a632c292b3ca06909c9feac">HammerBros</a></li>
 <li>Speed&#160;:&#160;<a class="el" href="classEnemy.html#a61efabcca15cccefe7d85ea6da6af5e3">Enemy</a></li>
