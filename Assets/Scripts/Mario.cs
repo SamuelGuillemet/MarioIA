@@ -165,9 +165,6 @@ public class Mario : MonoBehaviour
 
         if (transform.localPosition.y < -1)
             MarioDied();
-
-        if (_debug && MarioAgent)
-            Debug.Log(MarioAgent.GetCumulativeReward());
     }
 
     /// <summary>
@@ -403,7 +400,7 @@ public class Mario : MonoBehaviour
         {
             _jumpVelocityX = _currentVelocityX;
             _rb.velocity = new Vector2(_rb.velocity.x, InitialJumpVelocity[((int)_currentVelocityX)]);
-            _marioAgent.GetReward(-0.25f);
+            _marioAgent.GetReward(-0.005f);
         }
     }
 }

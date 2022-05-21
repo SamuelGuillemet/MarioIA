@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This class is used to implement the MLAgent IA in the game
@@ -12,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class MLAgent : Agent
 {
     private Text _rewardText;
+
     private Environment _currentEnvironment;
     /// <summary>
     /// The current environment of the agent to use <see cref="Environment.Reset"/>
@@ -34,7 +32,6 @@ public class MLAgent : Agent
         CurrentEnvironment.Reset();
     }
 
-
     private void Start()
     {
         _rewardText = GameObject.Find("Reward").GetComponent<Text>();
@@ -44,7 +41,7 @@ public class MLAgent : Agent
             Physics2D.IgnoreCollision(item.GetComponent<Collider2D>(), gameObject.GetComponent<BoxCollider2D>());
         }
 
-        _maxStep = 25 * CurrentEnvironment.FlagTransform.localPosition.x;
+        _maxStep = 20 * CurrentEnvironment.FlagTransform.localPosition.x;
     }
 
     /// <summary>
@@ -67,18 +64,18 @@ public class MLAgent : Agent
         if (GetComponent<Rigidbody2D>().velocity.x > 0.1f)
         {
             if (_currentMario.CurrentVelocityX == Mario.VelocityX.course)
-                AddReward(-0.00015f);
+                GetReward(-0.00015f);
             else
-                AddReward(-0.001f);
+                GetReward(-0.001f);
         }
         else
         {
-            AddReward(-0.003f);
+            GetReward(-0.003f);
         }
 
         if (jump == 1)
         {
-            AddReward(0.001f);
+            GetReward(0.001f);
         }
     }
 
@@ -113,10 +110,11 @@ public class MLAgent : Agent
     private void FixedUpdate()
     {
         _rewardText.text = GetCumulativeReward().ToString();
-        if (StepCount > 500 && (CurrentEnvironment.gameObject.name.Contains("Initializer") || SceneManager.GetActiveScene().name.Contains("Training")) || StepCount > _maxStep)
+        if (StepCount > _maxStep)
         {
             if ((Mathf.Abs(transform.localPosition.x - CurrentEnvironment.MarioInitPositionX) < 2f) && !CurrentEnvironment.gameObject.name.Contains("Initializer"))
                 AddReward(-5f);
+
             SaveDataToTensorboard();
             EpisodeInterrupted();
         }
@@ -127,10 +125,9 @@ public class MLAgent : Agent
     /// </summary>
     public void CustomDeath()
     {
-        AddReward(-2f);
+        AddReward(-5f);
         SaveDataToTensorboard();
         EndEpisode();
-        _currentEnvironment.Reset();
     }
 
     /// <summary>
@@ -161,11 +158,10 @@ public class MLAgent : Agent
         var statsRecorder = Academy.Instance.StatsRecorder;
         statsRecorder.Add("MarioDistance/" + _currentEnvironment.name + "/Distance_reached", ((int)Mathf.Floor(transform.localPosition.x)), StatAggregationMethod.Histogram);
         statsRecorder.Add("MarioReward/" + _currentEnvironment.name + "/Collected_Reward", ((int)Mathf.Floor(GetCumulativeReward())), StatAggregationMethod.Histogram);
-        //Debug.Log(((int)Mathf.Floor(transform.localPosition.x)) + " : " + ((int)Mathf.Floor(GetCumulativeReward())));
     }
 
     /// <summary>
-    /// This fucntion is called essentially when <see cref="MLAgent"/> enter a <see cref="Checkpoint"/>
+    /// This function is called essentially when <see cref="MLAgent"/> enter a <see cref="Checkpoint"/>
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerEnter2D(Collider2D other)

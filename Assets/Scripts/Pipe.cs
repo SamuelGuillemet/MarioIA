@@ -62,7 +62,7 @@ public class Pipe : MonoBehaviour
     {
         _newPlante = Instantiate(PlanteGameObject, transform.localPosition + new Vector3(0, 0.5f) + transform.parent.position, Quaternion.identity, transform.parent);
         _addy = _newPlante.transform.localPosition.y - 0.5f;
-        _randomAddTime = Random.Range(0f, 5f);
+        _randomAddTime = Random.Range(0f, 2.5f);
     }
 
     /// <summary>
@@ -88,14 +88,14 @@ public class Pipe : MonoBehaviour
         GameObject mario = coll.gameObject;
         if (mario.tag == "Player" && coll.GetContact(0).normal == Vector2.down && Mathf.Abs(mario.transform.localPosition.x - 0.5f - gameObject.transform.parent.localPosition.x) < 0.4f)
             if (mario.GetComponent<Mario>().Crouch && Destination)
-                StartCoroutine("PipeTeleportation", mario);
+                StartCoroutine(PipeTeleportation(mario));
     }
 
     /// <summary>
     /// Move mario to the next pipe with the animation based on <see cref="MarioCurve"/>
     /// </summary>
     /// <param name="mario"></param>
-    IEnumerator PipeTeleportation(GameObject mario)
+    private IEnumerator PipeTeleportation(GameObject mario)
     {
         Vector2 pos = mario.transform.localPosition;
 

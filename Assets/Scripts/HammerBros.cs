@@ -75,6 +75,8 @@ public class HammerBros : Enemy
                 {
                     MarioTransform.gameObject.GetComponent<Mario>().MarioDied();
                 }
+                if (item.transform.localPosition.y < -1)
+                    Destroy(item);
             }
         }
         if (!Dead)
@@ -88,13 +90,13 @@ public class HammerBros : Enemy
             if (ShouldThrowHammer && !_isThrowingHammer)
             {
                 _isThrowingHammer = true;
-                StartCoroutine("Throw");
+                StartCoroutine(Throw());
             }
 
             if (ShouldJump && !_isJumping)
             {
                 _isJumping = true;
-                StartCoroutine("Jump");
+                StartCoroutine(Jump());
             }
         }
     }

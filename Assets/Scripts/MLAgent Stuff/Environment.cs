@@ -53,7 +53,6 @@ public class Environment : MonoBehaviour
     /// Used to know if <see cref="Mario"/> passed through the correct <see cref="Checkpoint"/>
     /// </summary>
     private int _nextCheckpointIndex;
-    public int NextCheckpoitnIndex { set => _nextCheckpointIndex = value; }
 
     private Transform _flagTransform;
     /// <summary>
@@ -93,6 +92,7 @@ public class Environment : MonoBehaviour
         _environmentPrefab = Resources.Load("Levels/" + gameObject.name) as GameObject;
 
         InitVariables();
+
         _objectsToInstantiate = new List<GameObject>();
         if (_environmentPrefab)
         {
@@ -115,8 +115,8 @@ public class Environment : MonoBehaviour
     /// </summary>
     private void InitVariables()
     {
-        MainCamera[] cameras = GetComponentsInChildren<MainCamera>();
-        foreach (var cam in cameras)
+        MainCamera[] _cameras = GetComponentsInChildren<MainCamera>();
+        foreach (MainCamera cam in _cameras)
         {
             cam.PlayerTransform = MarioPlayer.transform;
             if (cam.name == "CameraIA")
@@ -140,6 +140,11 @@ public class Environment : MonoBehaviour
             MarioPlayer.MarioAgent = MarioAgent;
             MarioAgent.CurrentEnvironment = this;
             MarioAgent.CurrentMario = MarioPlayer;
+
+            foreach (Pipe pipe in GetComponentsInChildren<Pipe>())
+            {
+                CreateBountyPipe(pipe);
+            }
         }
 
         foreach (Enemy enemy in GetComponentsInChildren<Enemy>())
@@ -150,24 +155,6 @@ public class Environment : MonoBehaviour
         foreach (HammerBros hammerBros in GetComponentsInChildren<HammerBros>())
         {
             hammerBros.MarioTransform = MarioPlayer.transform;
-        }
-
-        foreach (Pipe pipe in GetComponentsInChildren<Pipe>())
-        {
-            GameObject bounty = new GameObject("BountyPipe");
-            bounty.transform.SetParent(pipe.transform.parent);
-            bounty.transform.localPosition = new Vector3(1, 5, 0);
-            bounty.AddComponent<Coin>();
-            bounty.GetComponent<Coin>().CustomReward = 2.25f;
-            bounty.AddComponent<SpriteRenderer>();
-            bounty.GetComponent<SpriteRenderer>().sprite = CheckpointSingle.GetComponent<SpriteRenderer>().sprite;
-            bounty.GetComponent<SpriteRenderer>().color = new Color(0.82f, 0.82f, 0.31f, 0.45f);
-            bounty.GetComponent<SpriteRenderer>().drawMode = SpriteDrawMode.Tiled;
-            bounty.GetComponent<SpriteRenderer>().size = new Vector2(0.25f, 14f);
-            bounty.AddComponent<BoxCollider2D>();
-            bounty.GetComponent<BoxCollider2D>().size = new Vector2(0.25f, 14f);
-            bounty.GetComponent<BoxCollider2D>().isTrigger = true;
-
         }
     }
 
@@ -189,7 +176,7 @@ public class Environment : MonoBehaviour
     }
 
     /// <summary>
-    /// This function is called when the IA enter the checkpoint to give it some points
+    /// This function is called when the IA enter the checkpoint to give it some points, additional bounty every 10 checkpoints
     /// </summary>
     /// <param name="checkpoint"></param>
     public void PlayerThroughCheckpoint(Checkpoint checkpoint)
@@ -197,14 +184,14 @@ public class Environment : MonoBehaviour
         if (_checkpointList.IndexOf(checkpoint) == _nextCheckpointIndex)
         {
             if (_nextCheckpointIndex % 10 == 0 && _nextCheckpointIndex != 0)
-                _marioAgent.GetReward(5f);
+                MarioAgent.GetReward(5f);
             else
-                _marioAgent.GetReward(1f);
+                MarioAgent.GetReward(1f);
             _nextCheckpointIndex++;
         }
         else
         {
-            _marioAgent.GetReward(-0.75f);
+            MarioAgent.GetReward(-0.75f);
         }
     }
 
@@ -227,4 +214,25 @@ public class Environment : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This function is used to create a bounty to encourage <see cref="MLAgent"/> going over <see cref="Pipe"/>
+    /// </summary>
+    /// <param name="pipe">The pipe to add the bounty</param>
+    private void CreateBountyPipe(Pipe pipe)
+    {
+        GameObject bounty = new GameObject("BountyPipe");
+        bounty.layer = CheckpointSingle.layer;
+        bounty.transform.SetParent(pipe.transform.parent);
+        bounty.transform.localPosition = new Vector3(1, 5, 0);
+        bounty.AddComponent<Coin>();
+        bounty.GetComponent<Coin>().CustomReward = 2.25f;
+        bounty.AddComponent<SpriteRenderer>();
+        bounty.GetComponent<SpriteRenderer>().sprite = CheckpointSingle.GetComponent<SpriteRenderer>().sprite;
+        bounty.GetComponent<SpriteRenderer>().color = new Color(0.82f, 0.82f, 0.31f, 0.45f);
+        bounty.GetComponent<SpriteRenderer>().drawMode = SpriteDrawMode.Tiled;
+        bounty.GetComponent<SpriteRenderer>().size = new Vector2(0.25f, 14f);
+        bounty.AddComponent<BoxCollider2D>();
+        bounty.GetComponent<BoxCollider2D>().size = new Vector2(0.25f, 14f);
+        bounty.GetComponent<BoxCollider2D>().isTrigger = true;
+    }
 }

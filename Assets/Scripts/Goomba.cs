@@ -26,7 +26,7 @@ public class Goomba : Enemy
     {
         if (other.gameObject.tag == "Player" && !Dead)
         {
-            if (other.GetContact(0).normal.y <= -0.75f)
+            if (transform.localPosition.y <= other.transform.localPosition.y - 0.5f)
             {
                 Stomped();
                 Dead = true;

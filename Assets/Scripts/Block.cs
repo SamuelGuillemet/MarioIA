@@ -47,9 +47,19 @@ public class Block : MonoBehaviour
             {
                 foreach (GameObject enemy in _enemiesOnTop.ToArray())
                 {
-                    enemy.GetComponentInChildren<Enemy>().FlipAndDie();
+                    if (enemy)
+                        enemy.GetComponentInChildren<Enemy>().FlipAndDie();
                 }
-                StartCoroutine("BrickHit");
+
+
+                if (coll.gameObject.TryGetComponent<MLAgent>(out MLAgent _marioAgent))
+                {
+                    StartCoroutine(BrickHit(_marioAgent));
+                }
+                else
+                {
+                    StartCoroutine(BrickHit());
+                }
             }
         }
 
@@ -60,19 +70,17 @@ public class Block : MonoBehaviour
     /// <summary>
     /// Animates the block and replaces it with <see cref="NextPrefab"/>, and spawn <see cref="ToSpawn"/>
     /// </summary>
-    private IEnumerator BrickHit()
+    private IEnumerator BrickHit(MLAgent agent = null)
     {
         _isAnimated = true;
         if (ToSpawn)
         {
             Instantiate(ToSpawn, _posInit, Quaternion.identity, transform.parent);
-            var agent = GetComponentInParent<Environment>().MarioAgent;
             if (agent != null)
                 agent.GetReward(0.5f);
         }
         else
         {
-            var agent = GetComponentInParent<Environment>().MarioAgent;
             if (agent != null)
                 agent.GetReward(-0.25f);
         }

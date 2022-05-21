@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (_mainCameraTransform.localPosition.x + 15 > transform.parent.localPosition.x + transform.localPosition.x)
+        if (_mainCameraTransform.localPosition.x + 15 > transform.parent.localPosition.x + transform.localPosition.x && !_shell)
         {
             GetComponentInParent<Rigidbody2D>().WakeUp();
             Speed = 2f;

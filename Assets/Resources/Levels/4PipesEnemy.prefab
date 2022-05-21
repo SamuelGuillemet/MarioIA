@@ -2829,7 +2829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6237198853373195544}
   m_Layer: 0
-  m_Name: Conduit
+  m_Name: Conduits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
