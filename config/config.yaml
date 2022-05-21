@@ -20,7 +20,7 @@ behaviors:
         strength: 1.0
     keep_checkpoints: 5
     checkpoint_interval: 500000
-    max_steps: 10000000
+    max_steps: 15000000
     time_horizon: 64
     summary_freq: 50000
 engine_settings:
