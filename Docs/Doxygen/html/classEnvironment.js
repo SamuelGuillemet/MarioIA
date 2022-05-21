@@ -1,5 +1,6 @@
 var classEnvironment =
 [
+    [ "CreateBountyPipe", "classEnvironment.html#a4428bd16045c2c0ba034c4e355a93b25", null ],
     [ "InitCheckpoints", "classEnvironment.html#ade6e05be79d5862848b06818cc2ed7af", null ],
     [ "InitVariables", "classEnvironment.html#a7c7c37ba1098374d4e90dba4d8c24f04", null ],
     [ "OnEnable", "classEnvironment.html#a84e23ba394eacd818d2e005cc466c4d1", null ],

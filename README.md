@@ -11,3 +11,10 @@ Ici vous trouverez les informations relatives au projet informatique visant au *
 * [Les éléments du jeu](/Docs/Markdowns/Elements.md)
 * [Mario](/Docs/Markdowns/Mario.md)
 * [Les 10 niveaux](/Docs/Markdowns/Levels.md)
+***
+# Des exemples des réussite de l'IA:
+| Vidéo | Niveau |
+| :-------: | :-: |
+| <img src="Docs/Images/Level1-1.gif" width="" > | Niveau 1-1 |
+| <img src="Docs/Images/Level2-1.gif" width="" > | Niveau 2-1 |
+| <img src="Docs/Images/Level3-1.gif" width="" > | Niveau 3-1 |

@@ -111,7 +111,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Reset</b> ()</td></tr
 <tr class="memdesc:a372de693ad40b3f42839c8ec6ac845f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function handle the reset of the level when <a class="el" href="classMario.html" title="This class handle the deplacement of Mario with custom gravity and custom acceleration">Mario</a> hits an enemy or the flag <br /></td></tr>
 <tr class="separator:a372de693ad40b3f42839c8ec6ac845f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe5d15918a8d33dce9debb3afcc85eb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#afe5d15918a8d33dce9debb3afcc85eb1">PlayerThroughCheckpoint</a> (<a class="el" href="classCheckpoint.html">Checkpoint</a> checkpoint)</td></tr>
-<tr class="memdesc:afe5d15918a8d33dce9debb3afcc85eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is called when the IA enter the checkpoint to give it some points  <a href="classEnvironment.html#afe5d15918a8d33dce9debb3afcc85eb1">More...</a><br /></td></tr>
+<tr class="memdesc:afe5d15918a8d33dce9debb3afcc85eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is called when the IA enter the checkpoint to give it some points, additional bounty every 10 checkpoints  <a href="classEnvironment.html#afe5d15918a8d33dce9debb3afcc85eb1">More...</a><br /></td></tr>
 <tr class="separator:afe5d15918a8d33dce9debb3afcc85eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -162,6 +162,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>InitVariables</b> ()<
 void&#160;</td><td class="memItemRight" valign="bottom"><b>InitCheckpoints</b> ()</td></tr>
 <tr class="memdesc:ade6e05be79d5862848b06818cc2ed7af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called at start to init the system of the checkpoints <br /></td></tr>
 <tr class="separator:ade6e05be79d5862848b06818cc2ed7af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4428bd16045c2c0ba034c4e355a93b25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a4428bd16045c2c0ba034c4e355a93b25">CreateBountyPipe</a> (<a class="el" href="classPipe.html">Pipe</a> pipe)</td></tr>
+<tr class="memdesc:a4428bd16045c2c0ba034c4e355a93b25"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to create a bounty to encourage <a class="el" href="classMLAgent.html" title="This class is used to implement the MLAgent IA in the game">MLAgent</a> going over <a class="el" href="classPipe.html" title="This class handle the behaviour of the pipe, with teleporation of Mario and Plante growing">Pipe</a>  <a href="classEnvironment.html#a4428bd16045c2c0ba034c4e355a93b25">More...</a><br /></td></tr>
+<tr class="separator:a4428bd16045c2c0ba034c4e355a93b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -173,6 +176,40 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_nextCheckpointIndex</
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >This script is at the root of every level, and it handles the global working of the game, like death of <a class="el" href="classMario.html" title="This class handle the deplacement of Mario with custom gravity and custom acceleration">Mario</a> or the different assignation of variables </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4428bd16045c2c0ba034c4e355a93b25" name="a4428bd16045c2c0ba034c4e355a93b25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4428bd16045c2c0ba034c4e355a93b25">&#9670;&nbsp;</a></span>CreateBountyPipe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CreateBountyPipe </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classPipe.html">Pipe</a>&#160;</td>
+          <td class="paramname"><em>pipe</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function is used to create a bounty to encourage <a class="el" href="classMLAgent.html" title="This class is used to implement the MLAgent IA in the game">MLAgent</a> going over <a class="el" href="classPipe.html" title="This class handle the behaviour of the pipe, with teleporation of Mario and Plante growing">Pipe</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pipe</td><td>The pipe to add the bounty</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="afe5d15918a8d33dce9debb3afcc85eb1" name="afe5d15918a8d33dce9debb3afcc85eb1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe5d15918a8d33dce9debb3afcc85eb1">&#9670;&nbsp;</a></span>PlayerThroughCheckpoint()</h2>
 
@@ -189,7 +226,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_nextCheckpointIndex</
       </table>
 </div><div class="memdoc">
 
-<p>This function is called when the IA enter the checkpoint to give it some points </p>
+<p>This function is called when the IA enter the checkpoint to give it some points, additional bounty every 10 checkpoints </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">checkpoint</td><td></td></tr>
