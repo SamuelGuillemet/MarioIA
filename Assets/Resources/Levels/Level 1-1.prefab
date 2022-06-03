@@ -3187,6 +3187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19d4d7cf167bc644a26768208f58cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CheckpointSingle: {fileID: 0}
 --- !u!1 &5987884245152004015
 GameObject:
   m_ObjectHideFlags: 0
@@ -7949,15 +7950,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4180630020707401972, guid: f2fdc31942ec1ae4eb004fd515c57856, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.9433962
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4180630020707401972, guid: f2fdc31942ec1ae4eb004fd515c57856, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.34175858
+      value: 0.54901963
       objectReference: {fileID: 0}
     - target: {fileID: 4180630020707401972, guid: f2fdc31942ec1ae4eb004fd515c57856, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.5067847
+      value: 0.41960785
       objectReference: {fileID: 0}
     - target: {fileID: 4180630020707401975, guid: f2fdc31942ec1ae4eb004fd515c57856, type: 3}
       propertyPath: m_Name
